@@ -3,6 +3,8 @@ import pygame
 pygame.init()
 screen = pygame.display.set_mode((400, 300))
 game = True
+x = 10
+y = 10
 
 while game:
 
@@ -10,18 +12,13 @@ while game:
         if event.type == pygame.QUIT:
                 game = False
 
-        elif event.type == pygame.K_UP:
-            y += 10
+        pressed = pygame.key.get_pressed()
 
-        elif event.type == pygame.K_DOWN:
-            y -= 10
+        if pressed[pygame.K_UP]: y -= 10
+        if pressed[pygame.K_DOWN]: y += 10
+        if pressed[pygame.K_LEFT]: x -= 10
+        if pressed[pygame.K_RIGHT]: x += 10
 
-        elif event.type == pygame.K_RIGHT:
-            x += 10
-
-        elif event.
-
-
-    pygame.draw.rect(screen, (0, 128, 255), pygame.Rect(30, 30, 60, 60))
+    pygame.draw.rect(screen, (0, 128, 255), pygame.Rect(x, y, 60, 60))
 
     pygame.display.flip()

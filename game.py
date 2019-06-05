@@ -1,5 +1,6 @@
 import pygame
 import os
+import random
 
 pygame.init()
 screen = pygame.display.set_mode((400, 300))
@@ -7,17 +8,8 @@ clock = pygame.time.Clock()
 game = True
 x = 10
 y = 10
+image__path = os.path.dirname(os.path.abspath(__file__)) + "/Recourses/rock.png"
 
-_image_library = {}
-def get_image(path):
-    global _image_library
-    image = _image_library.get(path)
-
-    if image == None:
-        canonicalized_path = path.replace("/", os.sep).replace("\\", os.sep)
-        image = pygame.image.load(canonicalized_path)
-        _image_library[path] = image = pygame.transform.scale(image, (70, 50))
-    return image
 
 while game:
 
@@ -33,7 +25,10 @@ while game:
         if pressed[pygame.K_RIGHT]: x += 10
 
     screen.fill((0, 0, 0))
-    screen.blit(get_image("D:\\Users\\Gentle\\Desktop\\rock.png"), (x, y))
+    
+    z = random.randint(70, 170)
+
+    screen.blit(pygame.transform.scale(pygame.image.load(image__path), (int(z * 1.34), z)), (x, y))
 
     pygame.display.flip()
     clock.tick(60)

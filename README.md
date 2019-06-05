@@ -1,3 +1,5 @@
+[![LoC](https://tokei.rs/b1/gitlab/satcom886/python_game?category=code)](https://lab.com/satcom886/python_game)
+
 Who are we even kidding with this?
 ![Our mascot](Resources/rock.png)
 So lets get serious.

@@ -8,3 +8,8 @@ You want to install **this very program** and have *no idea* how. Well let me te
 1. cd into the repo folder
 1. pip -r requirements.txt
 1. Run python game.py
+
+# What are we trying to accomplish?
+Get our teacher to allow us to play a game in programming.
+She told us that if we want to play games in her class we have to program them first.
+So that is what we are doind!

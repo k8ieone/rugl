@@ -2,6 +2,7 @@ import pygame
 import os
 import random
 
+# some basic shit
 pygame.init()
 screen = pygame.display.set_mode((400, 300))
 game = True
@@ -10,6 +11,8 @@ y = 10
 counter = 0
 image__path = os.path.dirname(os.path.abspath(__file__)) + "/Resources/rock.png"
 
+
+# class of the obstacle (obviously) that will be falling down
 class Obstacle:
 
     def __init__(self, x, y, z, speed):
@@ -17,30 +20,34 @@ class Obstacle:
         self.y = y
         self.z = z
         self.speed = speed
-        self.image = pygame.image.load(image__path)
+        image = pygame.image.load(image__path)
+        self.image = pygame.transform.scale(image, (int(self.z * 1.334), self.z))
 
     def __repr__(self):
         return "x: %s, y: %s, z: %s, speed: %s" % (self.x, self.y, self.z, self.speed)
 
-    def resize(self):
-        self.image = pygame.transform.scale(self.image, (int(self.z * 1.334), self.z))
 
+# actual fuckin' game
 while game:
 
+    # you know. game should close when you hit the cross thingy
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
                 game = False
 
+        # controls for arrow keys (this will be changed soon)
         pressed = pygame.key.get_pressed()
 
-        while pressed[pygame.K_UP]: y -= 10
-        while pressed[pygame.K_DOWN]: y += 10
-        while pressed[pygame.K_LEFT]: x -= 10
-        while pressed[pygame.K_RIGHT]: x += 10
+        if pressed[pygame.K_UP]: y -= 10
+        if pressed[pygame.K_DOWN]: y += 10
+        if pressed[pygame.K_LEFT]: x -= 10
+        if pressed[pygame.K_RIGHT]: x += 10
 
+    #screen shit
     screen.fill((0, 0, 0))
     
-    if counter // 120 == 0 or counter == 0:
+    #creating list of obstacles
+    if counter // 120 == 0 or counter == 0: # 1 minute = 3600 (maybe)
         number_of_obstacles = random.randint(1, 10)
         list_of_obstacles = []
 
@@ -52,9 +59,11 @@ while game:
             z = random.randint(70, 170)
             list_of_obstacles[i] = Obstacle((10 * i), (10 * i), z, 10)
     
+    #getting obstacles to the screen
     for i in range(len(list_of_obstacles)):
         screen.blit(list_of_obstacles[i].image, (list_of_obstacles[i].x, list_of_obstacles[i].y))
 
+    #end shit
     counter += 1
     pygame.display.flip()
     pygame.time.Clock().tick(60)

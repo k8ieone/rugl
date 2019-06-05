@@ -8,7 +8,7 @@ clock = pygame.time.Clock()
 game = True
 x = 10
 y = 10
-image__path = os.path.dirname(os.path.abspath(__file__)) + "/Recourses/rock.png"
+image__path = os.path.dirname(os.path.abspath(__file__)) + "/Resources/rock.png"
 
 
 while game:

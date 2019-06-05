@@ -1,5 +1,5 @@
 Who are we even kidding with this?
-![Our mascot](Resources/rock.png =100x100)
+![Our mascot](Resources/rock.png)
 So lets get serious.
 You want to install **this very program** and have *no idea* how. Well let me tell you:
 

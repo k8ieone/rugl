@@ -20,16 +20,10 @@ class Obstacle:
         self.image = pygame.image.load(image__path)
 
     def __repr__(self):
-        "x: %s, y: %s, z: %s, speed: %s" % (self.x, self.y, self.z) 
+        return "x: %s, y: %s, z: %s, speed: %s" % (self.x, self.y, self.z, self.speed)
 
     def resize(self):
         self.image = pygame.transform.scale(self.image, (int(self.z * 1.334), self.z))
-
-    def getImage(self):
-        return self.image
-
-    def setImage(self, image):
-        self.image = image
 
 while game:
 
@@ -49,14 +43,17 @@ while game:
     if counter // 120 == 0 or counter == 0:
         number_of_obstacles = random.randint(1, 10)
         list_of_obstacles = []
+
         for i in range(number_of_obstacles):
             obstacle = "obstacle" + str(i)
+            print(obstacle)
             list_of_obstacles.append(obstacle)
+            print(list_of_obstacles)
             z = random.randint(70, 170)
-            list_of_obstacles = Obstacle((10 * i), (10 * i), z, 10).resize()
+            list_of_obstacles[i] = Obstacle((10 * i), (10 * i), z, 10)
     
     for i in range(len(list_of_obstacles)):
-        screen.blit(list_of_obstacles[i].getImage, (list_of_obstacles[i].x, list_of_obstacles.y))
+        screen.blit(list_of_obstacles[i].image, (list_of_obstacles[i].x, list_of_obstacles[i].y))
 
     counter += 1
     pygame.display.flip()

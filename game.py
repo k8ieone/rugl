@@ -4,12 +4,32 @@ import random
 
 pygame.init()
 screen = pygame.display.set_mode((400, 300))
-clock = pygame.time.Clock()
 game = True
 x = 10
 y = 10
+counter = 0
 image__path = os.path.dirname(os.path.abspath(__file__)) + "/Resources/rock.png"
 
+class Obstacle:
+
+    def __init__(self, x, y, z, speed):
+        self.x = x
+        self.y = y
+        self.z = z
+        self.speed = speed
+        self.image = pygame.image.load(image__path)
+
+    def __repr__(self):
+        "x: %s, y: %s, z: %s, speed: %s" % (self.x, self.y, self.z) 
+
+    def resize(self):
+        self.image = pygame.transform.scale(self.image, (int(self.z * 1.334), self.z))
+
+    def getImage(self):
+        return self.image
+
+    def setImage(self, image):
+        self.image = image
 
 while game:
 
@@ -19,16 +39,25 @@ while game:
 
         pressed = pygame.key.get_pressed()
 
-        if pressed[pygame.K_UP]: y -= 10
-        if pressed[pygame.K_DOWN]: y += 10
-        if pressed[pygame.K_LEFT]: x -= 10
-        if pressed[pygame.K_RIGHT]: x += 10
+        while pressed[pygame.K_UP]: y -= 10
+        while pressed[pygame.K_DOWN]: y += 10
+        while pressed[pygame.K_LEFT]: x -= 10
+        while pressed[pygame.K_RIGHT]: x += 10
 
     screen.fill((0, 0, 0))
     
-    z = random.randint(70, 170)
+    if counter // 120 == 0 or counter == 0:
+        number_of_obstacles = random.randint(1, 10)
+        list_of_obstacles = []
+        for i in range(number_of_obstacles):
+            obstacle = "obstacle" + str(i)
+            list_of_obstacles.append(obstacle)
+            z = random.randint(70, 170)
+            list_of_obstacles = Obstacle((10 * i), (10 * i), z, 10).resize()
+    
+    for i in range(len(list_of_obstacles)):
+        screen.blit(list_of_obstacles[i].getImage, (list_of_obstacles[i].x, list_of_obstacles.y))
 
-    screen.blit(pygame.transform.scale(pygame.image.load(image__path), (int(z * 1.34), z)), (x, y))
-
+    counter += 1
     pygame.display.flip()
-    clock.tick(60)
+    pygame.time.Clock().tick(60)

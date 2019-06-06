@@ -1,7 +1,4 @@
 # Project status
-## Badges
-[![LoC](https://tokei.rs/b1/gitlab/satcom886/python_game?category=code)](https://gitlab.com/satcom886/python_game)
-
 ## Some useful comment about the project status
  * Project is still not dead
 

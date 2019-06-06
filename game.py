@@ -10,6 +10,7 @@ x = 10
 y = 10
 counter = 0
 image__path = os.path.dirname(os.path.abspath(__file__)) + "/Resources/rock.png"
+number_of_obstacles_on_screen = 5
 
 
 # class of the obstacle (obviously) that will be falling down
@@ -47,8 +48,8 @@ while game:
     screen.fill((0, 0, 0))
     
     #creating list of obstacles
-    if counter // 120 == 0 or counter == 0: # 1 minute = 3600 (maybe)
-        number_of_obstacles = random.randint(1, 10)
+    if counter // 108000 == 0: # 1 minute = 216, 000 (maybe)
+        number_of_obstacles_on_screen += 1
         list_of_obstacles = []
 
         for i in range(number_of_obstacles):

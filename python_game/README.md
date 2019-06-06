@@ -1,7 +1,7 @@
 # Project status
 
 ## Badges
-[![LoC](https://tokei.rs/b1/github/satcom886/python_stuff?category=code)](https://github.com/satcom886/python_stuff)
+![LoC](https://tokei.rs/b1/github/satcom886/python_stuff?category=code)
 
 ## Some useful comment about the project status
  * Project is still not dead

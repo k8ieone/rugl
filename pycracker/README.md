@@ -4,12 +4,12 @@ This program can crack MD5 hashes (more hashes comming).
 pycracker.py **PASSWORDLENGTH HASH CHARACTERS HASHTYPE**
 ## Possible arguments:
 ### WARNING: ARGUMENTS MUST BE ALL PRESENT AND IN THE EXACT ORDER ABOVE!
-PASSWORDLENGTH - a number that determines the length of the password
-HASH - the hash string
-CHARACTERS - character sets:
+PASSWORDLENGTH - a number that determines the length of the password  
+HASH - the hash string  
+CHARACTERS - character sets:  
  * a means all the letters of the english alphabet (lowercase)
  * A means uppercase
- * 1 means numbers
+ * 1 means numbers  
 HASHTYPE - type of the hash:
  * MD5
 # Where are we going with this?

@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # Usage: pycracker.py HASH CHARACTERS HASHTYPE
 
 import hashlib

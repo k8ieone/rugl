@@ -1,6 +1,7 @@
 import pygame
 import os
 import random
+import time
 
 # some basic shit
 pygame.init()
@@ -11,6 +12,8 @@ y = 10
 counter = 0
 image__path = os.path.dirname(os.path.abspath(__file__)) + "/Resources/rock.png"
 number_of_obstacles_on_screen = 5
+obstacles = 0
+list_of_obstacles = []
 
 
 # class of the obstacle (obviously) that will be falling down
@@ -27,6 +30,19 @@ class Obstacle:
     def __repr__(self):
         return "x: %s, y: %s, z: %s, speed: %s" % (self.x, self.y, self.z, self.speed)
 
+for i in range(number_of_obstacles_on_screen):
+            try:
+                if obstacles[i] == None:
+                    z = random.randint(70, 170)
+                    speed = random.randint(5, 50)
+                    name = Obstacle((i * z), 0, z, speed)
+                    list_of_obstacles.append(name)
+
+            except:
+                z = random.randint(70, 170)
+                speed = random.randint(5, 50)
+                name = Obstacle((i * z), 0, z, speed)
+                list_of_obstacles.append(name)
 
 # actual fuckin' game
 while game:
@@ -50,19 +66,24 @@ while game:
     #creating list of obstacles
     if counter // 108000 == 0: # 1 minute = 216, 000 (maybe)
         number_of_obstacles_on_screen += 1
-        list_of_obstacles = []
 
-        for i in range(number_of_obstacles):
-            obstacle = "obstacle" + str(i)
-            print(obstacle)
-            list_of_obstacles.append(obstacle)
-            print(list_of_obstacles)
-            z = random.randint(70, 170)
-            list_of_obstacles[i] = Obstacle((10 * i), (10 * i), z, 10)
+        for i in range(number_of_obstacles_on_screen):
+            try:
+                if obstacles[i] == None:
+                    z = random.randint(70, 170)
+                    speed = random.randint(5, 50)
+                    name = Obstacle((i * z), 0, z, speed)
+                    list_of_obstacles.append(name)
+            except:
+                z = random.randint(70, 170)
+                speed = random.randint(5, 50)
+                name = Obstacle((i * z), 0, z, speed)
+                list_of_obstacles.append(name)
     
     #getting obstacles to the screen
     for i in range(len(list_of_obstacles)):
-        screen.blit(list_of_obstacles[i].image, (list_of_obstacles[i].x, list_of_obstacles[i].y))
+        screen.blit(list_of_obstacles[i].image, (list_of_obstacles[i].x, list_of_obstacles[i].y + list_of_obstacles[i].speed))
+        list_of_obstacles[i].y = list_of_obstacles[i].y + list_of_obstacles[i].speed
 
     #end shit
     counter += 1

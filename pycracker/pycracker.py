@@ -1,12 +1,16 @@
 #!/usr/bin/python
-# Usage: pycracker.py HASH CHARACTERS HASHTYPE
+# Usage: pycracker.py PASSWORDLENGTH HASH CHARACTERS HASHTYPE
+
+# Import required modules
 
 import hashlib
 import sys
 import itertools
 
 def gen_list_of_potential_passwords(characters, length):
-    #if "a" in sys.argv[-2] and "A" not in sys.argv[-2] and "1" not in sys.argv[-2]:
+    
+    # This determines what character set should be used
+
     if "a" in characters and "A" not in characters and "1" not in characters:
         alphabet = "abcdefghijklmnopqrstuvwxyz"
     
@@ -29,8 +33,33 @@ def gen_list_of_potential_passwords(characters, length):
         alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     
     print("Generating possible password candidates...")
-    dictionaryofcandidates = {''.join(p) for p in itertools.permutations(alphabet, length)}
+    listofcandidates = [''.join(p) for p in itertools.permutations(alphabet, length)]
     print("Done!")
-    return dictionaryofcandidates
+    return listofcandidates
 
-# print(gen_list_of_potential_passwords("aA1", 3))
+def determine_hash(candidate_list):
+    
+    # Pretty useless when only having one possible hashtype
+    
+    if sys.argv[-1] == "MD5":
+        calculate_md5(candidate_list)
+
+def calculate_md5(candidate_list):
+
+    # Finally! Calculate the MD5 hash for each of the candidates and compare it to the original
+
+    hash_cracked = False
+    print("Searching for a match...")
+
+    for i in range(len(candidate_list)):
+        if hashlib.md5(candidate_list[i].encode('utf-8')).hexdigest() == str(sys.argv[-3]):
+            hash_cracked = True
+            print("Hash cracked!")
+            print(hashlib.md5(candidate_list[i].encode('utf-8')).hexdigest())
+            print(candidate_list[i])
+            return candidate_list[i]
+        
+        elif len(candidate_list) == i + 1 and hash_cracked is False:
+            print("Hash not found :(")
+
+determine_hash(gen_list_of_potential_passwords(sys.argv[-2], int(sys.argv[-4])))

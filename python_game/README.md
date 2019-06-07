@@ -18,5 +18,5 @@ She told us that if we want to play games in her class we have to program them f
 So that is what we are doing!
 
 # Greetings from our mascot!
-![Our mascot](Resources/rock.png)
+![Our mascot](Resources/rock0.png)
 Who are we kidding with this?

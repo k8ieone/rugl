@@ -1,9 +1,9 @@
 # Badges
-[![LoC](https://tokei.rs/b1/github/satcom886/python_stuff?category=code)](https://github.com/satcom886/python_stuff)
-[![CodeFactor](https://www.codefactor.io/repository/github/satcom886/python_stuff/badge)](https://www.codefactor.io/repository/github/satcom886/python_stuff)
-![GitHub issues](https://img.shields.io/github/issues-raw/satcom886/python_stuff.svg)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/w/satcom886/python_stuff.svg)
-![GitHub last commit](https://img.shields.io/github/last-commit/satcom886/python_stuff.svg)
+[![LoC](https://tokei.rs/b1/github/satcom886/python_stuff?category=code)](https://github.com/satcom886/python_stuffpython_game)
+[![CodeFactor](https://www.codefactor.io/repository/github/satcom886/python_stuff/python_game/badge)](https://www.codefactor.io/repository/github/satcom886/python_stuffpython_game)
+![GitHub issues](https://img.shields.io/github/issues-raw/satcom886/python_stuffpython_game.svg)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/satcom886/python_stuffpython_game.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/satcom886/python_stuffpython_game.svg)
 
 ## Some useful comment about the project status
  * Project is still not dead

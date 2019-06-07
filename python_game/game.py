@@ -82,7 +82,7 @@ def obstacleCreator(speed1, speed2):
         try:
             dummy = list_of_obstacles[i]
 
-        except:
+        except IndexError:
             z = random.randint(50, 100)
             x = random.randint(0, width)
             speed = random.randint(speed1, speed2)

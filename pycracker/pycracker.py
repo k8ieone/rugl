@@ -33,7 +33,7 @@ def gen_list_of_potential_passwords(characters, length):
         alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     
     print("Generating possible password candidates...")
-    listofcandidates = [''.join(p) for p in itertools.permutations(alphabet, length)]
+    listofcandidates = [''.join(p) for p in itertools.combinations_with_replacement(alphabet, length)]
     print("Done!")
     return listofcandidates
 

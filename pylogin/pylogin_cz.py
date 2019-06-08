@@ -29,7 +29,7 @@ def Quotes():
             print("Místo -nevím- používáme -zatím nevím- - Bill Gates")
 
         elif number == 7:
-            print("Vědět málo je nebezpečné. Vědět mnoho, také - Albert Einstein")
+            print("Vědět málo je nebezpečné. Vědět mnoho také - Albert Einstein")
     
         elif number == 8:
             print("Bůh je jenom statistika - Marilyn Manson")
@@ -71,9 +71,9 @@ def Login():
         print("Počet zbývajících pokusů: ", pokus)
         name_input = str(input("Zadej přihlašovací jméno: "))
         password_input = str(input("Zadej svoje heslo: "))
-        exist = os.path.isfile("/Users/Gentle/Desktop/Media/Thony Projects/Logins/" + name_input)
+        exist = os.path.isfile(os.path.dirname(os.path.abspath(__file__)) + name_input)
         if exist:
-            file = open("/Users/Gentle/Desktop/Media/Thony Projects/Logins/" + name_input, "r")
+            file = open(os.path.dirname(os.path.abspath(__file__)) + name_input, "r")
             login_input = file.read().splitlines()
             name = login_input[0]
             password = login_input[1]
@@ -138,10 +138,10 @@ def Authorization():
         print("Počet zbývajících pokusů: ", pokus)
         name_input = str(input("Zadej přihlašovací jméno: "))
         password_input = str(input("Zadej svoje heslo: "))
-        exist = os.path.isfile("/Users/Gentle/Desktop/Media/Thony Projects/Logins/" + name_input)
+        exist = os.path.isfile(os.path.dirname(os.path.abspath(__file__)) + name_input)
         
         if exist:
-            file = open("/Users/Gentle/Desktop/Media/Thony Projects/Logins/" + name_input, "r")
+            file = open(os.path.dirname(os.path.abspath(__file__)) + name_input, "r")
             login_input = file.read().splitlines()
             name = login_input[0]
             password = login_input[1]
@@ -183,10 +183,10 @@ def Root_Authorization():
         #print("Počet zbývajících pokusů: ", pokus)
         name_input = name
         password_input = str(input("Zadej svoje heslo: "))
-        exist = os.path.isfile("/Users/Gentle/Desktop/Media/Thony Projects/Logins/" + name_input)
+        exist = os.path.isfile(os.path.dirname(os.path.abspath(__file__)) + name_input)
         
         if exist:
-            file = open("/Users/Gentle/Desktop/Media/Thony Projects/Logins/" + name_input, "r")
+            file = open(os.path.dirname(os.path.abspath(__file__)) + name_input, "r")
             login_input = file.read().splitlines()
             name = login_input[0]
             password = login_input[1]
@@ -222,11 +222,11 @@ def Root_Authorization():
             pokus = pokus - 1
             
 def Registration():
-    if not os.listdir("/Users/Gentle/Desktop/Media/Thony Projects/Logins/"):
+    if not os.listdir(os.path.dirname(os.path.abspath(__file__))):
         name = str(input("Zadej svoje přihlašovací jméno pro vytvoření účtu: "))
         password = str(input("Zadej svoje heslo pro vytvoření účtu: "))
         permission = "user"
-        file = open("/Users/Gentle/Desktop/Media/Thony Projects/Logins/" + name, "w")
+        file = open(os.path.dirname(os.path.abspath(__file__)) + name, "w")
         file.write(name + "\n")
         file.write(password + "\n")
         file.write(permission + "\n")
@@ -252,7 +252,7 @@ def Create():
         permission = str(input("Zadej permise pro účet (root/user): "))
         
         try:
-            file = open("/Users/Gentle/Desktop/Media/Thony Projects/Logins/" + name, "w")
+            file = open(os.path.dirname(os.path.abspath(__file__)) + name, "w")
             file.write(name + "\n")
             file.write(password + "\n")
             file.write(permission + "\n")
@@ -288,9 +288,9 @@ def Delete():
         name = str(input("Zadejte název účtu, který chcete smazat: "))
         confirmation = str(input("Jste si jistí, že chcete smazat účet "+ name + "? (Y/N) "))
         if confirmation == "Y" or confirmation == "y":
-            exist = os.path.isfile("/Users/Gentle/Desktop/Media/Thony Projects/Logins/" + name) 
+            exist = os.path.isfile(os.path.dirname(os.path.abspath(__file__)) + name) 
             if exist:
-                os.remove("/Users/Gentle/Desktop/Media/Thony Projects/Logins/" + name)
+                os.remove(os.path.dirname(os.path.abspath(__file__)) + name)
                 print("Hledání návazností v paralelních vesmírech..")
                 time.sleep(1)
                 print("Probíhá vymazávání účtu..")
@@ -372,9 +372,6 @@ def Input():
             
         else:
             print("Neznámý příkaz -- pro nápovědu zadejte -h- ")
-            
-            pass
-               
                
 def screen():
     print("██    ▐█▀▀█▌ ▐█▀▀▀  ▐██  ██▄  █▌")

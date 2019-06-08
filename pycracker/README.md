@@ -1,7 +1,7 @@
 # What can I do with this?
 This program can crack MD5 hashes (more hashes comming).
 ## Usage:
-pycracker.py **PASSWORDLENGTH HASH CHARACTERS HASHTYPE**
+pycracker.py **~~PASSWORDLENGTH~~ HASH CHARACTERS HASHTYPE**
 ## Possible arguments:
 ### WARNING: ARGUMENTS MUST BE ALL PRESENT AND IN THE EXACT ORDER ABOVE!
 **PASSWORDLENGTH** - a number that determines the length of the password

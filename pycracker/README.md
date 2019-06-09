@@ -1,3 +1,5 @@
+# Badges
+![GitHub issues by-label](https://img.shields.io/github/issues-raw/satcom886/python_stuff/pycracker.svg)
 # What can I do with this?
 This program can crack MD5 hashes (more hashes comming).
 ## Usage:

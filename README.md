@@ -4,6 +4,7 @@
 ![GitHub issues](https://img.shields.io/github/issues-raw/satcom886/python_stuff.svg)
 ![GitHub repo size](https://img.shields.io/github/repo-size/satcom886/python_stuff.svg)
 ![GitHub last commit](https://img.shields.io/github/last-commit/satcom886/python_stuff.svg)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/satcom886/python_stuff.svg)
 
 # What is this repo?
 This is our collection of python programs. From super useful ones to programs that barely even work.

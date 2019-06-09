@@ -12,13 +12,11 @@ import time
 def figure_out_charset(characters):
     
     # Still used, sligthly modified
-    # This determines what character set should be used
-    # TODO: Calculate the number of possible combinations
+    # This determines what character set should be used and calculates the number of possible combinations
     # TODO: Implement more character sets (like !?@ etc)
 
     if "a" in characters and "A" not in characters and "1" not in characters:
         charset = string.ascii_lowercase
-        # possiblecombinations = 
     
     elif "a" in characters and "A" in characters and "1" not in characters:
         charset = string.ascii_letters
@@ -37,13 +35,16 @@ def figure_out_charset(characters):
     
     elif "a" not in characters and "A" in characters and "1" not in characters:
         charset = string.ascii_uppercase
-    print("The characters the password could contain are these:", charset)
-    return charset
+    
+    charset_and_possiblecombinations = [charset, len(charset) ** int(sys.argv[-4])]
+    print("Possible combinations:", charset_and_possiblecombinations[1])
+    print("Characterset:", charset_and_possiblecombinations[0])
+    return charset_and_possiblecombinations
 
 # From https://stackoverflow.com/a/48389007
 # First one that seems to work as intended
 # Returns the password in plaintext
-def solve_md5(userhash, maxlen, charset):
+def solve_md5(userhash, maxlen, charset, possiblecombinations):
     print("Starting to crack a MD5 hash...")
     print("...in 5")
     time.sleep(1)
@@ -58,21 +59,23 @@ def solve_md5(userhash, maxlen, charset):
     print("......0")
     print("Now cracking!")
     print("Please be patient!")
-    # hash_cracked = False
-    # attemptno = 0
+    hash_cracked = False
+    attemptno = 0
 
     # Calculating stuff
     for i in range(maxlen+1):
         for attempt in itertools.product(charset, repeat=i):
             # print(''.join(attempt)) # Uncomment in order to print the current candidate
-            # attemptno += 1
+            attemptno += 1
             if hashlib.md5(''.join(attempt).encode('utf-8')).hexdigest() == userhash:
-                # hash_cracked = True
+                hash_cracked = True
                 print("Hash cracked!")
                 print(hashlib.md5(''.join(attempt).encode('utf-8')).hexdigest(), "-", ''.join(attempt))
                 return ''.join(attempt)
-            # elif hash_cracked is False and len(''.join(attempt)) == maxlen:
-                # print("Hash not found :(")
-                # print(userhash, "- ???")
+            elif hash_cracked is False and attemptno == possiblecombinations:
+                print("I tried", possiblecombinations, "different passwords and none of them worked")
+                print("Hash not found :(")
+                print(userhash, "- ???")
 
-solve_md5(sys.argv[-3], int(sys.argv[-4]), figure_out_charset(sys.argv[-2]))
+charset_and_possiblecombinations = figure_out_charset(sys.argv[-2])
+solve_md5(sys.argv[-3], int(sys.argv[-4]), charset_and_possiblecombinations[0], int(charset_and_possiblecombinations[1]))

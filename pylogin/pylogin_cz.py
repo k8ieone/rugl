@@ -125,9 +125,6 @@ def Log_out():
         
     else:
         print("Akce zrušena")
-        pass
-
-
 
 def Authorization():
     global authorization

@@ -1,10 +1,11 @@
 # What can I do with this?
 This program can crack MD5 hashes (more hashes comming).
 ## Usage:
-pycracker.py **~~PASSWORDLENGTH~~ HASH CHARACTERS HASHTYPE**
+pycracker.py **MAXPASSWORDLENGTH HASH CHARACTERS HASHTYPE**
+Line **67** can be uncommented in order to print the current candidate.
 ## Possible arguments:
 ### WARNING: ARGUMENTS MUST BE ALL PRESENT AND IN THE EXACT ORDER ABOVE!
-**PASSWORDLENGTH** - a number that determines the length of the password
+**MAXPASSWORDLENGTH** - maximum password length that will be tried
 
 **HASH** - the hash string  
 

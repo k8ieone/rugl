@@ -43,7 +43,7 @@ def figure_out_charset(characters):
 # From https://stackoverflow.com/a/48389007
 # First one that seems to work as intended
 # Returns the password in plaintext
-def solve_md5(hash, maxlen, charset):
+def solve_md5(userhash, maxlen, charset):
     print("Starting to crack a MD5 hash...")
     print("...in 5")
     time.sleep(1)
@@ -66,13 +66,13 @@ def solve_md5(hash, maxlen, charset):
         for attempt in itertools.product(charset, repeat=i):
             # print(''.join(attempt)) # Uncomment in order to print the current candidate
             # attemptno += 1
-            if hashlib.md5(''.join(attempt).encode('utf-8')).hexdigest() == hash:
+            if hashlib.md5(''.join(attempt).encode('utf-8')).hexdigest() == userhash:
                 # hash_cracked = True
                 print("Hash cracked!")
                 print(hashlib.md5(''.join(attempt).encode('utf-8')).hexdigest(), "-", ''.join(attempt))
                 return ''.join(attempt)
             # elif hash_cracked is False and len(''.join(attempt)) == maxlen:
                 # print("Hash not found :(")
-                # print(hash, "- ???")
+                # print(userhash, "- ???")
 
 solve_md5(sys.argv[-3], int(sys.argv[-4]), figure_out_charset(sys.argv[-2]))

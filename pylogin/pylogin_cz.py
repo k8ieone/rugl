@@ -73,8 +73,8 @@ def Login():
         password_input = str(input("Zadej svoje heslo: "))
         exist = os.path.isfile(os.path.dirname(os.path.abspath(__file__)) + name_input)
         if exist:
-            file = open(os.path.dirname(os.path.abspath(__file__)) + name_input, "r")
-            login_input = file.read().splitlines()
+            login_file = open(os.path.dirname(os.path.abspath(__file__)) + name_input, "r")
+            login_input = login_file.read().splitlines()
             name = login_input[0]
             password = login_input[1]
             permision = login_input[2]
@@ -104,7 +104,6 @@ def Login():
             
             
     if authorization:
-        pass
         Negace()
         
     else:
@@ -141,8 +140,8 @@ def Authorization():
         exist = os.path.isfile(os.path.dirname(os.path.abspath(__file__)) + name_input)
         
         if exist:
-            file = open(os.path.dirname(os.path.abspath(__file__)) + name_input, "r")
-            login_input = file.read().splitlines()
+            login_file = open(os.path.dirname(os.path.abspath(__file__)) + name_input, "r")
+            login_input = login_file.read().splitlines()
             name = login_input[0]
             password = login_input[1]
             permision = login_input[2]
@@ -186,8 +185,8 @@ def Root_Authorization():
         exist = os.path.isfile(os.path.dirname(os.path.abspath(__file__)) + name_input)
         
         if exist:
-            file = open(os.path.dirname(os.path.abspath(__file__)) + name_input, "r")
-            login_input = file.read().splitlines()
+            login_file = open(os.path.dirname(os.path.abspath(__file__)) + name_input, "r")
+            login_input = login_file.read().splitlines()
             name = login_input[0]
             password = login_input[1]
             permision = login_input[2]
@@ -226,11 +225,11 @@ def Registration():
         name = str(input("Zadej svoje přihlašovací jméno pro vytvoření účtu: "))
         password = str(input("Zadej svoje heslo pro vytvoření účtu: "))
         permission = "user"
-        file = open(os.path.dirname(os.path.abspath(__file__)) + name, "w")
-        file.write(name + "\n")
-        file.write(password + "\n")
-        file.write(permission + "\n")
-        file.close()
+        login_file = open(os.path.dirname(os.path.abspath(__file__)) + name, "w")
+        login_file.write(name + "\n")
+        login_file.write(password + "\n")
+        login_file.write(permission + "\n")
+        login_file.close()
         print("Ověřuji zadané údaje..")
         time.sleep(1)
         print("Hledám v trestním rejstříku..")
@@ -252,11 +251,11 @@ def Create():
         permission = str(input("Zadej permise pro účet (root/user): "))
         
         try:
-            file = open(os.path.dirname(os.path.abspath(__file__)) + name, "w")
-            file.write(name + "\n")
-            file.write(password + "\n")
-            file.write(permission + "\n")
-            file.close()
+            login_file = open(os.path.dirname(os.path.abspath(__file__)) + name, "w")
+            login_file.write(name + "\n")
+            login_file.write(password + "\n")
+            login_file.write(permission + "\n")
+            login_file.close()
             print("Ověřuji zadané údaje..")
             time.sleep(1)
             print("Hledám v trestním rejstříku..")
@@ -271,7 +270,7 @@ def Create():
             Negace()
             Authorization()
             
-        except:
+        except FileExistsError:
             print("Naše intergalaktické sdružení si nemyslí, že tomu rozumí..")
             time.sleep(1)
             print("Neplatné zadání")

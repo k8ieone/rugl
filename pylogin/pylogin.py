@@ -2,65 +2,17 @@ import os
 import sys
 import time
 import random
+import randomquote
 authorization = False
 name = ""
 number_previous = 0
 
 def Quotes():
-    global number_previous
-    number = random.randrange(1, 15, 1)
-    if number == number_previous:
-        number = random.randrange(1, 15, 1)
-        
-    else:   
-        if number == 1:
-            print("Humor je nejdůstojnější projev smutku - Miloš Kopecký")
-    
-        elif number == 2:
-            print("Algebrické symboly používej tehdy, pokud nevíš, o čem mluvíš - Philippe Snoebelen")
-    
-        elif number == 3:
-            print("Počítače jsou jako bikiny, ušetří lidem spoustu hádání - Sam Ewing")
-
-        elif number == 4:
-            print("Hardware, ta část počítače, do které můžeme kompnout, když přestane fungovat software - Jeff Pesis")
-        
-        elif number == 6:
-            print("Místo -nevím- používáme -zatím nevím- - Bill Gates")
-
-        elif number == 7:
-            print("Vědět málo je nebezpečné. Vědět mnoho také - Albert Einstein")
-    
-        elif number == 8:
-            print("Bůh je jenom statistika - Marilyn Manson")
-    
-        elif number == 9:
-            print("Jsem jako dítě, které nikdy nevyrostlo. Stále se ptám jak a proč. Příležitostně najdu odpověď.. - Stephen Hawking")
-        
-        elif number == 10:    
-            print("Co jeden muž nazývá bohem, jiní nazývají zákony fyziky - Nikola Tesla")
-        
-        elif number == 11:
-            print("Je mi jedno, že mi ukradli nápad. Ale vadí mi, že nemají žádné svoje nápady - Nikola Tesla")
-        
-        elif number == 12:
-            print("Je lepší být zticha, než se hádat s hlupáky - Pythagoras")
-        
-        elif number == 13:
-            print("Lidé pláčou. Ne proto, že by byli slabí, ale proto, že byli silní příliš dlouho - Johny Depp")
-    
-        elif number == 14:
-            print("Všichni jsme poškozeni, každý svoji jedinečnou cestou. Nikdo není dokonalý. Myslím, že všichni jsme poněkud zraněni. Všichni z nás - Johny Depp")
-
-        else:
-            print("Matematik je slepý člověk, v temné místnosti hledající černou kočku, která tam není - Charles Darwin")
-        
-        number_previous = number
+    print(randomquote.GetQuote())
 
 def Negace():
     global authorization
     authorization = False
-    
     
 def Login():
     global authorization
@@ -71,9 +23,9 @@ def Login():
         print("Počet zbývajících pokusů: ", pokus)
         name_input = str(input("Zadej přihlašovací jméno: "))
         password_input = str(input("Zadej svoje heslo: "))
-        exist = os.path.isfile(os.path.dirname(os.path.abspath(__file__)) + name_input)
+        exist = os.path.isfile(os.path.dirname(os.path.abspath(__file__)) + "/" + name_input)
         if exist:
-            login_file = open(os.path.dirname(os.path.abspath(__file__)) + name_input, "r")
+            login_file = open(os.path.dirname(os.path.abspath(__file__)) + "/" + name_input, "r")
             login_input = login_file.read().splitlines()
             name = login_input[0]
             password = login_input[1]
@@ -134,10 +86,10 @@ def Authorization():
         print("Počet zbývajících pokusů: ", pokus)
         name_input = str(input("Zadej přihlašovací jméno: "))
         password_input = str(input("Zadej svoje heslo: "))
-        exist = os.path.isfile(os.path.dirname(os.path.abspath(__file__)) + name_input)
+        exist = os.path.isfile(os.path.dirname(os.path.abspath(__file__)) + "/" + name_input)
         
         if exist:
-            login_file = open(os.path.dirname(os.path.abspath(__file__)) + name_input, "r")
+            login_file = open(os.path.dirname(os.path.abspath(__file__)) + "/" + name_input, "r")
             login_input = login_file.read().splitlines()
             name = login_input[0]
             password = login_input[1]
@@ -179,10 +131,10 @@ def Root_Authorization():
         #print("Počet zbývajících pokusů: ", pokus)
         name_input = name
         password_input = str(input("Zadej svoje heslo: "))
-        exist = os.path.isfile(os.path.dirname(os.path.abspath(__file__)) + name_input)
+        exist = os.path.isfile(os.path.dirname(os.path.abspath(__file__)) + "/" + name_input)
         
         if exist:
-            login_file = open(os.path.dirname(os.path.abspath(__file__)) + name_input, "r")
+            login_file = open(os.path.dirname(os.path.abspath(__file__)) + "/" + name_input, "r")
             login_input = login_file.read().splitlines()
             name = login_input[0]
             password = login_input[1]
@@ -218,11 +170,11 @@ def Root_Authorization():
             pokus = pokus - 1
             
 def Registration():
-    if not os.listdir(os.path.dirname(os.path.abspath(__file__))):
+    if not os.listdir(os.path.dirname(os.path.abspath(__file__)) + "/"):
         name = str(input("Zadej svoje přihlašovací jméno pro vytvoření účtu: "))
         password = str(input("Zadej svoje heslo pro vytvoření účtu: "))
         permission = "user"
-        login_file = open(os.path.dirname(os.path.abspath(__file__)) + name, "w")
+        login_file = open(os.path.dirname(os.path.abspath(__file__)) + "/" + name, "w")
         login_file.write(name + "\n")
         login_file.write(password + "\n")
         login_file.write(permission + "\n")
@@ -284,9 +236,9 @@ def Delete():
         name = str(input("Zadejte název účtu, který chcete smazat: "))
         confirmation = str(input("Jste si jistí, že chcete smazat účet "+ name + "? (Y/N) "))
         if confirmation == "Y" or confirmation == "y":
-            exist = os.path.isfile(os.path.dirname(os.path.abspath(__file__)) + name) 
+            exist = os.path.isfile(os.path.dirname(os.path.abspath(__file__)) + "/" + name) 
             if exist:
-                os.remove(os.path.dirname(os.path.abspath(__file__)) + name)
+                os.remove(os.path.dirname(os.path.abspath(__file__)) + "/" + name)
                 print("Hledání návazností v paralelních vesmírech..")
                 time.sleep(1)
                 print("Probíhá vymazávání účtu..")
@@ -388,3 +340,4 @@ Registration()
 Login()
 Negace()
 Input()
+

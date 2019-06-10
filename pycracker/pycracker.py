@@ -1,100 +1,81 @@
 #!/usr/bin/python
-# Usage: pycracker.py PASSWORDLENGTH HASH CHARACTERS HASHTYPE
+# Usage: pycracker.py MAXPASSWORDLENGTH HASH CHARACTERS HASHTYPE
 
 # Import required modules
 
 import hashlib
 import sys
-# import itertools
+import itertools
+import string
+import time
 
 def figure_out_charset(characters):
     
     # Still used, sligthly modified
-    # This determines what character set should be used
-    # TODO: Calculate the possible combinations
+    # This determines what character set should be used and calculates the number of possible combinations
+    # TODO: Implement more character sets (like !?@ etc)
 
     if "a" in characters and "A" not in characters and "1" not in characters:
-        charset = "abcdefghijklmnopqrstuvwxyz"
-        #possiblecombinations = 
+        charset = string.ascii_lowercase
     
     elif "a" in characters and "A" in characters and "1" not in characters:
-        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        charset = string.ascii_letters
     
     elif "a" in characters and "A" in characters and "1" in characters:
-        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        charset = string.ascii_letters + string.digits
     
     elif "a" not in characters and "A" in characters and "1" in characters:
-        charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        charset = string.ascii_uppercase + string.digits
     
     elif "a" not in characters and "A" not in characters and "1" in characters:
-        charset = "0123456789"
+        charset = string.digits
     
     elif "a" in characters and "A" not in characters and "1" in characters:
-        charset = "abcdefghijklmnopqrstuvwxyz0123456789"
+        charset = string.ascii_lowercase + string.digits
     
     elif "a" not in characters and "A" in characters and "1" not in characters:
-        charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        charset = string.ascii_uppercase
     
-    #print("Generating possible password candidates...")
-    #listofcandidates = [''.join(p) for p in itertools.combinations_with_replacement(alphabet, length)]
-    #currentcandidate = ''.join(p) for p in itertools.combinations_with_replacement(alphabet, length)
-    #print("Done!")
-    return charset
+    charset_and_possiblecombinations = [charset, len(charset) ** int(sys.argv[-4])]
+    print("Possible combinations:", charset_and_possiblecombinations[1])
+    print("Characterset:", charset_and_possiblecombinations[0])
+    return charset_and_possiblecombinations
 
-def allperm(inputstr):
-    # From: http://code.activestate.com/recipes/577842-get-all-possible-combinations-of-characters-given-/
-    for i in range(len(inputstr)):
-        yield(inputstr[i])        
-        for s in allperm(inputstr[:i] + inputstr[i+1:]):
-            yield(inputstr[i] + s)
-
-"""
-def determine_hash(candidate_list):
-    # Currently unused
-    # Pretty useless when only having one possible hashtype
-    
-    if sys.argv[-1] == "MD5":
-        calculate_md5(candidate_list)
-"""
-# Pretty useless even with multiple hashes
-
-"""
-def calculate_md5(candidate_list):
-    # Currently usnused
-    # The old way of doing things
-    # Finally! Calculate the MD5 hash for each of the candidates and compare it to the original
-
+# From https://stackoverflow.com/a/48389007
+# First one that seems to work as intended
+# Returns the password in plaintext
+def solve_md5(userhash, maxlen, charset, possiblecombinations):
+    print("Starting to crack a MD5 hash...")
+    print("...in 5")
+    time.sleep(1)
+    print("......4")
+    time.sleep(1)
+    print("......3")
+    time.sleep(1)
+    print("......2")
+    time.sleep(1)
+    print("......1")
+    time.sleep(1)
+    print("......0")
+    print("Now cracking!")
+    print("Please be patient!")
     hash_cracked = False
-    print("Searching for a match...")
+    attemptno = 0
 
-    for i in range(len(candidate_list)):
-        #currentcandidate = ''.join(i) allperm("abcde")
-        if hashlib.md5(candidate_list[i].encode('utf-8')).hexdigest() == str(sys.argv[-3]):
-            hash_cracked = True
-            print("Hash cracked!")
-            print(hashlib.md5(candidate_list[i].encode('utf-8')).hexdigest())
-            print(candidate_list[i])
-            return candidate_list[i]
-        
-        elif possiblecombinations == i and hash_cracked is False:
-            print("Hash not found :(")
-"""
-# I dunno... Maybe I should give up?
-# I feel like I am getting closer and further away at the same time
-
-#determine_hash(gen_list_of_potential_passwords(sys.argv[-2], int(sys.argv[-4])))
-
-def get_candidate_and_calculate(hashtype, characterset):
-    for currentcandidate in allperm(characterset):
-        print(hashlib.md5(currentcandidate.encode('utf-8')).hexdigest(),currentcandidate)
-        if hashtype == "MD5":
-            if hashlib.md5(currentcandidate.encode('utf-8')).hexdigest() == sys.argv[-3]:
-                # hash_cracked = True
-                # Usunsed variable
-                # TODO: Make it used (create elif operation failed or sth like that)
+    # Calculating stuff
+    for i in range(maxlen+1):
+        for attempt in itertools.product(charset, repeat=i):
+            # print(''.join(attempt)) # Uncomment in order to print the current candidate
+            attemptno += 1
+            if hashlib.md5(''.join(attempt).encode('utf-8')).hexdigest() == userhash:
+                hash_cracked = True
                 print("Hash cracked!")
-                print(hashlib.md5(currentcandidate.encode('utf-8')).hexdigest())
-                print(currentcandidate)
-                return currentcandidate
+                print(hashlib.md5(''.join(attempt).encode('utf-8')).hexdigest(), "-", ''.join(attempt))
+                return ''.join(attempt)
+            elif hash_cracked is False and attemptno == possiblecombinations:
+                print("I tried", possiblecombinations, "different passwords and none of them worked")
+                print("Hash not found :(")
+                print(userhash, "- ???")
 
-get_candidate_and_calculate(sys.argv[-1], figure_out_charset(sys.argv[-2]))
+charset_and_possiblecombinations = figure_out_charset(sys.argv[-2])
+solve_md5(sys.argv[-3], int(sys.argv[-4]), charset_and_possiblecombinations[0], int(charset_and_possiblecombinations[1]))

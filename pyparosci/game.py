@@ -31,6 +31,8 @@ lifes = 3
 font = pygame.font.Font(start_path + "/Resources/fonts/8bitOperatorPlus8-Regular.ttf", 26)
 text_surface_score = font.render(str(score), False, (255, 255, 255))
 text_surface_lifes = font.render(str(lifes), False, (255, 255, 255))
+text_surface_end = font.render("G4M30V3R: " + str(score), False, (255, 255, 255))
+end = False
 
 class Player:
     def __init__(self):
@@ -135,7 +137,8 @@ while game:
         list_of_obstacles[i].y += list_of_obstacles[i].speed
         if list_of_obstacles[i].y > heigh:
             list_of_obstacles.pop(i)
-            score += 1
+            if not end:
+                score += 1
             obstacleCreator(speed1, speed2)
 
         if list_of_obstacles[i].y + (list_of_obstacles[i].z / 2) >= 760 and not set(range(x - 105, x - 10)).isdisjoint(set(range((list_of_obstacles[i].x + 10) - int(list_of_obstacles[i].z * 1.4), list_of_obstacles[i].x - 20))):
@@ -144,14 +147,13 @@ while game:
             obstacleCreator(speed1, speed2)
 
             if lifes - 1 == 0:
-                #print("END")
-                exit()
+                end = True
 
             else:
                 #print("LIFES -1")
                 lifes -= 1
                 player.speed -= 1
-            
+
     if bonus_switch:
         screen.blit(bonus.image, (bonus.x, bonus.y + bonus.speed))
         bonus.y += bonus.speed
@@ -168,11 +170,18 @@ while game:
         player.speed += 1
         bonus_switch = False
 
-    screen.blit(player.image, (x, y))
-    text_surface_score = font.render("Score: " + str(score), True, (255, 255, 255))
-    text_surface_lifes = font.render("Lifes: " + str(lifes), True, (255, 255, 255))
-    screen.blit(text_surface_lifes, (width - 160, heigh - 40))
-    screen.blit(text_surface_score, (width - 160, heigh - 20))
+    if not end:
+        screen.blit(player.image, (x, y))
+        text_surface_score = font.render("Score: " + str(score), True, (255, 255, 255))
+        text_surface_lifes = font.render("Lifes: " + str(lifes), True, (255, 255, 255))
+        screen.blit(text_surface_lifes, (width - 160, heigh - 40))
+        screen.blit(text_surface_score, (width - 160, heigh - 20))
+
+    else:
+        text_surface_end0 = font.render("G4M30V3R!", True, (255, 255, 255))
+        text_surface_end1 = font.render("SC0R3: " + str(score), True, (255, 255, 255))
+        screen.blit(text_surface_end0, (350, 400))
+        screen.blit(text_surface_end1, (350, 430))
 
     #end shit
     pygame.display.flip()

@@ -36,13 +36,13 @@ end = False
 
 class Player:
     def __init__(self):
-        self.lives = 3
+        self.lifes = 3
         self.speed = 6
         image = player
         self.image = pygame.transform.scale(image, (57, 50))
 
     def __repr__(self):
-        return "lives: %s, speed: %s" % (self.lives, self.speed)
+        return "lives: %s, speed: %s" % (self.lifes, self.speed)
 
 class Bonus:
     def __init__(self, x, y, speed):
@@ -141,17 +141,17 @@ while game:
                 score += 1
             obstacleCreator(speed1, speed2)
 
-        if list_of_obstacles[i].y + (list_of_obstacles[i].z / 2) >= 760 and not set(range(x - 105, x - 10)).isdisjoint(set(range((list_of_obstacles[i].x + 10) - int(list_of_obstacles[i].z * 1.4), list_of_obstacles[i].x - 20))):
+        if list_of_obstacles[i].y + (list_of_obstacles[i].z / 2) >= 760 and list_of_obstacles[i].y + (list_of_obstacles[i].z / 2) <= 780 and not set(range(x - 90, x - 3)).isdisjoint(set(range((list_of_obstacles[i].x + 10) - int(list_of_obstacles[i].z * 1.4), list_of_obstacles[i].x - 20))):
 
             list_of_obstacles.pop(i)
             obstacleCreator(speed1, speed2)
 
-            if lifes - 1 == 0:
+            if player.lifes - 1 == 0:
                 end = True
 
             else:
                 #print("LIFES -1")
-                lifes -= 1
+                player.lifes -= 1
                 player.speed -= 1
 
     if bonus_switch:
@@ -166,14 +166,14 @@ while game:
     if bonus.y + 20 >= y and not set(range(x - 105, x - 10)).isdisjoint(set(range(bonus.x - 47, bonus.x))):
         bonus.y = (heigh * (-1)) - 50
         bonus.speed = 0
-        lifes += 1
+        player.lifes += 1
         player.speed += 1
         bonus_switch = False
 
     if not end:
         screen.blit(player.image, (x, y))
         text_surface_score = font.render("Score: " + str(score), True, (255, 255, 255))
-        text_surface_lifes = font.render("Lifes: " + str(lifes), True, (255, 255, 255))
+        text_surface_lifes = font.render("Lifes: " + str(player.lifes), True, (255, 255, 255))
         screen.blit(text_surface_lifes, (width - 160, heigh - 40))
         screen.blit(text_surface_score, (width - 160, heigh - 20))
 

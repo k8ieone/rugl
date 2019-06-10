@@ -141,7 +141,7 @@ while game:
                 score += 1
             obstacleCreator(speed1, speed2)
 
-        if list_of_obstacles[i].y + (list_of_obstacles[i].z / 2) >= 760 and list_of_obstacles[i].y + (list_of_obstacles[i].z / 2) <= 780 and not set(range(x - 90, x - 3)).isdisjoint(set(range((list_of_obstacles[i].x + 10) - int(list_of_obstacles[i].z * 1.4), list_of_obstacles[i].x - 20))):
+        if list_of_obstacles[i].y + (list_of_obstacles[i].z / 2) >= 760 and not set(range(x - 120, x - 50)).isdisjoint(set(range((list_of_obstacles[i].x + 10) - int(list_of_obstacles[i].z * 1.4), list_of_obstacles[i].x - 20))):
 
             list_of_obstacles.pop(i)
             obstacleCreator(speed1, speed2)

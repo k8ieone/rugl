@@ -27,22 +27,21 @@ past_bonus = time.clock()
 bonus_switch = False
 pygame.font.init()
 score = 0
-lifes = 3
+lives = 3
 font = pygame.font.Font(start_path + "/Resources/fonts/8bitOperatorPlus8-Regular.ttf", 26)
 text_surface_score = font.render(str(score), False, (255, 255, 255))
-text_surface_lifes = font.render(str(lifes), False, (255, 255, 255))
-text_surface_end = font.render("G4M30V3R: " + str(score), False, (255, 255, 255))
+text_surface_lives = font.render(str(lives), False, (255, 255, 255))
 end = False
 
 class Player:
     def __init__(self):
-        self.lifes = 3
+        self.lives = 3
         self.speed = 6
         image = player
         self.image = pygame.transform.scale(image, (57, 50))
 
     def __repr__(self):
-        return "lives: %s, speed: %s" % (self.lifes, self.speed)
+        return "lives: %s, speed: %s" % (self.lives, self.speed)
 
 class Bonus:
     def __init__(self, x, y, speed):
@@ -94,22 +93,45 @@ def obstacleCreator(speed1, speed2):
 player = Player()
 bonus = Bonus(0, (heigh * (-1)) - 50, 0)
 obstacleCreator(speed1, speed2)
+pressed_left = False
+pressed_right = False
+pause = False
 
 # actual fuckin' game
 while game: 
 
     # you know. game should close when you hit the cross thingy
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-                game = False
+        if event.type == pygame.QUIT: 
+            game = False       
 
-        # controls for arrow keys (this will be changed soon)
         pressed = pygame.key.get_pressed()
 
-        if pressed[pygame.K_LEFT]: 
-            x -= 10
-        if pressed[pygame.K_RIGHT]:
-            x += 10
+        if pressed[pygame.K_ESCAPE]:
+            
+            if not end:
+                if pause:
+                    pause = False
+
+                else:
+                    pause = True
+
+        elif event.type == pygame.KEYDOWN:          # check for key presses          
+            if event.key == pygame.K_LEFT:        # left arrow pressed
+                pressed_left = True
+            elif event.key == pygame.K_RIGHT:     # right arrow pressed
+                pressed_right = True
+
+        elif event.type == pygame.KEYUP:            # check for key releases
+            if event.key == pygame.K_LEFT:        # left arrow released
+                pressed_left = False
+            elif event.key == pygame.K_RIGHT:     # right arrow released
+                pressed_right = False
+                
+    if pressed_left and not pause:
+        x -= 10
+    if pressed_right and not pause:
+        x += 10
 
     #screen shit
     screen.fill((0, 0, 0))
@@ -124,7 +146,7 @@ while game:
         obstacleCreator(speed1, speed2)
         past_update = time.clock()
 
-    if int(now) >= int((past_bonus + 30)): # 1 minute = 60
+    if int(now) >= int((past_bonus + 15)): # 1 minute = 60
         bonus.x = random.randint(0, width)
         bonus.y = 0
         bonus.speed = random.randint(10, 15)
@@ -134,31 +156,36 @@ while game:
     #getting obstacles to the screen
     for i in range(len(list_of_obstacles)):
         screen.blit(list_of_obstacles[i].image, (list_of_obstacles[i].x, list_of_obstacles[i].y + list_of_obstacles[i].speed))
-        list_of_obstacles[i].y += list_of_obstacles[i].speed
+        
+        if not pause:
+            list_of_obstacles[i].y += list_of_obstacles[i].speed
+        
         if list_of_obstacles[i].y > heigh:
             list_of_obstacles.pop(i)
+            
             if not end:
                 score += 1
+            
             obstacleCreator(speed1, speed2)
 
-        if list_of_obstacles[i].y + (list_of_obstacles[i].z / 2) >= 760 and list_of_obstacles[i].y + (list_of_obstacles[i].z / 2) <= 780 and not set(range(x - 90, x - 3)).isdisjoint(set(range((list_of_obstacles[i].x + 10) - int(list_of_obstacles[i].z * 1.4), list_of_obstacles[i].x - 20))):
+        # something like hitbox -> this must be changed
+        if list_of_obstacles[i].y + (list_of_obstacles[i].z / 2) >= 760 and not set(range(x - 120, x - 50)).isdisjoint(set(range((list_of_obstacles[i].x + 10) - int(list_of_obstacles[i].z * 1.4), list_of_obstacles[i].x - 20))):
 
             list_of_obstacles.pop(i)
             obstacleCreator(speed1, speed2)
 
-            if player.lifes - 1 == 0:
+            if player.lives - 1 == 0: # if player has zero lives game must end
                 end = True
 
-            else:
-                #print("LIFES -1")
-                player.lifes -= 1
+            else: # if rock hits player life must be deducted
+                player.lives -= 1
                 player.speed -= 1
 
-    if bonus_switch:
+    if bonus_switch and not pause: # bonus movement 
         screen.blit(bonus.image, (bonus.x, bonus.y + bonus.speed))
         bonus.y += bonus.speed
 
-        if bonus.y > heigh:
+        if bonus.y > heigh: # bonus unspawn
             bonus.y = (heigh * (-1)) - 50
             bonus.speed = 0
             bonus_switch = False
@@ -166,20 +193,24 @@ while game:
     if bonus.y + 20 >= y and not set(range(x - 105, x - 10)).isdisjoint(set(range(bonus.x - 47, bonus.x))):
         bonus.y = (heigh * (-1)) - 50
         bonus.speed = 0
-        player.lifes += 1
+        player.lives += 1
         player.speed += 1
         bonus_switch = False
 
-    if not end:
+    if not end: # game screen
         screen.blit(player.image, (x, y))
         text_surface_score = font.render("Score: " + str(score), True, (255, 255, 255))
-        text_surface_lifes = font.render("Lifes: " + str(player.lifes), True, (255, 255, 255))
-        screen.blit(text_surface_lifes, (width - 160, heigh - 40))
+        text_surface_lives = font.render("Lives: " + str(player.lives), True, (255, 255, 255))
+        screen.blit(text_surface_lives, (width - 160, heigh - 40))
         screen.blit(text_surface_score, (width - 160, heigh - 20))
 
-    else:
-        text_surface_end0 = font.render("G4M30V3R!", True, (255, 255, 255))
-        text_surface_end1 = font.render("SC0R3: " + str(score), True, (255, 255, 255))
+    if pause: # pause screen
+        text_surface_pause = font.render("PAUSED", True, (255, 255, 255))
+        screen.blit(text_surface_pause, (350, 400))
+
+    if end: # gameover screen
+        text_surface_end0 = font.render("GAMEOVER!", True, (255, 255, 255))
+        text_surface_end1 = font.render("SCORE: " + str(score), True, (255, 255, 255))
         screen.blit(text_surface_end0, (350, 400))
         screen.blit(text_surface_end1, (350, 430))
 

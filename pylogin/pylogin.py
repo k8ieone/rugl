@@ -52,8 +52,7 @@ def Login():
             print("Prohledávání svalových vláken v okolí krku..")
             time.sleep(1)
             print("Špatné přihlašovací jméno")
-            pokus = pokus - 1
-            
+            pokus = pokus - 1      
             
     if authorization:
         Negace()
@@ -231,10 +230,10 @@ def Delete():
     global authorization
     Negace()
     Root_Authorization()
-    if authorization:
-        
+    if authorization:  
         name = str(input("Zadejte název účtu, který chcete smazat: "))
         confirmation = str(input("Jste si jistí, že chcete smazat účet "+ name + "? (Y/N) "))
+        
         if confirmation == "Y" or confirmation == "y":
             exist = os.path.isfile(os.path.dirname(os.path.abspath(__file__)) + "/" + name) 
             if exist:

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/8bit-wonder" type="text/css"/>
+   <title>Pyparosci</title>
+   <style>
+
+       html {
+        scroll-behavior: smooth;
+       }
+
+       body {
+       margin: 0;
+       background-color: lightgray;
+       }
+       
+       ::-webkit-scrollbar {
+           width: 10px;
+       }
+
+       ::-webkit-scrollbar-track {
+           background: #333
+       }
+
+       ::-webkit-scrollbar-thumb {
+           background: black
+       }
+
+       ::-webkit-scrol:hover {
+           background: #110
+       }
+
+       .parallax {
+       background-image: url("/pyparosci/Resources/rock0.png");
+       min-height: 500px;
+       background-attachment: fixed;
+       background-position: center;
+       background-repeat: no-repeat;
+       background-size: cover;
+       }
+
+       ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+       overflow: hidden;
+       background-color: #333;
+       position: sticky;
+       z-index: 1;
+       top: 0;
+       width: 100%;
+       }
+
+       li {
+       float: left;
+       }
+
+       li a {
+       display: block;
+       color: white;
+       text-align: center;
+       padding: 14px 16px;
+       text-decoration: none;
+       font-family: '8BITWONDERNominal';
+       font-weight: normal;
+       font-style: normal; 
+       }
+
+       li a:hover {
+       background-color: #111;
+       }
+
+       h1 {
+       font-family: '8BITWONDERNominal';
+       font-size: 32px;
+       font-weight: normal;
+       font-style: normal;   
+       text-align: center;    
+       }
+
+       p {
+       font-family: '8BITWONDERNominal';
+       font-size: 12px;
+       font-weight: normal;
+       font-style: normal;   
+       text-align: center;    
+       }
+
+       .border-sep {
+           height: 100px;
+           background-color: #333;
+           font-size: 36px;
+           color: white;
+           text-align: center;
+           font-family: '8BITWONDERNominal';
+           position: relative;
+       }
+
+       .border-tex {
+           height: 620px;
+           width: 620px;
+           float: left;
+           border: 2px solid lightgray;
+           background-color: white;
+           top: 20px;
+           left: 20px;
+           transform: translate(20px, 20px);
+       }
+
+       .shadow {
+        display: inline-block;
+        position: static;
+        border: 0px 0px 0px 0px;
+        box-shadow: rgba(0, 0, 0, 0.8);
+        transition: box-shadow 0.2s ease-in;
+       }
+
+       .shadow:hover {
+           box-shadow: rgba(0, 0, 0, 0.8) 800px 800px 800px inset;
+       }
+
+       .shadow pshadow {
+        font-family: '8BITWONDERNominal';
+        font-size: 12px;
+        font-weight: normal;
+        font-style: normal; 
+        position: absolute;
+        color: white;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);  
+        visibility: hidden;
+        text-align: center;
+       }
+
+       .shadow:hover pshadow {
+           visibility: visible;
+       }
+
+       .shadow img { 
+           width: 620px;
+           height: auto;
+           position: relative;
+           z-index: -1;
+       }
+
+       .column {
+           float: left;
+           padding: 0px 0px;
+           height: 620px;
+           width: 620px;
+           margin-left: 12px;
+           margin-top: 20px;
+           margin-bottom: 20px;
+           position: relative;
+       }
+
+   </style>
+</head>
+<body>
+
+   <div class = "header">
+       <h1>Welcome to the pyparosci page</h1>
+       <p>Don't forget to say hello to our mascot</p>
+   </div>
+
+   <ul>
+        <li><a href="#About">About</a></li>
+        <li><a href="#Why">Why</a></li>
+        <li><a href="#Main_hero">Main hero</a></li>
+        <li><a href="#Goal">Goal</a></li>
+        <li><a href="#Creator">Creator</a></li>
+   </ul>
+
+   <div class = "parallax"></div>
+
+    <div class = "border-sep" id = "About">
+        <pborder style = "position: relative; z-index: 2; vertical-align: -80%; transform: translate(0%, -80%);">What is pyparosci</pborder>
+    </div>
+
+    <div style = "height: 660px">
+        <div class = "column">
+            <div class = "shadow">
+                <img src = "/pyparosci/Resources/Screenshot0.png"> 
+                <pshadow>This is running game</pshadow>       
+            </div>
+        </div>
+
+        <div class = "column">
+            <div class = "shadow">
+                <img src = "/pyparosci/Resources/Screenshot1.png">        
+                <pshadow>This is game over</pshadow>
+            </div>
+        </div>
+
+        <div class = "column">
+            <div class = "shadow">
+                <img src = "/pyparosci/Resources/Screenshot2.png">        
+                <pshadow>You can even pause the game when mom tells you to come to the dinner</pshadow>
+            </div>
+        </div>
+    </div>
+
+    <div class = "border-sep" id = "Why">
+        <pborder style = "position: relative; vertical-align: -80%; transform: translate(0%, -80%); z-index: 2;">Why did we make this</pborder>
+    </div>
+
+    <div style = "height: 800px">
+    <div class = "border-tex"></div>
+    <div class = "border-tex"></div>
+    <div class = "border-tex"></div>
+    </div>
+
+    <div class = "border-sep">
+        <p style = "text-align:left; vertical-align: 80%; transform: translate(0%, 80%); font-size: 12">Created by Blue</p>
+    </div>
+
+</body>
+</html>
+

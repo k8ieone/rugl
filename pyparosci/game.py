@@ -156,32 +156,36 @@ while game:
     #getting obstacles to the screen
     for i in range(len(list_of_obstacles)):
         screen.blit(list_of_obstacles[i].image, (list_of_obstacles[i].x, list_of_obstacles[i].y + list_of_obstacles[i].speed))
+        
         if not pause:
             list_of_obstacles[i].y += list_of_obstacles[i].speed
+        
         if list_of_obstacles[i].y > heigh:
             list_of_obstacles.pop(i)
+            
             if not end:
                 score += 1
+            
             obstacleCreator(speed1, speed2)
 
+        # something like hitbox -> this must be changed
         if list_of_obstacles[i].y + (list_of_obstacles[i].z / 2) >= 760 and not set(range(x - 120, x - 50)).isdisjoint(set(range((list_of_obstacles[i].x + 10) - int(list_of_obstacles[i].z * 1.4), list_of_obstacles[i].x - 20))):
 
             list_of_obstacles.pop(i)
             obstacleCreator(speed1, speed2)
 
-            if player.lives - 1 == 0:
+            if player.lives - 1 == 0: # if player has zero lives game must end
                 end = True
 
-            else:
-                #print("lives -1")
+            else: # if rock hits player life must be deducted
                 player.lives -= 1
                 player.speed -= 1
 
-    if bonus_switch and not pause:
+    if bonus_switch and not pause: # bonus movement 
         screen.blit(bonus.image, (bonus.x, bonus.y + bonus.speed))
         bonus.y += bonus.speed
 
-        if bonus.y > heigh:
+        if bonus.y > heigh: # bonus unspawn
             bonus.y = (heigh * (-1)) - 50
             bonus.speed = 0
             bonus_switch = False
@@ -193,18 +197,18 @@ while game:
         player.speed += 1
         bonus_switch = False
 
-    if not end:
+    if not end: # game screen
         screen.blit(player.image, (x, y))
         text_surface_score = font.render("Score: " + str(score), True, (255, 255, 255))
         text_surface_lives = font.render("Lives: " + str(player.lives), True, (255, 255, 255))
         screen.blit(text_surface_lives, (width - 160, heigh - 40))
         screen.blit(text_surface_score, (width - 160, heigh - 20))
 
-    if pause:
+    if pause: # pause screen
         text_surface_pause = font.render("PAUSED", True, (255, 255, 255))
         screen.blit(text_surface_pause, (350, 400))
 
-    if end:
+    if end: # gameover screen
         text_surface_end0 = font.render("GAMEOVER!", True, (255, 255, 255))
         text_surface_end1 = font.render("SCORE: " + str(score), True, (255, 255, 255))
         screen.blit(text_surface_end0, (350, 400))

@@ -15,26 +15,47 @@ def figure_out_charset(characters):
     # This determines what character set should be used and calculates the number of possible combinations
     # TODO: Implement more character sets (like !?@ etc)
 
-    if "a" in characters and "A" not in characters and "1" not in characters:
+    if "a" in characters and "A" not in characters and "1" not in characters and "@" not in characters:
         charset = string.ascii_lowercase
     
-    elif "a" in characters and "A" in characters and "1" not in characters:
+    elif "a" in characters and "A" in characters and "1" not in characters and "@" not in characters:
         charset = string.ascii_letters
     
-    elif "a" in characters and "A" in characters and "1" in characters:
+    elif "a" in characters and "A" in characters and "1" in characters and "@" not in characters:
         charset = string.ascii_letters + string.digits
     
-    elif "a" not in characters and "A" in characters and "1" in characters:
+    elif "a" not in characters and "A" in characters and "1" in characters and "@" not in characters:
         charset = string.ascii_uppercase + string.digits
     
-    elif "a" not in characters and "A" not in characters and "1" in characters:
+    elif "a" not in characters and "A" not in characters and "1" in characters and "@" not in characters:
         charset = string.digits
     
-    elif "a" in characters and "A" not in characters and "1" in characters:
+    elif "a" in characters and "A" not in characters and "1" in characters and "@" not in characters:
         charset = string.ascii_lowercase + string.digits
     
-    elif "a" not in characters and "A" in characters and "1" not in characters:
+    elif "a" not in characters and "A" in characters and "1" not in characters and "@" not in characters:
         charset = string.ascii_uppercase
+    
+    elif "a" in characters and "A" in characters and "1" in characters and "@" in characters:
+        charset = string.printable
+    
+    elif "a" in characters and "A" not in characters and "1" not in characters and "@" in characters:
+        charset = string.ascii_lowercase + string.punctuation
+    
+    elif "a" not in characters and "A" in characters and "1" not in characters and "@" in characters:
+        charset = string.ascii_uppercase + string.punctuation
+    
+    elif "a" not in characters and "A" not in characters and "1" in characters and "@" in characters:
+        charset = string.digits + string.punctuation
+    
+    elif "a" in characters and "A" in characters and "1" not in characters and "@" in characters:
+        charset = string.ascii_letters + string.punctuation
+    
+    elif "a" in characters and "A" not in characters and "1" in characters and "@" in characters:
+        charset = string.ascii_lowercase + string.digits + string.punctuation
+    
+    elif "a" not in characters and "A" in characters and "1" in characters and "@" in characters:
+        characters = string.ascii_uppercase + string.digits + string.punctuation
     
     charset_and_possiblecombinations = [charset, len(charset) ** int(sys.argv[-4])]
     print("Possible combinations:", charset_and_possiblecombinations[1])
@@ -46,18 +67,6 @@ def figure_out_charset(characters):
 # Returns the password in plaintext
 def solve_md5(userhash, maxlen, charset, possiblecombinations):
     print("Starting to crack a MD5 hash...")
-    print("...in 5")
-    time.sleep(1)
-    print("......4")
-    time.sleep(1)
-    print("......3")
-    time.sleep(1)
-    print("......2")
-    time.sleep(1)
-    print("......1")
-    time.sleep(1)
-    print("......0")
-    print("Now cracking!")
     print("Please be patient!")
     hash_cracked = False
     attemptno = 0
@@ -77,5 +86,6 @@ def solve_md5(userhash, maxlen, charset, possiblecombinations):
                 print("Hash not found :(")
                 print(userhash, "- ???")
 
-charset_and_possiblecombinations = figure_out_charset(sys.argv[-2])
-solve_md5(sys.argv[-3], int(sys.argv[-4]), charset_and_possiblecombinations[0], int(charset_and_possiblecombinations[1]))
+print(string.punctuation)
+# charset_and_possiblecombinations = figure_out_charset(sys.argv[-2])
+# solve_md5(sys.argv[-3], int(sys.argv[-4]), charset_and_possiblecombinations[0], int(charset_and_possiblecombinations[1]))

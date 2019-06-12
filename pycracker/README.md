@@ -15,6 +15,7 @@ Line **67** can be uncommented in order to print the current candidate.
  * a means all the letters of the english alphabet (lowercase)
  * A means uppercase
  * 1 means numbers
+ * @ means special characters
  
  **HASHTYPE** - type of the hash:
  * MD5

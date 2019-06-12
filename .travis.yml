@@ -1,0 +1,6 @@
+dist: xenial
+language: python
+  script:
+    - pycracker/pycracker.py 4 9969caad580c37b227ea675a35bc3df6 1Aa@ MD5
+virtualenv:
+  system_site_packages: true

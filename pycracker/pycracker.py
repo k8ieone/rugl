@@ -1,4 +1,4 @@
-#!/usr/bin/python
+Consider using enumerate instead of iterating with range and len  (#!/usr/bin/python
 # Usage: pycracker.py MAXPASSWORDLENGTH HASH CHARACTERS HASHTYPE
 
 # Import required modules
@@ -6,14 +6,12 @@
 import hashlib
 import sys
 import itertools
-import string
-import time
+import stringConsider using enumerate instead of iterating with range and len  (
 
 def figure_out_charset(characters):
     
     # Still used, sligthly modified
     # This determines what character set should be used and calculates the number of possible combinations
-    # TODO: Implement more character sets (like !?@ etc)
 
     if "a" in characters and "A" not in characters and "1" not in characters and "@" not in characters:
         charset = string.ascii_lowercase
@@ -70,7 +68,6 @@ def solve_md5(userhash, maxlen, charset, possiblecombinations):
     print("Please be patient!")
     hash_cracked = False
     attemptno = 0
-
     # Calculating stuff
     for i in range(maxlen+1):
         for attempt in itertools.product(charset, repeat=i):

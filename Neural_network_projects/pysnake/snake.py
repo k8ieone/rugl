@@ -1,6 +1,7 @@
 import pygame
 import os
 import random
+import numpy as np
 
 pygame.init()
 width = 800
@@ -24,8 +25,8 @@ score = 0
 
 class snake_cell:
     def __init__(self, x, y, previous_x, previous_y):
-        self.x = x
-        self.y = y
+        self.x          = x
+        self.y          = y
         self.previous_x = previous_x
         self.previous_y = previous_y
 
@@ -42,49 +43,37 @@ class bonus:
         self.x = x
         self.y = y
 
-bonus = bonus(round(random.randint(0, 800), -1), round(random.randint(0, 800), -1))
+bonus = bonus(round(random.randint(10, 790), -1), round(random.randint(10, 790), -1))
+
+
+class NeuralNetwork:
+    def __init__(self, x, y):
+        self.input    = x
+        self.y        = y
+        self.weights1 = np.random.rand(self.input.shape[1], 4)
+        self.weights2 = np.random.rand(4, 1)
+        self.output   = np.zeros(y.shape)
+
+    def sigmoid(x, derivate):
+        sigmoid = 1. / (1. + np.exp(-x))
+
+        if derivate:
+            return sigmoid * (1. - sigmoid)
+
+        return sigmoid
+
+    def feedforward(self):
+        self.layer1 = sigmoid(np.dot(self.input, self.weights1), False)
+        self.output = sigmoid(np.dot(self.layer1, self.weights2))
+
+    def backpropagation(self):
+        d_weights2     = np.dot(self.layer1.T, (2*(self.y - self.output) * sigmoid(self.output, True)))
+        d_weights1     = np.dot(self.input.T,  (np.dot(2*(self.y - self.output) * sigmoid(self.output, True), self.weights2.T) * sigmoid(self.layer1, True)))
+        self.weights1 += d_weights1
+        self.weights2 += d_weights2
 
 while game:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT: 
-            game = False      
 
-        pressed = pygame.key.get_pressed()
-
-        if pressed[pygame.K_ESCAPE]:
-            
-            if not end:
-                if pause:
-                    pause = False
-
-                else:
-                    pause = True
-
-        elif event.type == pygame.KEYDOWN:          # check for key presses          
-            if event.key == pygame.K_LEFT and not pressed_right:        # left arrow pressed
-                pressed_left = True
-                pressed_right = False
-                pressed_up = False
-                pressed_down = False
-
-            elif event.key == pygame.K_RIGHT and not pressed_left:     # right arrow pressed
-                pressed_left = False
-                pressed_right = True
-                pressed_up = False
-                pressed_down = False
-
-            elif event.key == pygame.K_UP and not pressed_down:
-                pressed_left = False
-                pressed_right = False
-                pressed_up = True
-                pressed_down = False
-
-            elif event.key == pygame.K_DOWN and not pressed_up:
-                pressed_left = False
-                pressed_right = False
-                pressed_up = False
-                pressed_down = True
-                
     if pressed_left and not pause:
         snake_cell_list[0].x -= speed
     if pressed_right and not pause:
@@ -126,8 +115,8 @@ while game:
         end = True
 
     if snake_cell_list[0].x == bonus.x and snake_cell_list[0].y == bonus.y:
-        bonus.x = round(random.randint(0, 800), -1)
-        bonus.y = round(random.randint(0, 800), -1)
+        bonus.x = round(random.randint(10, 790), -1)
+        bonus.y = round(random.randint(10, 190), -1)
         score += 1
         cell = "cell" + str(i)
         cell = snake_cell(snake_cell_list[-1].x, snake_cell_list[-1].y, snake_cell_list[-1].x, snake_cell_list[-1].y)
@@ -136,3 +125,4 @@ while game:
     pygame.display.flip()
     screen.fill((0, 0, 0))
     pygame.time.Clock().tick(30)
+    

@@ -1,4 +1,4 @@
-Consider using enumerate instead of iterating with range and len  (#!/usr/bin/python
+#!/usr/bin/python
 # Usage: pycracker.py MAXPASSWORDLENGTH HASH CHARACTERS HASHTYPE
 
 # Import required modules

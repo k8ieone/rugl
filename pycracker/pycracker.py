@@ -6,7 +6,7 @@
 import hashlib
 import sys
 import itertools
-import stringConsider using enumerate instead of iterating with range and len  (
+import string
 
 def figure_out_charset(characters):
     

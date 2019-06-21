@@ -1,4 +1,4 @@
-Consider using enumerate instead of iterating with range and len  (#!/usr/bin/python
+#!/usr/bin/python
 # Usage: pycracker.py MAXPASSWORDLENGTH HASH CHARACTERS HASHTYPE
 
 # Import required modules
@@ -6,7 +6,7 @@ Consider using enumerate instead of iterating with range and len  (#!/usr/bin/py
 import hashlib
 import sys
 import itertools
-import stringConsider using enumerate instead of iterating with range and len  (
+import string
 
 def figure_out_charset(characters):
     

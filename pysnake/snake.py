@@ -117,8 +117,8 @@ while game:
         screen.blit(text_surface_score, (width - 80, heigh - 45))
 
     if end:
-        text_surface_end0 = font.render("GAMEOVER!", True, (255, 255, 255))
-        text_surface_end1 = font.render("SCORE: " + str(score), True, (255, 255, 255))
+        text_surface_end0 = font.render("Gameover!", True, (255, 255, 255))
+        text_surface_end1 = font.render("Score: " + str(score), True, (255, 255, 255))
         screen.blit(text_surface_end0, (350, 400))
         screen.blit(text_surface_end1, (350, 430))
 

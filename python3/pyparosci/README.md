@@ -1,6 +1,6 @@
 # Project status
 ## Badges
-![GitHub issues by-label](https://img.shields.io/github/issues-raw/satcom886/python_stuff/pyparosci.svg)
+![GitHub issues by-label](https://img.shields.io/github/issues-raw/satcom886/rugl/pyparosci.svg)
 ## Some useful comment about the project status
  * Project is still not dead
 

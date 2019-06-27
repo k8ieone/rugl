@@ -7,5 +7,8 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/satcom886/rugl.svg)
 
 # What is this repo?
-This is our collection of python programs. From super useful ones to programs that barely even work.
-That is all I have to say.
+This is our collection of all sorts of programs. From super useful ones to programs that barely even work.
+
+# Why the name?
+## RUGL - Random Unwise Generic Library
+### Also it means "confusion" in icelandic...

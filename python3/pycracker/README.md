@@ -4,7 +4,7 @@
 This program can crack MD5 hashes (more hashes comming).
 ## Usage:
 pycracker.py **MAXPASSWORDLENGTH HASH CHARACTERS HASHTYPE**
-Line **74This is a project that aims to create the worlds slowest password cracker. Feel free to hate.** can be uncommented in order to print the current candidate.
+Line 74 can be uncommented in order to print the current candidate (for debugging purposes).
 ## Possible arguments:
 ### WARNING: ARGUMENTS MUST BE ALL PRESENT AND IN THE EXACT ORDER ABOVE!
 **MAXPASSWORDLENGTH** - maximum password length that will be tried
@@ -22,3 +22,11 @@ Line **74This is a project that aims to create the worlds slowest password crack
 
 # Where are we going with this?
 This is a project that aims to create the worlds slowest password cracker. Feel free to hate.
+Sidenote: If you want to speed it up, use [nuitka](https://github.com/Nuitka/Nuitka).
+
+# Any example of what I can do?
+Sure! You can try one of these:
+1. python pycracker.py 4 79c2b46ce2594ecbcb5b73e928345492 a MD5 *->* **ahoj** *takes almost no time*
+4. python pycracker.py 8 1a5e88fec8cde7e4580c554a8d5775d9 1 MD5 *->* **19672324** *takes about 30 seconds*
+3. python pycracker.py 10 61e23d859120cbd729bf8dae5898a27b 1 MD5 *->* **1967232454** *takes really long time*
+2. python pycracker.py 10 4145b797774ae13c9590a3306e3efc04 aA1 MD5 *->* **Everyth1ng** *even longer*

@@ -83,6 +83,5 @@ def solve_md5(userhash, maxlen, charset, possiblecombinations):
                 print("Hash not found :(")
                 print(userhash, "- ???")
 
-print(string.punctuation)
-# charset_and_possiblecombinations = figure_out_charset(sys.argv[-2])
-# solve_md5(sys.argv[-3], int(sys.argv[-4]), charset_and_possiblecombinations[0], int(charset_and_possiblecombinations[1]))
+charset_and_possiblecombinations = figure_out_charset(sys.argv[-2])
+solve_md5(sys.argv[-3], int(sys.argv[-4]), charset_and_possiblecombinations[0], int(charset_and_possiblecombinations[1]))

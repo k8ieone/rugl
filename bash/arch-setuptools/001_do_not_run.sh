@@ -6,6 +6,6 @@
 cd ~
 pacman -S git
 git clone https://github.com/satcom886/rugl.git
-echo "Hello from the other side"
+echo "Hello from the other side!"
 rm /001_do_not_run.sh
 exit 0

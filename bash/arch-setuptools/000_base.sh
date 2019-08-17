@@ -106,10 +106,10 @@ arch-chroot /mnt bash /001_do_not_run.sh
 rm -r rugl
 
 echo
-echo "${green}Installation finished${reset}"
+echo "${green}Installation finished!${reset}"
 echo "Brief summary of what was done:"
 echo "1. Formated root as ext4"
-if [[ $_OK == y* ]] && [ $_BOOTMODE == EFI ]
+if [[ $_OK == y* ]] && [[ $_BOOTMODE == EFI ]]
 then
     echo "1.5. Formated EFI system partition as FAT32"
 else
@@ -118,5 +118,6 @@ fi
 echo "2. installed the base package group to root"
 echo "3. Generated a fstab"
 echo "4. Installed git and cloned this repo into the chroot"
+echo "The next step would be to chroot into /mnt and start 010"
 echo
 exit 0

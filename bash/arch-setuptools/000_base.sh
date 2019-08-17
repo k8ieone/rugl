@@ -99,6 +99,12 @@ pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
 cat /mnt/etc/fstab
 
+# Run the script that sets up this repo inside the chroot
+cd ~
+arch-chroot /mnt bash rugl/bash/arch-setuptools/001_do_not_run.sh
+rm -r rugl
+
+echo
 echo "${green}Installation finished${reset}"
 echo "Brief summary of what was done:"
 echo "1. Formated root as ext4"
@@ -110,6 +116,6 @@ else
 fi
 echo "2. installed the base package group to root"
 echo "3. Generated a fstab"
+echo "4. Installed git and cloned this repo into the chroot"
 echo
 exit 0
-# Todo: delete the directory after the script finishes and clone it to the chroot

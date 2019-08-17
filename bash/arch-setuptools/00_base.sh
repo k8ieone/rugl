@@ -13,7 +13,7 @@ if [ $? -eq 0 ]
 then
     :
 else
-    echo "${red}Internet connection not available"
+    echo "${red}Internet connection not available${reset}"
     echo "Aborting..."
     exit 1
 fi
@@ -24,7 +24,7 @@ if [ $? -eq 0 ]
 then
     :
 else
-    echo "${red}Partition $1 not found"
+    echo "${red}Partition $1 not found${reset}"
     echo "Aborting..."
     exit 1
 fi
@@ -44,7 +44,7 @@ echo Let\'s set the correct time
 timedatectl set-ntp true
 
 # Format and mount root
-echo "${red}WARNING"
+echo "${red}WARNING${reset}"
 echo "$1 will be formated as ext4 and used as root"
 echo "Is this OK?"
 read _OK
@@ -67,7 +67,7 @@ mount /dev/$1 /mnt
 # Here we format and mount the EFI partition
 if [ $_BOOTMODE == EFI]
 then
-    echo "${red}WARNING"
+    echo "${red}WARNING${reset}"
     echo "$_EFIPART will be formated as FAT32"
     echo "If you answer no the partition will be left untouched"
     read _OK
@@ -95,7 +95,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 cat /mnt/etc/fstab
 
 echo
-echo "${green}Installation finished"
+echo "${green}Installation finished${reset}"
 echo "Brief summary of what was done:"
 echo "1. Formated root as ext4"
 if [[ $_OK == y* ]]

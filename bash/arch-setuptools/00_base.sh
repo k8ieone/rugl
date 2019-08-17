@@ -1,11 +1,6 @@
 #!/bin/bash
 
-#-------------------------------------------------------------
-# UNLESS YOU WANT TO BREAK YOUR SYSTEM DO NOT RUN THIS SCRIPT
-#-------------------------------------------------------------
-
 # Usage: bash 00_base.sh partition (ex. sda1)
-# set -e # This auto exits the script if any command returns a non-zero value
 
 # COLORS
 red=`tput setaf 1`
@@ -13,7 +8,6 @@ green=`tput setaf 2`
 reset=`tput sgr0`
 
 # Check internet access
-
 wget -q --spider https://archlinux.org
 if [ $? -eq 0 ]
 then
@@ -25,7 +19,6 @@ else
 fi
 
 # Check if partition exists
-
 fdisk -l /dev/$1
 if [ $? -eq 0 ]
 then
@@ -37,7 +30,6 @@ else
 fi
 
 # Check boot mode
-
 if [ -d /sys/firmware/efi/efivars ]
 then
     _BOOTMODE=EFI
@@ -48,7 +40,6 @@ else
 fi
 
 # Now we enable NTP
-
 echo Let\'s set the correct time
 timedatectl set-ntp true
 
@@ -74,7 +65,6 @@ sleep 2
 mount /dev/$1 /mnt
 
 # Here we format and mount the EFI partition
-
 if [ $_BOOTMODE == EFI]
 then
     echo "${red}WARNING"

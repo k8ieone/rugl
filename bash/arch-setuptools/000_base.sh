@@ -109,7 +109,7 @@ echo
 echo "${green}Installation finished${reset}"
 echo "Brief summary of what was done:"
 echo "1. Formated root as ext4"
-if [[ $_OK == y* ]]
+if [[ $_OK == y* ]] && [ $_BOOTMODE == EFI ]
 then
     echo "1.5. Formated EFI system partition as FAT32"
 else

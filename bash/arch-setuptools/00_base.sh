@@ -13,6 +13,7 @@ if [ $? -eq 0 ]
 then
     :
 else
+    echo
     echo "${red}Internet connection not available${reset}"
     echo "Aborting..."
     exit 1
@@ -24,6 +25,7 @@ if [ $? -eq 0 ]
 then
     :
 else
+    echo
     echo "${red}Partition $1 not found${reset}"
     echo "Aborting..."
     exit 1
@@ -33,7 +35,8 @@ fi
 if [ -d /sys/firmware/efi/efivars ]
 then
     _BOOTMODE=EFI
-    echo -n "Please specify the EFI system partition:"
+    echo
+    echo -n "Please specify the EFI system partition: "
     read _EFIPART
 else
     _BOOTMODE=BIOS
@@ -44,9 +47,9 @@ echo Let\'s set the correct time
 timedatectl set-ntp true
 
 # Format and mount root
-echo "${red}WARNING${reset}"
-echo "$1 will be formated as ext4 and used as root"
-echo "Is this OK?"
+echo
+echo "${red}WARNING${reset} $1 will be formated as ext4 and used as root"
+echo -n "Is this OK? "
 read _OK
 if  [[ $_OK == y* ]]
 then
@@ -67,9 +70,11 @@ mount /dev/$1 /mnt
 # Here we format and mount the EFI partition
 if [ $_BOOTMODE == EFI]
 then
+    echo
     echo "${red}WARNING${reset}"
     echo "$_EFIPART will be formated as FAT32"
     echo "If you answer no the partition will be left untouched"
+    echo -n "y/n "
     read _OK
     if  [[ $_OK == y* ]]
     then
@@ -106,6 +111,5 @@ else
 fi
 echo "2. installed the base package group to root"
 echo "3. Generated a fstab"
-echo
 exit 0
 # Todo: delete the directory after the script finishes and clone it to the chroot

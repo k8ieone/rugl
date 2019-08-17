@@ -3,7 +3,7 @@
 ### What can I do with this?
 This is a set of bash scripts that will help you deploy Arch Linux.
 ### Is it ready?
-# NO and UNLESS YOU WANT TO BREAK YOUR SYSTEM DO NOT RUN THIS ANY OF THE PROVIDED SCRIPTS
+The first script (00_base.sh) was tested twice in a virtual machine. I'm pretty sure it is ready to use on BIOS (MBR) machines. EFI support should now too.
 ### Usage:
 todo...
 ### Where are we going with this?

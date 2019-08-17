@@ -13,33 +13,24 @@
 #reset=`tput sgr0`
 # maybe later...
 
-# First we check stuff
+# Check internet access
 
-echo Making sure the network works and you have internet access...
-echo
 wget -q --spider https://archlinux.org
 if [ $? -eq 0 ]
 then
     echo "Network OK"
-    echo "Moving on"
-    echo
 else
     echo "Internet connection not available"
     echo "Aborting..."
     exit 1
 fi
 
-echo Please partition the desired disk to your liking and specify the future root partition as the first parameter
-echo I recommend using cfdisk
-echo You have 15 seconds to cancel
-echo
-sleep 15
+# Check if partition exists
 
 fdisk -l /dev/$1
 if [ $? -eq 0 ]
 then
     echo "Partition $1 is a valid partition"
-    echo "Moving on"
     echo
 else
     echo "Partition $1 not found"
@@ -47,20 +38,18 @@ else
     exit 1
 fi
 
+# Check boot mode
+
 if [ -d /sys/firmware/efi/efivars ]
 then
-    echo You are running EFI
-    echo "This mode is not supported yet"
-    echo
     _BOOTMODE=EFI
-    # todo: make a variable that contains the efi system partition
-    # In order to install GRUB run this command: grub-install ...
+    echo -n "Please specify the EFI system partition:"
+    read _EFIPART
 else
     echo You are running a traditional BIOS
     echo
     _BOOTMODE=BIOS
 fi
-
 
 # Now we enable NTP
 
@@ -68,15 +57,14 @@ echo Let\'s set the correct time
 timedatectl set-ntp true
 
 # Partition
-echo "$1 will be formated as ext4"
+echo "$1 will be formated as ext4 and used as root"
 echo "Is this OK?"
-read OK
-if  [[ $OK == y* ]]
+read _OK
+if  [[ $_OK == y* ]]
 then
     echo "Moving on"
-elif [[ $OK == n* ]]
+elif [[ $_OK == n* ]]
 then
-    echo "That was a no"
     echo "Aborted by user"
     exit 1
 else
@@ -85,27 +73,48 @@ else
 fi
 
 mkfs.ext4 /dev/$1
-echo "SWAP file will not be created"
-echo "Create one if you wish"
-echo "Visit the wiki for instructions"
-echo
-
-echo "Now mounting /dev/$1"
+sleep 2
 mount /dev/$1 /mnt
+
+if [ $_BOOTMODE == EFI]
+then
+    echo "$_EFIPART will be formated as FAT32"
+    echo "If you answer no the partition will be left untouched"
+    read _OK
+    if  [[ $_OK == y* ]]
+    then
+        echo "Formating EFI partition /dev/$_EFIPART"
+        mkfs.fat -F32 /dev/$_EFIPART
+        sleep 2
+        mount /dev/$_EFIPART /mnt/boot
+    elif [[ $_OK == n* ]]
+    then
+        echo "Skipping formating /dev/$_EFIPART"
+        mount /dev/$_EFIPART /mnt/boot
+    else
+        echo "Aborting..."
+        exit 1
+    fi
+fi
+
 # This is where we would format and mount the EFI partition
 
 # Installing the base packages
 pacstrap /mnt base
 
 # Generating fstab
-echo
 genfstab -U /mnt >> /mnt/etc/fstab
 cat /mnt/etc/fstab
 
 echo
 echo "Installation finished"
-echo "Now you should chroot into the install directory and start creating users"
-echo "Also don't forget to install the bootloader"
+echo "Brief summary of what was done:"
+echo "1. Formated root as ext4"
+if [[ $_OK == y* ]]
+then
+    echo "1.5. Formated EFI system partition as FAT32"
+echo "2. installed the base package group to root"
+echo "3. Generated a fstab"
 echo
 exit 0
 # Todo: delete the directory after the script finishes and clone it to the chroot

@@ -101,7 +101,8 @@ cat /mnt/etc/fstab
 
 # Run the script that sets up this repo inside the chroot
 cd ~
-arch-chroot /mnt bash rugl/bash/arch-setuptools/001_do_not_run.sh
+cp rugl/bash/arch-setuptools/001_do_not_run.sh /mnt
+arch-chroot /mnt bash /001_do_not_run.sh
 rm -r rugl
 
 echo

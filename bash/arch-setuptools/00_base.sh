@@ -31,7 +31,10 @@ fi
 
 echo Please partition the desired disk to your liking and specify the future root partition as the first parameter
 echo I recommend using cfdisk
+echo You have 15 seconds to cancel
 echo
+sleep 15
+
 fdisk -l /dev/$1
 if [ $? -eq 0 ]
 then
@@ -95,10 +98,14 @@ mount /dev/$1 /mnt
 pacstrap /mnt base
 
 # Generating fstab
+echo
 genfstab -U /mnt >> /mnt/etc/fstab
+cat /mnt/etc/fstab
 
+echo
 echo "Installation finished"
 echo "Now you should chroot into the install directory and start creating users"
 echo "Also don't forget to install the bootloader"
 echo
 exit 0
+# Todo: delete the directory after the script finishes and clone it to the chroot

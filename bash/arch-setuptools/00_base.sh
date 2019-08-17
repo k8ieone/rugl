@@ -99,7 +99,6 @@ pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
 cat /mnt/etc/fstab
 
-echo
 echo "${green}Installation finished${reset}"
 echo "Brief summary of what was done:"
 echo "1. Formated root as ext4"
@@ -111,5 +110,6 @@ else
 fi
 echo "2. installed the base package group to root"
 echo "3. Generated a fstab"
+echo
 exit 0
 # Todo: delete the directory after the script finishes and clone it to the chroot

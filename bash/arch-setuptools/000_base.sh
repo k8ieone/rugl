@@ -8,19 +8,18 @@ green=$(tput setaf 2)
 reset=$(tput sgr0)
 
 # Check internet access
-if [ $(wget -q --spider https://archlinux.org) -eq 0 ]
+if wget -q --spider https://archlinux.org
 then
     :
 else
     echo
-    echo "${red}Internet connection not available${reset}"
+    echo "${red}Internet connection not available${reset} or archlinux.org website is down"
     echo "Aborting..."
     exit 1
 fi
 
 # Check if partition exists
-fdisk -l /dev/$1
-if [ $? -eq 0 ]
+if fdisk -l /dev/$1
 then
     :
 else

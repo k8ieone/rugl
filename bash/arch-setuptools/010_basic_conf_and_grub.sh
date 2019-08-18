@@ -10,13 +10,12 @@ reset=$(tput sgr0)
 echo "WARNING! This script should be run in the /mnt chroot as root (not with sudo)!"
 
 # Check internet access again
-wget -q --spider https://archlinux.org
-if [ $? -eq 0 ]
+if wget -q --spider https://archlinux.org
 then
     :
 else
     echo
-    echo "${red}Internet connection not available${reset}"
+    echo "${red}Internet connection not available${reset} or archlinux.org website is down"
     echo "Aborting..."
     exit 1
 fi

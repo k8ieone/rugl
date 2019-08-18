@@ -3,13 +3,12 @@
 # Usage: bash 00_base.sh partition (ex. sda1)
 
 # COLORS
-red=`tput setaf 1`
-green=`tput setaf 2`
-reset=`tput sgr0`
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+reset=$(tput sgr0)
 
 # Check internet access
-wget -q --spider https://archlinux.org
-if [ $? -eq 0 ]
+if [ wget -q --spider https://archlinux.org -eq 0 ]
 then
     :
 else
@@ -37,7 +36,7 @@ then
     _BOOTMODE=EFI
     echo
     echo -n "Please specify the EFI system partition: "
-    read _EFIPART
+    read -r _EFIPART
 else
     _BOOTMODE=BIOS
 fi
@@ -50,7 +49,7 @@ timedatectl set-ntp true
 echo
 echo "${red}WARNING${reset} $1 will be formated as ext4 and used as root"
 echo -n "Is this OK? "
-read _OK
+read -r _OK
 if  [[ $_OK == y* ]]
 then
     :
@@ -75,7 +74,7 @@ then
     echo "$_EFIPART will be formated as FAT32"
     echo "If you answer no the partition will be left untouched"
     echo -n "y/n "
-    read _OK
+    read -r _OK
     if  [[ $_OK == y* ]]
     then
         echo "Formating EFI partition /dev/$_EFIPART"

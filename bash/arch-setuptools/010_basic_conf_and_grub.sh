@@ -3,9 +3,9 @@
 # (grub, pacman [ONLY AFTER PACSERVE IS SETUP, maybe create a temporary copy without pacserve?], vconsole.conf, locale.conf, hosts)
 
 # COLORS
-red=`tput setaf 1`
-green=`tput setaf 2`
-reset=`tput sgr0`
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+reset=$(tput sgr0)
 
 echo "WARNING! This script should be run in the /mnt chroot as root (not with sudo)!"
 
@@ -30,7 +30,7 @@ else
 fi
 
 echo "Enter your desired hostname: "
-read _HOSTNAME
+read -r _HOSTNAME
 
 # This is where I'm getting too lazy to make this an argument so I'm hardcoding the timezone
 ln -sf /usr/share/zoneinfo/Europe/Prague /etc/localtime
@@ -66,7 +66,7 @@ then
     pacman -S grub
     echo
     echo -n "Please enter the destination disk (not partition): "
-    read $_INSTALLDISK
+    read -r _INSTALLDISK
     grub-install --target=i386-pc /dev/$_INSTALLDISK
     cp configs/system-wide/grub /etc/default/grub
     grub-mkconfig -o /boot/grub/grub.cfg

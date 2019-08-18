@@ -1,6 +1,6 @@
 #!/bin/bash
 # Everything in the install guide (from the chroot step) and installs some of my configs
-# (grub, pacman [ONLY AFTER PACSERVE IS SETUP, maybe create a temporary copy without pacserve?], vconsole.conf, locale.conf, hosts)
+# (grub, vconsole.conf, locale.conf, hosts)
 
 # COLORS
 red=$(tput setaf 1)
@@ -51,6 +51,10 @@ echo $_HOSTNAME > /etc/hostname
 echo "127.0.0.1	localhost" >> /etc/hosts
 echo "::1		localhost" >> /etc/hosts
 echo "127.0.1.1	$_HOSTNAME.local	$_HOSTNAME" >> /etc/hosts
+
+# Enable multicore compiling in makepkg.conf
+sed -i '/ MAKEFLAGS /s/^/#/' /etc/makepkg.conf
+echo "MAKEFLAGS=\"-j\$(nproc)\"" >> /etc/makepkg.conf
 
 # Root password
 loadkeys cz-qwertz

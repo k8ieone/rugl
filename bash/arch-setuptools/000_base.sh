@@ -8,7 +8,7 @@ green=$(tput setaf 2)
 reset=$(tput sgr0)
 
 # Check internet access
-if [ wget -q --spider https://archlinux.org -eq 0 ]
+if [ (wget -q --spider https://archlinux.org) -eq 0 ]
 then
     :
 else

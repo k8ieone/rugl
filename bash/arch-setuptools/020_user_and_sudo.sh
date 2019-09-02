@@ -33,5 +33,5 @@ echo "Done!"
 echo "Summary:"
 echo "1. Created the user $_USERNAME and added it to sudoers"
 echo "2. Cloned this repo to $_USERNAME's home directory"
-echo "You can now login as $_USERNAME and continue customisations from there."
+echo "You can now login as $_USERNAME and proceed with customisations from there."
 echo

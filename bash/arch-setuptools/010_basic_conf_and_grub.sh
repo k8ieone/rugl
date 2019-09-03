@@ -39,8 +39,8 @@ hwclock --systohc
 
 # Uncomment the locales in /etc/locales.gen
 # Seems like I'm hardcoding everything...
-sed -i '/^#.* cs_CZ.UTF-8 /s/^#//' /etc/locale.gen
-sed -i '/^#.* en_US.UTF-8 /s/^#//' /etc/locale.gen
+sed -i '/^#.*en_US.UTF-8 /s/^#//' /etc/locale.gen
+sed -i '/^#.*cs_CZ.UTF-8 /s/^#//' /etc/locale.gen
 
 # Locale configuration
 echo "LOCALE=cs_CZ.UTF-8" > /etc/locale.conf

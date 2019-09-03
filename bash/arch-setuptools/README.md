@@ -8,6 +8,7 @@ Everything up to 010 works.
 000_base.sh - Formats the root partition (+efi partition) and installs the base package group. It leaves you with an installed system that is ready to chroot into (basically everything up to the "Chroot" section of the install guide)  
 010_basic_conf_and_grub.sh - Sets up the hostname, keyboard layout, locale and istalls GRUB.  
 020_user_and_sudo.sh - Creates a new user, makes it the admin and clones this repo to the user's home.  
+030_final_tweaks_headless.sh - Finishes everything by installing oh-my-zsh and my zshrc (also netdata, boinc, etc.).  
 ### Usage:
 These are the commands you have to run:
 1. ip a (make sure you have an IP address, maybe try to ping something)

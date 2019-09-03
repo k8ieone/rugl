@@ -70,7 +70,7 @@ then
     git clone https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-    echo "export ZSH=\"/home/$USERNAME/.oh-my-zsh\"" > ~/.zshrc
+    echo "export ZSH=\"/home/$USER/.oh-my-zsh\"" > ~/.zshrc
     cat ~/rugl/bash/arch-setuptools/configs/user/zshrc | tee -a ~/.zshrc
 else
     echo "ZSH setup will be skipped!"

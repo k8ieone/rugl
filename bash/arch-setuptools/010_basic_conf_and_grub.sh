@@ -7,7 +7,8 @@ red=$(tput setaf 1)
 green=$(tput setaf 2)
 reset=$(tput sgr0)
 
-echo "WARNING! This script should be run in the /mnt chroot as root (not with sudo)!"
+echo "${red}WARNING! ${reset}This script should be run in the /mnt chroot as root (not with sudo)!"
+echo
 
 # Check internet access again
 if wget -q --spider https://archlinux.org

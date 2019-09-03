@@ -66,7 +66,7 @@ sleep 2
 mount /dev/$1 /mnt
 
 # Here we format and mount the EFI partition
-if [ $_BOOTMODE == EFI ]
+if [[ $_BOOTMODE == EFI ]]
 then
     echo
     echo "${red}WARNING${reset}"

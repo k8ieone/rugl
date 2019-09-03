@@ -5,6 +5,11 @@
 # and clone it into the new user's home (make sure the user owns the directory)
 # Maybe I should enable NTP again?
 
+# Colors
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+reset=$(tput sgr0)
+
 # Enable NTP again
 timedatectl set-ntp true
 
@@ -29,7 +34,7 @@ chown -R $_USERNAME:$_USERNAME rugl
 rm -r /root/rugl
 
 echo
-echo "Done!"
+echo "${green}Done!${reset}"
 echo "Summary:"
 echo "1. Created the user $_USERNAME and added it to sudoers"
 echo "2. Cloned this repo to $_USERNAME's home directory"

@@ -61,7 +61,7 @@ fi
 echo
 echo "${red}WARNING!${reset} An external script will now be run! Is this OK?"
 echo -n "y/N: "
-read _OK
+read -r _OK
 if [[ $_OK == y* ]]
 then
     echo "${red}WARNING!${reset}"
@@ -81,7 +81,7 @@ cd ~
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
-cd ..
+cd ~
 sudo rm -r yay
 yay -S powerpill toilet
 

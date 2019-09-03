@@ -78,8 +78,8 @@ plugins=(
   archlinux
   systemd
   colored-man-pages
-  zsh-syntax-highlighting/zsh-syntax-highlighting
-  zsh-autosuggestions/zsh-autosuggestions
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -114,4 +114,4 @@ export EDITOR=nano
 neofetch
 toilet --metal --termwidth Welcome satcom886
 echo "Don't forget to run pacman -Rns instead of -Rs!"
-POWERLEVEL9K_DISABLE_RPROMPT = true
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true

@@ -46,6 +46,7 @@ sed -i '/^#.* en_US.UTF-8 /s/^#//' /etc/locale.gen
 echo "LOCALE=cs_CZ.UTF-8" > /etc/locale.conf
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 echo "KEYMAP=cz-qwertz" > /etc/vconsole.conf
+locale-gen
 
 # Hostname configuration
 echo $_HOSTNAME > /etc/hostname

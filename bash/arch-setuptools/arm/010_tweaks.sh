@@ -21,7 +21,7 @@ else
 fi
 
 # Install some packages
-sudo pacman -S boinc-nox zsh make gcc gc automake autoconf pkgconf fakeroot binutils netdata hddtemp smartmontools lm_sensors neofetch
+sudo pacman -S boinc-nox zsh make gcc gc automake autoconf pkgconf fakeroot binutils netdata lm_sensors neofetch
 
 echo "Your new SSH private and public key will be generated now..."
 ssh-keygen
@@ -35,13 +35,11 @@ sudo gpasswd -a $USER boinc
 sudo gpasswd -a $USER optical
 sudo gpasswd -a $USER lp
 
-sudo systemctl enable netdata boinc-client hddtemp smartd
+sudo systemctl enable netdata boinc-client
 
 # Additional netdata charts
 sudo gpasswd -a netdata boinc
 # TODO: get BOINC's gui-rpc value and write it to netdata config
-echo "SMARTD_ARGS=\"-A /var/log/smartd/ -i 600\"" | sudo tee /etc/default/smartmontools
-sudo mkdir -p /var/log/smartd
 
 echo "Do you wish to run sensors-detect?"
 read -r _SENSORS_TRUE

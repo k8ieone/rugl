@@ -55,7 +55,7 @@ echo "You will now be prompted to enter your new root password"
 echo "Keyboard layout: cz-qwertz"
 passwd
 
-pacman -S networkmanager
+pacman -S networkmanager sudo
 systemctl enable NetworkManager
 
 # What will be your username

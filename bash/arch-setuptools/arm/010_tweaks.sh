@@ -21,7 +21,7 @@ else
 fi
 
 # Install some packages
-sudo pacman -S boinc-nox zsh make gcc gc automake autoconf pkgconf fakeroot binutils netdata lm_sensors neofetch
+sudo pacman -S boinc-nox zsh make gcc gc automake autoconf pkgconf fakeroot binutils netdata lm_sensors neofetch rng-tools fake-hwclock opensc
 
 echo "Your new SSH private and public key will be generated now..."
 ssh-keygen
@@ -35,7 +35,8 @@ sudo gpasswd -a $USER boinc
 sudo gpasswd -a $USER optical
 sudo gpasswd -a $USER lp
 
-sudo systemctl enable netdata boinc-client
+sudo systemctl enable netdata boinc-client rngd fake-hwclock fake-hwclock-save.timer
+sudo systemctl start fake-hwclock
 
 # Additional netdata charts
 sudo gpasswd -a netdata boinc

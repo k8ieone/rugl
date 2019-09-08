@@ -26,7 +26,6 @@ read -r _HOSTNAME
 # This is where I'm getting too lazy to make this an argument so I'm hardcoding the timezone
 ln -sf /usr/share/zoneinfo/Europe/Prague /etc/localtime
 sleep 1
-hwclock --systohc
 
 # Uncomment the locales in /etc/locales.gen
 # Seems like I'm hardcoding everything...

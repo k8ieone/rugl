@@ -1,0 +1,2 @@
+# Základní terminologie operačních systémů
+

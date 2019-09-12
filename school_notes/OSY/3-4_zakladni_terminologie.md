@@ -1,7 +1,7 @@
 # Základní terminologie operačních systémů
 
-32b - IPv4
-128b - IPv6
+ - 32b - IPv4
+ - 128b - IPv6
 
 Profil vs účet:
  - Uživatelský účet založí admin na serveru

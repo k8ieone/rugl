@@ -10,7 +10,6 @@
    - PNG (podporuje bezstrátovou kompresi)
    - JPG
    - JPEG
-   - 
 
 # Vektorová grafika
  - Skládá se z 2D bodů s přesnými souřadnicemi

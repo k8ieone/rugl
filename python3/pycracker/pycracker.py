@@ -7,6 +7,7 @@ import hashlib
 import sys
 import itertools
 import string
+from tqdm import tqdm
 
 def figure_out_charset(characters):
     
@@ -70,18 +71,19 @@ def solve_md5(userhash, maxlen, charset, possiblecombinations):
     attemptno = 0
     # Calculating stuff
     for i in range(maxlen+1):
-        for attempt in itertools.product(charset, repeat=i):
+        for attempt in tqdm(itertools.product(charset, repeat=i)):
             # print(''.join(attempt)) # Uncomment in order to print the current candidate
             attemptno += 1
             if hashlib.md5(''.join(attempt).encode('utf-8')).hexdigest() == userhash:
                 hash_cracked = True
-                print("Hash cracked!")
-                print(hashlib.md5(''.join(attempt).encode('utf-8')).hexdigest(), "-", ''.join(attempt))
+                print("\n\nHash cracked!")
+                print(hashlib.md5(''.join(attempt).encode('utf-8')).hexdigest(), "-", ''.join(attempt),"\n")
                 return ''.join(attempt)
             elif hash_cracked is False and attemptno == possiblecombinations:
-                print("I tried", possiblecombinations, "different passwords and none of them worked")
+                print("\n\nI tried", possiblecombinations, "different passwords and none of them worked")
                 print("Hash not found :(")
-                print(userhash, "- ???")
+                print(userhash, "- ???\n")
+                return None
 
 charset_and_possiblecombinations = figure_out_charset(sys.argv[-2])
 solve_md5(sys.argv[-3], int(sys.argv[-4]), charset_and_possiblecombinations[0], int(charset_and_possiblecombinations[1]))

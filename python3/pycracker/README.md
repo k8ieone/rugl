@@ -14,11 +14,11 @@ Line 74 can be uncommented in order to print the current candidate (for debuggin
  * A means uppercase
  * 1 means numbers
  * @ means special characters
- 
+
  **HASHTYPE** - type of the hash:
  * MD5
 
-### Where are we going with this?
+### Why?
 This is a project that aims to create the worlds slowest password cracker. Feel free to hate.
 
 ### Any example of what I can do?

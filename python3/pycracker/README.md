@@ -1,30 +1,26 @@
-# Badges
+### Badges
 ![GitHub issues by-label](https://img.shields.io/github/issues-raw/satcom886/rugl/pycracker.svg)
-# What can I do with this?
+### What can I do with this?
 This program can crack MD5 hashes (more hashes comming).
-## Usage:
+### Usage:
 pycracker.py **MAXPASSWORDLENGTH HASH CHARACTERS HASHTYPE**
 Line 74 can be uncommented in order to print the current candidate (for debugging purposes).
-## Possible arguments:
-### WARNING: ARGUMENTS MUST BE ALL PRESENT AND IN THE EXACT ORDER ABOVE!
-**MAXPASSWORDLENGTH** - maximum password length that will be tried
-
+### Possible arguments:
+#### WARNING: ARGUMENTS MUST BE ALL PRESENT AND IN THE EXACT ORDER ABOVE!
+**MAXPASSWORDLENGTH** - maximum password length that will be tried  
 **HASH** - the hash string  
-
 **CHARACTERS** - character sets:  
  * a means all the letters of the english alphabet (lowercase)
  * A means uppercase
  * 1 means numbers
  * @ means special characters
- 
  **HASHTYPE** - type of the hash:
  * MD5
 
-# Where are we going with this?
+### Where are we going with this?
 This is a project that aims to create the worlds slowest password cracker. Feel free to hate.
-Sidenote: If you want to speed it up, use [nuitka](https://github.com/Nuitka/Nuitka).
 
-# Any example of what I can do?
+### Any example of what I can do?
 Sure! You can try one of these:
 1. python pycracker.py 4 79c2b46ce2594ecbcb5b73e928345492 a MD5 *->* **ahoj** *takes almost no time*
 4. python pycracker.py 8 1a5e88fec8cde7e4580c554a8d5775d9 1 MD5 *->* **19672324** *takes about 30 seconds*

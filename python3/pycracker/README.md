@@ -13,7 +13,7 @@ Line 74 can be uncommented in order to print the current candidate (for debuggin
  * a means all the letters of the english alphabet (lowercase)
  * A means uppercase
  * 1 means numbers
- * @ means special characters
+ * @ means special characters  
  **HASHTYPE** - type of the hash:
  * MD5
 

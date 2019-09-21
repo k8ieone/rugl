@@ -18,7 +18,7 @@ def encode(string):
         string_encoded += chr(string_in_numbers[i] + offset)
     return [string_encoded, offset]
 
-print(encode("test"))
+print(encode("ahoj"))
 
 def decode(string_encoded, offset):
     string_in_numbers = []
@@ -28,4 +28,4 @@ def decode(string_encoded, offset):
         string_decoded += chr(string_in_numbers[i] - offset)
     return string_decoded
 
-print(decode("uftu", 1))
+print(decode("dkrm#}pugl", 3))

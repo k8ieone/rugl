@@ -29,7 +29,7 @@ else
     _BOOTMODE=BIOS
 fi
 
-echo "Enter your desired hostname: "
+echo -n "Enter your desired hostname: "
 read -r _HOSTNAME
 
 # This is where I'm getting too lazy to make this an argument so I'm hardcoding the timezone

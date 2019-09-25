@@ -25,18 +25,17 @@ fi
 # Install basic packages
 sudo pacman -S boinc zsh make gcc gc automake autoconf pkgconf fakeroot binutils netdata hddtemp smartmontools lm_sensors neofetch rng-tools opensc systemd-swap
 
-# Install yay and powerpill
+# Install yay
 cd ~
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 cd ~
 sudo rm -r yay
-yay -S powerpill toilet
 
 # Install Xorg, i3 and some stuff
 sudo pacman -S xorg dmenu i3-gaps i3status xorg-xinit adapta-gtk-theme mpd scrot redshift network-manager-applet bluez bluez-utils blueman terminator ttf-ubuntu-font-family pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-zeroconf paprefs pavucontrol arandr
-yay -S i3lock-fancy-git paper-icon-theme-git i3cat-git twmnd-git indicator-powersave
+yay -S i3lock-fancy-git paper-icon-theme-git i3cat-git twmnd-git indicator-powersave powerpill toilet
 
 # Setup i3 configs
 sudo mv ~/rugl/bash/arch-setuptools/configs/system-wide/i3status.conf /etc/i3status.conf

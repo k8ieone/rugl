@@ -39,6 +39,7 @@ sudo pacman -S xorg dmenu i3-gaps i3status xorg-xinit adapta-gtk-theme mpd scrot
 yay -S i3lock-fancy-git paper-icon-theme-git i3cat-git twmnd-git indicator-powersave
 
 # Setup i3 configs
+sudo mv ~/rugl/bash/arch-setuptools/configs/system-wide/i3status.conf /etc/i3status.conf
 mkdir -p .config/twmn
 cp ~/rugl/bash/arch-setuptools/configs/user/twmn.conf ~/.config/twmn/twmn.conf
 mkdir -p .config/gtk-3.0

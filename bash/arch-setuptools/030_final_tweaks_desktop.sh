@@ -35,7 +35,7 @@ sudo rm -r yay
 yay -S powerpill toilet
 
 # Install Xorg, i3 and some stuff
-sudo pacman -S xorg dmenu i3-gaps i3status xorg-xinit adapta-gtk-theme mpd scrot  redshift network-manager-applet bluez bluez-utils blueman terminator ttf-ubuntu-font-family pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-zeroconf paprefs pavucontrol
+sudo pacman -S xorg dmenu i3-gaps i3status xorg-xinit adapta-gtk-theme mpd scrot redshift network-manager-applet bluez bluez-utils blueman terminator ttf-ubuntu-font-family pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-zeroconf paprefs pavucontrol arandr
 yay -S i3lock-fancy-git paper-icon-theme-git i3cat-git twmnd-git indicator-powersave
 
 # Setup i3 configs

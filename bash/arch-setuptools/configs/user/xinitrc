@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+setxkbmap cz
+#xrandr --setprovideroutputsource modesetting NVIDIA-0
+#xrandr --auto
+systemctl --user import-environment DISPLAY
+numlockx
+exec i3

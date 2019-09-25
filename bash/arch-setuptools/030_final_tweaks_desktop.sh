@@ -1,9 +1,6 @@
 #!/bin/bash
 
-# This will take you the rest of the way.
-# It will create a swap file, generate a ssh key, install and configure ZSH, 
-# add you to some groups, instal toilet, neofetch, netdata, boinc, yay and powerpill, more netdata stats (boinc, hddtemp, smartd, sensors)
-# When this script finishes running, the machine will be configured to my standards. 
+# Finall install script that will install i3 along with my configs and some basic utilities
 
 # Colors
 red=$(tput setaf 1)
@@ -25,9 +22,40 @@ else
     :
 fi
 
-# Install some packages
-sudo pacman -S boinc-nox zsh make gcc gc automake autoconf pkgconf fakeroot binutils netdata hddtemp smartmontools lm_sensors neofetch rng-tools opensc systemd-swap
+# Install basic packages
+sudo pacman -S boinc zsh make gcc gc automake autoconf pkgconf fakeroot binutils netdata hddtemp smartmontools lm_sensors neofetch rng-tools opensc systemd-swap
 
+# Install yay and powerpill
+cd ~
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+cd ~
+sudo rm -r yay
+yay -S powerpill toilet
+
+# Install Xorg, i3 and some stuff
+sudo pacman -S xorg dmenu i3-gaps i3status xorg-xinit adapta-gtk-theme mpd scrot  redshift network-manager-applet bluez bluez-utils blueman terminator ttf-ubuntu-font-family pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-zeroconf paprefs pavucontrol
+yay -S i3lock-fancy-git paper-icon-theme-git i3cat-git twmnd-git indicator-powersave
+
+# Setup i3 configs
+mkdir -p .config/twmn
+cp ~/rugl/bash/arch-setuptools/configs/user/twmn.conf ~/.config/twmn/twmn.conf
+mkdir -p .config/gtk-3.0
+rm ~/.config/gtk-3.0/settings.ini
+cp ~/rugl/bash/arch-setuptools/configs/user/gtk3.ini ~/.config/gtk-3.0/settings.ini
+rm ~/config/i3/config
+mkdir -p .config/i3
+cp ~/rugl/bash/arch-setuptools/configs/user/i3.conf ~/.config/i3/config
+mkdir -p ~/.i3
+cp ~/rugl/bash/arch-setuptools/configs/user/i3cat.conf ~/.i3/
+cp ~/rugl/bash/arch-setuptools/configs/user/exit_script.sh ~/.i3/
+cp ~/rugl/bash/arch-setuptools/configs/user/mpd-nowplaying.sh ~/.i3/
+sudo mv ~/rugl/bash/arch-setuptools/configs/system-wide/30-touchpad.conf /etc/X11/xorg.conf.d/
+mkdir -p ~/.config/mpd
+cp ~/rugl/bash/arch-setuptools/configs/user/mpd.conf ~/.conf/mpd
+
+# Generate SSH keys
 echo "Your new SSH private and public key will be generated now..."
 ssh-keygen
 
@@ -40,7 +68,7 @@ sudo gpasswd -a $USER boinc
 sudo gpasswd -a $USER optical
 sudo gpasswd -a $USER lp
 
-sudo systemctl enable netdata boinc-client hddtemp smartd rngd
+sudo systemctl enable netdata boinc-client hddtemp smartd rngd bluetooth
 
 # Additional netdata charts
 sudo gpasswd -a netdata boinc
@@ -72,20 +100,12 @@ then
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
     echo "export ZSH=\"/home/$USER/.oh-my-zsh\"" > ~/.zshrc
     cat ~/rugl/bash/arch-setuptools/configs/user/zshrc | tee -a ~/.zshrc
+    # Setup xinit
+    rm .xinitrc .zprofile
+    cp ~/rugl/bash/arch-setuptools/configs/user/xinitrc ~/.xinitrc
+    cp ~/rugl/bash/arch-setuptools/configs/user/zprofile ~/.zprofile
 else
     echo "ZSH setup will be skipped!"
+    echo "${red}Warning! ${reset}i3 will not start because of ZSH missing!"
+    echo "You will have to start it manually using startx!""
 fi
-
-# Install yay and powerpill
-cd ~
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-cd ~
-sudo rm -r yay
-yay -S powerpill toilet
-
-echo
-echo "${green}Done!${reset}"
-echo "My customisations are done!"
-echo

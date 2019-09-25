@@ -107,5 +107,5 @@ then
 else
     echo "ZSH setup will be skipped!"
     echo "${red}Warning! ${reset}i3 will not start because of ZSH missing!"
-    echo "You will have to start it manually using startx!""
+    echo "You will have to start it manually using startx!"
 fi

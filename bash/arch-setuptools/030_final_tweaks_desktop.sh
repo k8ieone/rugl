@@ -63,6 +63,7 @@ mkdir -p ~/.config/mpd
 mkdir ~/.config/mpd/playlists
 mkdir ~/Music
 cp ~/rugl/bash/arch-setuptools/configs/user/mpd.conf ~/.config/mpd/
+# Redshift config
 cp ~/rugl/bash/arch-setuptools/configs/user/redshift.conf ~/.config/
 
 # Generate SSH keys

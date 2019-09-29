@@ -14,7 +14,7 @@ marp: true
  ---
 # The second slide
 ### Let's insert an image!
-![image](../python3/pyparosci/Resources/rock2.png)
+![image](../../python3/pyparosci/Resources/rock2.png)
 
 ---
 # You guessed it! It's slide #3!

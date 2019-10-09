@@ -4,7 +4,7 @@
 
 _counter=0
 
-while (( 50 > $_counter ))
+while (( 100 > $_counter ))
 do
 	_counter=$(($_counter+1))
 	l2ping -s 640 -f $1 & 

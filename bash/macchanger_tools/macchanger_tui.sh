@@ -2,9 +2,14 @@
 
 # _random=$(zenity --width=400 --height=275 --list --radiolist --title 'Mac Changer' --text 'Select mode:' --column 'Select' --column 'Mode' TRUE "Random MAC" FALSE "Enter MAC manually")
 
+# Colors!
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+reset=$(tput sgr0)
+
 # Kindly ask the user to start this script with sudo
 echo
-echo "Please make sure this scripts runs with root privileges."
+echo "${red}Please make sure this scripts runs with root privileges.${reset}"
 echo
 
 # List network interfaces and make an array with them

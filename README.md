@@ -7,12 +7,26 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/satcom886/rugl.svg)
 
 # What projects are currently maintained and by who?
-todo...  
+Yeah... We're not really sure on this one... It really depends on the mood and what we do at school...  
+
+# I found a bug or something that could be improved! What should I do?
+Please open an issue in the "issues" tab. Please try to **describe** the problem as much as possible! It really helps when you know what you have to fix.
+
+# What is worth checking out?
+ * satcom886's projects:
+   * bash/bt_killer - DoS attack for Bluetooth)
+   * bash/macchanger_tools MAC address changer helper script
+   * bash/arch-setuptools - a bunch of scripts and configs to help with installing Arch Linux
+   * python3/pycracker - a password cracker written in python
+ * yogy's projects:
+   * python3/pysnake - a snake game in python
+   * python3/pyparosci - a rock paper scissors "action game" (work in progress, currently on hold)  
+
+*Please add any projects of yours (or other people) that you think are worth checking out.*
 
 # What is this repo?
 This is our collection of all sorts of programs. From super useful ones to programs that barely even work.  
-Most of the useful stuff will probably be in the python3 directory, scince that's the only language we are learning in school.
 
 # Why the name?
-## RUGL - Random Unwise Generic Library
+## RUGL - Random Unwise Generic Library (of random unwise generic programs)
 ### Also it means "confusion" in icelandic...

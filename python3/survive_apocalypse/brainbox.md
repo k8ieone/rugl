@@ -12,3 +12,7 @@ These are the basic stats:
  * Group stability
  * Stress
  * (Energy)
+
+## Questions
+ Do I make it possible to manage individual characters or just manage the entire group?  
+ Managing the entire group would be less time-consuming (both for programming and for playing)

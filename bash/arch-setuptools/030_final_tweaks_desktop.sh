@@ -23,7 +23,7 @@ else
 fi
 
 # Install basic packages
-sudo pacman -S boinc zsh make gcc gc automake autoconf pkgconf fakeroot binutils netdata hddtemp smartmontools lm_sensors neofetch rng-tools opensc systemd-swap
+sudo pacman -S zsh make gcc gc automake autoconf pkgconf fakeroot binutils hddtemp smartmontools lm_sensors neofetch rng-tools opensc systemd-swap
 
 # Install yay
 cd ~
@@ -75,15 +75,11 @@ sudo gpasswd -a $USER dbus
 sudo gpasswd -a $USER audio
 sudo gpasswd -a $USER video
 sudo gpasswd -a $USER wheel
-sudo gpasswd -a $USER boinc
 sudo gpasswd -a $USER optical
 sudo gpasswd -a $USER lp
 
-sudo systemctl enable netdata boinc-client hddtemp smartd rngd bluetooth
+sudo systemctl enable hddtemp smartd rngd bluetooth
 
-# Additional netdata charts
-sudo gpasswd -a netdata boinc
-# TODO: get BOINC's gui-rpc value and write it to netdata config
 echo "SMARTD_ARGS=\"-A /var/log/smartd/ -i 600\"" | sudo tee /etc/default/smartmontools
 sudo mkdir -p /var/log/smartd
 

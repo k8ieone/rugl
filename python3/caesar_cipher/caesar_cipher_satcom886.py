@@ -28,4 +28,4 @@ def decode(string_encoded, offset):
         string_decoded += chr(string_in_numbers[i] - offset)
     return string_decoded
 
-print(decode("dkrm#}pugl", 3))
+print(decode("uftu", 1))

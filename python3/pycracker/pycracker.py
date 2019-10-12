@@ -2,7 +2,6 @@
 # Usage: pycracker.py MAXPASSWORDLENGTH HASH CHARACTERS HASHTYPE
 
 # Import required modules
-
 import hashlib
 import sys
 import itertools
@@ -10,8 +9,7 @@ import string
 from tqdm import tqdm
 
 def figure_out_charset(characters):
-    
-    # Still used, sligthly modified
+    # Maybe this could be done a bit better?
     # This determines what character set should be used and calculates the number of possible combinations
 
     if "a" in characters and "A" not in characters and "1" not in characters and "@" not in characters:
@@ -62,7 +60,6 @@ def figure_out_charset(characters):
     return charset_and_possiblecombinations
 
 # From https://stackoverflow.com/a/48389007
-# First one that seems to work as intended
 # Returns the password in plaintext
 def solve_md5(userhash, maxlen, charset, possiblecombinations):
     print("Starting to crack a MD5 hash...")

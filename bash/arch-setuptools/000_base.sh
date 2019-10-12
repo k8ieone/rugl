@@ -91,7 +91,7 @@ then
 fi
 
 # Installing the base packages
-pacstrap /mnt base
+pacstrap /mnt base linux linux-firmware
 
 # Generating fstab
 genfstab -U /mnt >> /mnt/etc/fstab

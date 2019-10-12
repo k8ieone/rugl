@@ -80,9 +80,6 @@ sudo gpasswd -a $USER lp
 
 sudo systemctl enable hddtemp smartd rngd bluetooth
 
-echo "SMARTD_ARGS=\"-A /var/log/smartd/ -i 600\"" | sudo tee /etc/default/smartmontools
-sudo mkdir -p /var/log/smartd
-
 echo "Do you wish to run sensors-detect?"
 read -r _SENSORS_TRUE
 if [[ $_SENSORS_TRUE == y* ]]

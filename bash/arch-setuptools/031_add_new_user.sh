@@ -8,12 +8,12 @@ green=$(tput setaf 2)
 reset=$(tput sgr0)
 
 # GTK Theme
-mkdir -p .config/gtk-3.0
+mkdir -p ~/.config/gtk-3.0
 rm ~/.config/gtk-3.0/settings.ini
 cp ~/rugl/bash/arch-setuptools/configs/user/gtk3.ini ~/.config/gtk-3.0/settings.ini
 # Configure i3
-rm ~/config/i3/config
-mkdir -p .config/i3
+rm ~/.config/i3/config
+mkdir -p ~/.config/i3
 cp ~/rugl/bash/arch-setuptools/configs/user/i3.conf ~/.config/i3/config
 # Configure i3cat
 mkdir -p ~/.i3

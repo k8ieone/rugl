@@ -44,12 +44,12 @@ sudo mv ~/rugl/bash/arch-setuptools/configs/system-wide/i3status.conf /etc/i3sta
 #mkdir -p .config/twmn
 #cp ~/rugl/bash/arch-setuptools/configs/user/twmn.conf ~/.config/twmn/twmn.conf
 # GTK Theme
-mkdir -p .config/gtk-3.0
+mkdir -p ~/.config/gtk-3.0
 rm ~/.config/gtk-3.0/settings.ini
 cp ~/rugl/bash/arch-setuptools/configs/user/gtk3.ini ~/.config/gtk-3.0/settings.ini
 # Configure i3
-rm ~/config/i3/config
-mkdir -p .config/i3
+rm ~/.config/i3/config
+mkdir -p ~/.config/i3
 cp ~/rugl/bash/arch-setuptools/configs/user/i3.conf ~/.config/i3/config
 # Configure i3cat
 mkdir -p ~/.i3

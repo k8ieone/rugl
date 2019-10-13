@@ -1,48 +1,12 @@
 #!/bin/bash
 
-# Finall install script that will install i3 along with my configs and some basic utilities
+# This script shoould be run as the new user. It will just setup some basic configs + zsh
 
 # Colors
 red=$(tput setaf 1)
 green=$(tput setaf 2)
 reset=$(tput sgr0)
 
-# Ask about SWAP and set it up
-echo "Do you wish to setup a SWAP file?"
-echo -n "y/N: "
-read -r _SWAP
-if [[ $_SWAP == y* ]]
-then
-    sudo fallocate -l 2048M /swapfile
-    sudo chmod 600 /swapfile
-    sudo mkswap /swapfile
-    sudo swapon /swapfile
-    echo "/swapfile none swap defaults 0 0" | sudo tee -a /etc/fstab
-else
-    :
-fi
-
-# Install basic packages
-sudo pacman -S zsh make gcc gc automake autoconf pkgconf fakeroot binutils hddtemp smartmontools lm_sensors neofetch rng-tools opensc systemd-swap
-
-# Install yay
-cd ~
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-cd ~
-sudo rm -r yay
-
-# Install Xorg, i3 and some stuff
-sudo pacman -S xorg dmenu patch i3-gaps notification-daemon mpc i3status xorg-xinit adapta-gtk-theme mpd scrot redshift powerline-fonts network-manager-applet bluez bluez-utils blueman terminator ttf-ubuntu-font-family pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-zeroconf paprefs pavucontrol arandr
-yay -S i3lock-fancy-git paper-icon-theme-git i3cat-git indicator-powersave powerpill toilet
-
-## Configs
-# i3status config
-sudo mv ~/rugl/bash/arch-setuptools/configs/system-wide/i3status.conf /etc/i3status.conf
-# TWMN
-#mkdir -p .config/twmn
-#cp ~/rugl/bash/arch-setuptools/configs/user/twmn.conf ~/.config/twmn/twmn.conf
 # GTK Theme
 mkdir -p .config/gtk-3.0
 rm ~/.config/gtk-3.0/settings.ini
@@ -56,8 +20,6 @@ mkdir -p ~/.i3
 cp ~/rugl/bash/arch-setuptools/configs/user/i3cat.conf ~/.i3/
 cp ~/rugl/bash/arch-setuptools/configs/user/exit_script.sh ~/.i3/
 cp ~/rugl/bash/arch-setuptools/configs/user/mpd-nowplaying.sh ~/.i3/
-# Touchpad config
-sudo mv ~/rugl/bash/arch-setuptools/configs/system-wide/30-touchpad.conf /etc/X11/xorg.conf.d/
 # Configure MPD
 mkdir -p ~/.config/mpd
 mkdir ~/.config/mpd/playlists
@@ -69,25 +31,6 @@ cp ~/rugl/bash/arch-setuptools/configs/user/redshift.conf ~/.config/
 # Generate SSH keys
 echo "Your new SSH private and public key will be generated now..."
 ssh-keygen
-
-# Add you to these groups
-sudo gpasswd -a $USER dbus
-sudo gpasswd -a $USER audio
-sudo gpasswd -a $USER video
-sudo gpasswd -a $USER wheel
-sudo gpasswd -a $USER optical
-sudo gpasswd -a $USER lp
-
-sudo systemctl enable hddtemp smartd rngd bluetooth
-
-echo "Do you wish to run sensors-detect?"
-read -r _SENSORS_TRUE
-if [[ $_SENSORS_TRUE == y* ]]
-then
-    sudo sensors-detect
-else
-    :
-fi
 
 # ZSH stuff
 echo

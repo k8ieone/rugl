@@ -15,7 +15,7 @@ then
         #killall mpd
         #killall blueman-applet
         i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'
-        pkill -9 -u `id -u $USER`
+        pkill -u `id -u $USER`
     else
         systemctl $act -i
     fi

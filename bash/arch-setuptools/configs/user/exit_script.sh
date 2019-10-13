@@ -6,7 +6,7 @@ suspend
 logout" | dmenu)
 if [ $? -eq 0 ]
 then
-    if [[ $act=="logout" ]]
+    if [[ $act == logout ]]
     then
         killall nm-applet
         killall redshift-gtk

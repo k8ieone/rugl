@@ -14,9 +14,12 @@ then
         killall /usr/lib/notification-daemon-1.0/notification-daemon
         killall mpd
         killall blueman-applet
+        killall clight
+        rm ~/.i3/clight
         i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'
         #pkill -u `id -u $USER`
     else
+        rm ~/.i3/clight
         systemctl $act -i
     fi
 else

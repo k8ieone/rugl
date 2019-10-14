@@ -70,7 +70,7 @@ if [[ $_BOOTMODE == BIOS ]]
 then
     pacman -S grub
     echo
-    echo -n "Please enter the destination disk (not partition): "
+    echo -n "Please enter the destination disk (not partition): /dev/"
     read -r _INSTALLDISK
     grub-install --target=i386-pc /dev/$_INSTALLDISK
     cp configs/system-wide/grub /etc/default/grub

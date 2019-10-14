@@ -7,5 +7,8 @@ _counter=0
 while (( 500 > $_counter ))
 do
 	_counter=$(($_counter+1))
-	l2ping -s 640 -f $1 & 
+	l2ping -i hci0 -s 640 -f $1 & 
+	#l2ping -i hci1 -s 640 -f $1 &
+	#l2ping -i hci2 -s 640 -f $1 & 
+	#l2ping -i hci3 -s 640 -f $1 &
 done

@@ -35,7 +35,7 @@ sudo rm -r yay
 
 # Install Xorg, i3 and some stuff
 sudo pacman -S xorg dmenu patch i3-gaps notification-daemon mpc i3status xorg-xinit adapta-gtk-theme mpd scrot redshift powerline-fonts network-manager-applet bluez bluez-utils blueman terminator ttf-ubuntu-font-family pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-zeroconf paprefs pavucontrol arandr
-yay -S i3lock-fancy-git paper-icon-theme-git i3cat-git indicator-powersave powerpill toilet
+yay -S i3lock-fancy-git paper-icon-theme-git i3cat-git indicator-powersave powerpill toilet clight
 
 ## Configs
 # i3status config
@@ -56,6 +56,7 @@ mkdir -p ~/.i3
 cp ~/rugl/bash/arch-setuptools/configs/user/i3cat.conf ~/.i3/
 cp ~/rugl/bash/arch-setuptools/configs/user/exit_script.sh ~/.i3/
 cp ~/rugl/bash/arch-setuptools/configs/user/mpd-nowplaying.sh ~/.i3/
+cp ~/rugl/bash/arch-setuptools/configs/user/toggle_clight.sh ~/.i3/
 # Touchpad config
 sudo mv ~/rugl/bash/arch-setuptools/configs/system-wide/30-touchpad.conf /etc/X11/xorg.conf.d/
 # Configure MPD
@@ -65,6 +66,8 @@ mkdir ~/Music
 cp ~/rugl/bash/arch-setuptools/configs/user/mpd.conf ~/.config/mpd/
 # Redshift config
 cp ~/rugl/bash/arch-setuptools/configs/user/redshift.conf ~/.config/
+# Clight config
+cp ~/rugl/bash/arch-setuptools/configs/user/clight.conf ~/.config/
 
 # Generate SSH keys
 echo "Your new SSH private and public key will be generated now..."

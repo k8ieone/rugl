@@ -20,6 +20,7 @@ mkdir -p ~/.i3
 cp ~/rugl/bash/arch-setuptools/configs/user/i3cat.conf ~/.i3/
 cp ~/rugl/bash/arch-setuptools/configs/user/exit_script.sh ~/.i3/
 cp ~/rugl/bash/arch-setuptools/configs/user/mpd-nowplaying.sh ~/.i3/
+cp ~/rugl/bash/arch-setuptools/configs/user/toggle_clight.sh ~/.i3/
 # Configure MPD
 mkdir -p ~/.config/mpd
 mkdir ~/.config/mpd/playlists
@@ -27,6 +28,8 @@ mkdir ~/Music
 cp ~/rugl/bash/arch-setuptools/configs/user/mpd.conf ~/.config/mpd/
 # Redshift config
 cp ~/rugl/bash/arch-setuptools/configs/user/redshift.conf ~/.config/
+# Clight config
+cp ~/rugl/bash/arch-setuptools/configs/user/clight.conf ~/.config/
 
 # Generate SSH keys
 echo "Your new SSH private and public key will be generated now..."

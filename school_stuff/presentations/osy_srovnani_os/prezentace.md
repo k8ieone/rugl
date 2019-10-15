@@ -40,12 +40,22 @@ marp: true
 
 ---
 
+# Red Hat Enterprise Linux
+ * Uživatelské prostředí: GNOME3
+ * Systém souborů: ext4, xfs (kombinace)
+ * Správce balíčků: DNF, RPM, Yum
+ * Init systém: systemd
+ * Cyklus vydání nové verze: 2 roky
+ * Délka podpory a bezpečnostních aktualizací: do 10 let
+
+---
+
 # CentOS
  * Uživatelské prostředí: GNOME3
  * Systém souborů: xfs
  * Správce balíčků: Yum
  * Init systém: systemd
- * Cyklus vydání nové verze: 3-5 let
+ * Cyklus vydání nové verze: 2-3 roky
  * Délka podpory a bezpečnostních aktualizací: do 10 let
 
 ---

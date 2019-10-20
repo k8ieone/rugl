@@ -34,7 +34,7 @@ if [ -d /sys/firmware/efi/efivars ]
 then
     _BOOTMODE=EFI
     echo
-    echo -n "Please specify the EFI system partition: "
+    echo -n "Please specify the EFI system partition: /dev/"
     read -r _EFIPART
 else
     _BOOTMODE=BIOS
@@ -79,6 +79,7 @@ then
         echo "Formating EFI partition /dev/$_EFIPART"
         mkfs.fat -F32 /dev/$_EFIPART
         sleep 2
+        mkdir /mnt/boot
         mount /dev/$_EFIPART /mnt/boot
     elif [[ $_OK == n* ]]
     then

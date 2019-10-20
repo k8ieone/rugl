@@ -68,7 +68,7 @@ passwd
 # TODO: Figure out SWAP in order to allow for suspend to disk
 if [[ $_BOOTMODE == BIOS ]]
 then
-    pacman -S grub
+    pacman -S grub which
     echo
     echo -n "Please enter the destination disk (not partition): /dev/"
     read -r _INSTALLDISK
@@ -77,7 +77,7 @@ then
     grub-mkconfig -o /boot/grub/grub.cfg
 elif [[ $_BOOTMODE == EFI ]]
 then
-    pacman -S grub efibootmgr
+    pacman -S grub efibootmgr which
     grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Arch
     cp configs/system-wide/grub /etc/default/grub
     grub-mkconfig -o /boot/grub/grub.cfg

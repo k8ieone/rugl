@@ -34,8 +34,8 @@ cd ~
 sudo rm -r yay
 
 # Install Xorg, i3 and some stuff
-sudo pacman -S xorg dmenu patch i3-gaps notification-daemon mpc i3status xorg-xinit ttf-font-awesome adapta-gtk-theme mpd scrot redshift powerline-fonts network-manager-applet bluez bluez-utils blueman terminator ttf-ubuntu-font-family pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-zeroconf paprefs pavucontrol arandr
-yay -S i3lock-fancy-git paper-icon-theme-git i3cat-git indicator-powersave powerpill toilet clight
+sudo pacman -S xorg dmenu patch xsecurelock i3-gaps notification-daemon mpc i3status xorg-xinit ttf-font-awesome adapta-gtk-theme mpd scrot redshift powerline-fonts network-manager-applet bluez bluez-utils blueman terminator ttf-ubuntu-font-family pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-zeroconf paprefs pavucontrol arandr
+yay -S paper-icon-theme-git i3cat-git indicator-powersave powerpill toilet clight
 
 ## Configs
 # i3status config

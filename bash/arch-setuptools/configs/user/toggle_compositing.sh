@@ -9,6 +9,6 @@ then
 else
     touch ~/.i3/comp
     compton -b
-    glava &
+    glava -d &
     notify-send --expire-time=2000 "Compositing enabled"
 fi

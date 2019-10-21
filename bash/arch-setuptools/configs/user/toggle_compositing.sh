@@ -5,10 +5,10 @@ then
     rm ~/.i3/comp
     killall compton
     killall glava
-    notify-send --expire-time=5000 "Compositing disabled"
+    notify-send --expire-time=2000 "Compositing disabled"
 else
     touch ~/.i3/comp
     compton -b
     glava &
-    notify-send --expire-time=5000 "Compositing enabled"
+    notify-send --expire-time=2000 "Compositing enabled"
 fi

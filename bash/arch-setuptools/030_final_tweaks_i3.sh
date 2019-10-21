@@ -119,4 +119,4 @@ else
     echo "${red}Warning! ${reset}i3 will not start because of ZSH missing!"
     echo "You will have to start it manually using startx!"
 fi
-echo "Sidenote: glava will probably have the wrong resolution. Use screen height - 200 as the window y position and 200 as height."
+echo "Sidenote: glava will probably have the wrong resolution. Use screen height - 200 - 20 as the window y position and 200 as height."

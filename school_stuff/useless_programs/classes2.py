@@ -3,14 +3,14 @@
 # Class definition
 class Nadoba:
     def __init__(self, max_obsah):
-        self.max_obsah = max_obsah
+        self.__max_obsah = max_obsah
         self.obsah = 0
-        print("Vytvořena nádoba s maximálním obsahem", self.max_obsah, "litrů.")
+        print("Vytvořena nádoba s maximálním obsahem", self.__max_obsah, "litrů.")
     def pridej(self, mnozstvi):
-        if self.max_obsah < (self.obsah + mnozstvi):
+        if self.__max_obsah < (self.obsah + mnozstvi):
             print("Do nádoby nelze přidat větší množství vody, než její objem!")
             print("Doplňuji celou nádobu...")
-            self.obsah = self.max_obsah
+            self.obsah = self.__max_obsah
             return 0
         else:
             self.obsah += mnozstvi

@@ -12,10 +12,6 @@ class Nadoba:
             print("Doplňuji celou nádobu...")
             self.obsah = self.__max_obsah
             return 0
-        #else:
-        #    self.obsah += mnozstvi
-        #    return 0
-        # From what I understand it should work like this as well...
         self.obsah += mnozstvi
         return 0
     def uber(self, mnozstvi):

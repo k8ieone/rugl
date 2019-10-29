@@ -23,7 +23,7 @@ else
 fi
 
 # Install basic packages
-sudo pacman -S zsh make gcc gc automake autoconf pkgconf fakeroot binutils hddtemp smartmontools lm_sensors neofetch rng-tools opensc systemd-swap
+sudo pacman -S zsh make gcc gc automake patch autoconf pkgconf fakeroot binutils hddtemp smartmontools lm_sensors neofetch rng-tools opensc systemd-swap
 
 # Install yay
 cd ~
@@ -34,7 +34,7 @@ cd ~
 sudo rm -r yay
 
 # Install Xorg, i3 and some stuff
-sudo pacman -S xorg dmenu patch xsecurelock i3-gaps notification-daemon mpc i3status xorg-xinit glava ttf-font-awesome adapta-gtk-theme mpd scrot redshift powerline-fonts network-manager-applet bluez bluez-utils blueman terminator ttf-ubuntu-font-family pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-zeroconf paprefs pavucontrol arandr
+sudo pacman -S xorg dmenu xsecurelock i3-gaps notification-daemon mpc i3status xorg-xinit glava ttf-font-awesome adapta-gtk-theme mpd scrot redshift powerline-fonts network-manager-applet bluez bluez-utils blueman terminator ttf-ubuntu-font-family pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-zeroconf paprefs pavucontrol arandr
 yay -S paper-icon-theme-git i3cat-git indicator-powersave powerpill toilet clight compton-tryone-git
 
 ## Configs

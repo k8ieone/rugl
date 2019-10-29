@@ -12,17 +12,19 @@ class Nadoba:
             print("Doplňuji celou nádobu...")
             self.obsah = self.__max_obsah
             return 0
-        else:
-            self.obsah += mnozstvi
-            return 0
+        #else:
+        #    self.obsah += mnozstvi
+        #    return 0
+        # From what I understand it should work like this as well...
+        self.obsah += mnozstvi
+        return 0
     def uber(self, mnozstvi):
         if (self.obsah - mnozstvi) < 0:
             print("Obsah by se rovnal nule, vylévám celou nádobu...")
             self.obsah = 0
             return 0
-        else:
-            self.obsah -= mnozstvi
-            return 0
+        self.obsah -= mnozstvi
+        return 0
 
 # Object creation
 nadoba1 = Nadoba(5)

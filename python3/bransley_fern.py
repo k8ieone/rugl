@@ -32,7 +32,7 @@ def Draw():
     global bigListY
     
     for x in range(number):
-        NameList[x].penup
+        #NameList[x].penup # This seems to have no effect
         NameList[x].setposition(bigListX[x], bigListY[x])
         NameList[x].dot(2, "green")
         
@@ -49,7 +49,7 @@ def getPoint():
         #print(r)
             
         if r < 1:
-            nextX = 0;
+            nextX = 0 # There was an unnessesary semicolon here (probably a typo)
             nextY = 0.16 * y
                 
         elif r < 86:

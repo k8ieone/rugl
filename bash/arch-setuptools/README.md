@@ -17,7 +17,7 @@ These are the commands you have to run:
 1. git clone https://github.com/satcom886/rugl
 1. cfdisk /dev/[YOUR DISK]
 1. cd rugl/bash/arch-setuptools
-1. bash 000_base.sh [YOUR DISK]
+1. bash 000_base.sh [NEW ROOT PARTITION (without the "/dev")]
 1. arch-chroot /mnt
 1. cd root
 1. bash rugl/bash/arch-setuptools/010_basic_conf_and_grub.sh

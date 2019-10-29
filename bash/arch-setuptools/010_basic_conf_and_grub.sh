@@ -73,13 +73,14 @@ then
     echo -n "Please enter the destination disk (not partition): /dev/"
     read -r _INSTALLDISK
     grub-install --target=i386-pc /dev/$_INSTALLDISK
-    cp configs/system-wide/grub /etc/default/grub
+    cp ~/rugl/bash/arch-setuptools/configs/system-wide/grub /etc/default/grub
     grub-mkconfig -o /boot/grub/grub.cfg
 elif [[ $_BOOTMODE == EFI ]]
 then
     pacman -S grub efibootmgr which
-    grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Arch
-    cp configs/system-wide/grub /etc/default/grub
+    cd /
+    grub-install --target=x86_64-efi --efi-directory=boot --bootloader-id=Arch
+    cp ~/rugl/bash/arch-setuptools/configs/system-wide/grub /etc/default/grub
     grub-mkconfig -o /boot/grub/grub.cfg
 fi
 

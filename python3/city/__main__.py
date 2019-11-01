@@ -1,4 +1,0 @@
-    import hospital
-    import police
-
-

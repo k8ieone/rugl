@@ -1,4 +1,4 @@
-import exeptions_police
+import exceptions_police
 
 class Police:
     
@@ -29,11 +29,21 @@ class Police:
             self.setActive(False)
 
         else:
-            raise CantClosePolice
+            raise CantClosePolice("Police is already closed")
 
     def openPolice(self):
         if not self.getActive():
             self.setActive(True)
 
         else:
-            raise CantOpenPolice
+            raise CantOpenPolice("Police is already opened")
+
+    def setCurrent_employees(self, employees):
+        if employees <= self.getMax_employees():
+            self.__current_employees = employees
+
+        elif employees > self.getMax_employees():
+            raise TooMuchEmployees("You can't have more employees than the maximal number of employees.")
+
+        else:
+            raise InvalidNumberOfEmployees("You have entered invalid number of employees.")

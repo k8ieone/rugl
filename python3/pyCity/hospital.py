@@ -1,4 +1,4 @@
-import exeptions_hospital
+import exceptions_hospital
 
 class Hospital:
 
@@ -49,33 +49,43 @@ class Hospital:
             self.setActive(False)
 
         else:
-            raise CantCloseHospital
+            raise CantCloseHospital("Hospital is already closed.")
 
     def openHospital(self):
         if not self.getActive:
             self.setActive(True)
 
         else:
-            raise CantOpenHospital
+            raise CantOpenHospital("Hospital is already opened.")
         
     def closePharmacy(self):
         if self.getPharmacy and self.getPharmacy_active:
             self.setPharmacy_active(False)
 
         elif not self.getPharmacy:
-            raise DoesntHavePharmacy
+            raise DoesntHavePharmacy("Hospital doesn't have it's own pharmacy.")
 
         else:
-            raise CantClosePharmacy
+            raise CantClosePharmacy("Hospital's pharmacy is already closed.")
 
     def openPharmacy(self):
         if self.getPharmacy and not self.getPharmacy_active:
             self.setPharmacy_active(True)
 
         elif not self.getPharmacy:
-            raise DoesntHavePharmacy
+            raise DoesntHavePharmacy("Hospital doesn't have it's own pharmacy.")
 
         else:
-            raise CantOpenPharmacy
+            raise CantOpenPharmacy("Hospital's pharmacy is already opened.")
+
+    def setCurrent_employees(self, employees):
+        if employees <= self.getMax_employees():
+            self.__current_employees = employees
+
+        elif employees > self.getMax_employees():
+            raise TooMuchEmployees("You can't have more employees than the maximal number of employees.")
+
+        else:
+            raise InvalidNumberOfEmployees("You have entered invalid number of employees.")
 
 

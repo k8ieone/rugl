@@ -21,6 +21,7 @@ Please open an issue in the "issues" tab. Please try to **describe** the problem
  * yogy's projects:
    * python3/pysnake - a snake game in python
    * python3/pyparosci - a rock paper scissors "action game" (work in progress, currently on hold)  
+   * pyhton3/pyCity - a small city simulator
 
 *Please add any projects of yours (or other people) that you think are worth checking out.*
 

@@ -1,5 +1,4 @@
-import exceptions_firestation
-
+import Services.Exceptions.exceptions_firestation
 class FireStation:
 
     def __init__(self, active, size, max_employees, current_employees):

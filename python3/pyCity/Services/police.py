@@ -1,4 +1,4 @@
-import exceptions_police
+import Services.Exceptions.exceptions_police
 
 class Police:
     

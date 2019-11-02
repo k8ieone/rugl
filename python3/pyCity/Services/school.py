@@ -1,4 +1,4 @@
-import exceptions_school
+import Services.Exceptions.exceptions_school
 
 class school:
     def __init__(self, size, active, type, max_students, current_students, max_teachers, current_teachers, focus = None, playground = False, playground_size = None, pool = False):

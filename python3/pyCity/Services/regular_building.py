@@ -1,4 +1,4 @@
-import exceptions_regular_building
+import Services.Exceptions.exceptions_regular_building
 
 class RegularBuilding:
     def __init__(self, size, type, max_residents, current_residents):

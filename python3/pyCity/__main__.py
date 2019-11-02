@@ -1,6 +1,6 @@
-import police
-import hospital
-import school
-import firestation
-import regular_building
-import special_building
+import Services.firestation
+import Services.hospital
+import Services.police
+import Services.regular_building
+import Services.school
+import Services.special_building

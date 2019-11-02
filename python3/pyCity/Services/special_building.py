@@ -1,4 +1,4 @@
-import exceptions_special_building
+import Services.Exceptions.exceptions_special_building
 
 class SpecialBuilding:
     def __init__(self, size, active, name, max_tourists, current_tourists, max_employees, current_employees):

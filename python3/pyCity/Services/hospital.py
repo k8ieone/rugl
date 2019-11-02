@@ -1,4 +1,4 @@
-import exceptions_hospital
+import Services.Exceptions.exceptions_hospital
 
 class Hospital:
 

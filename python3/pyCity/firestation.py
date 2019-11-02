@@ -1,4 +1,4 @@
-import python3.city.exeptions_firestation
+import exceptions_firestation
 
 class FireStation:
 

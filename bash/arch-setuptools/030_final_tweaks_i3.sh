@@ -58,6 +58,7 @@ cp ~/rugl/bash/arch-setuptools/configs/user/exit_script.sh ~/.i3/
 cp ~/rugl/bash/arch-setuptools/configs/user/mpd-nowplaying.sh ~/.i3/
 cp ~/rugl/bash/arch-setuptools/configs/user/toggle_clight.sh ~/.i3/
 cp ~/rugl/bash/arch-setuptools/configs/user/toggle_compositing.sh ~/.i3/
+cp ~/rugl/bash/arch-setuptools/configs/user/play_cd.sh ~/.i3/
 # Touchpad config
 sudo mv ~/rugl/bash/arch-setuptools/configs/system-wide/30-touchpad.conf /etc/X11/xorg.conf.d/
 # Configure MPD

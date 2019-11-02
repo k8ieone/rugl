@@ -1,13 +1,16 @@
 # PyCity
 
 ## What is this? 
-This is going to be small city simulator **hopefully** with simple 2d graphics
+This is going to be small city simulator **hopefully** with simple 2d graphics. Unlike Cities: Skyline or Simcity yuo are gonna start with pre-generated city that you can modify.
 
 ## About future.. 
 * The main goal is to create city simulator where you can create or delete buildings, destroy the city with some natural disaster or anything you like!
 * Long-term goal is to create webapp for this 
 * Integrate a [pyLogin (RUGL/python3/pylogin)] or [ISY (RUGL/python3/isy)]
 * Create simple 2d graphics. (Propably with pygame)
+* Use something like picotui for non-final versions and maybe few finals
+* Create gui
+* Create some sort of "Creative" mode when creating new city
 
 ## ..And present
 First few versions are not gonna be playable at all. They will always start from the total beginning. They will not have any graphics. When the first final release is out, it's gonna be named something like "pyCity fv. 1" - meaning pyCity is on final version 1

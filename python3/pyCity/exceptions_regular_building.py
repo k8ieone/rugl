@@ -1,0 +1,2 @@
+def InvalidNumberOfResidents(Exception):
+    pass

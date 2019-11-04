@@ -8,21 +8,20 @@ import Services.school
 import Services.special_building
 
 class City:
-    def __init__(self, size, citizens, current_citizens, finances, name):
+    def __init__(self, size, current_citizens, finances, name):
         self.__name = name
         self.__size = size
-        self.__citizens = citizens
         self.__finances = finances
         self.__current_citizens = current_citizens
+
+    def __str__(self):
+        return "Name of city: %s \n Current citizens: %s \n Size of city: %s \n Current finances: %s" % (self.getName, self.getCurrent_Citizens, self.getSize, self.getFinances)
 
     def getName(self):
         return self.__name
 
     def getSize(self):
         return self.__size
-
-    def getCitizens(self):
-        return self.__citizens
 
     def getFinances(self):
         return self.__finances
@@ -66,3 +65,9 @@ def CreatingCity():
         citizens = random.randint(1000000, 100000000000) * multiplier
         buildings = citizens / 100
         finances = citizens * multiplier
+
+    name = City(size, citizens, finances, name)
+    return name
+
+city = CreatingCity()
+print(city)

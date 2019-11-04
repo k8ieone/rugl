@@ -54,10 +54,15 @@ def CreatingCity():
     if size == "Small":
         size = random.randint(500, 500)
         citizens = random.randint(100, 1000) * multiplier
+        buildings = citizens / 3
+        finances = citizens * multiplier
     if size == "City":
         size = random.randint(1000, 1000)
         citizens = random.randint(3000, 100000) * multiplier
+        building = citizens / 10
+        finances = citizens * multiplier
     if size == "Metropolis":
         size = random.randint(10000, 10000)
         citizens = random.randint(1000000, 100000000000) * multiplier
-
+        buildings = citizens / 100
+        finances = citizens * multiplier

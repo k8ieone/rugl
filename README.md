@@ -14,7 +14,7 @@ Please open an issue in the "issues" tab. Please try to **describe** the problem
 
 # What is worth checking out?
  * satcom886's projects:
-   * bash/bt_killer - DoS attack for Bluetooth)
+   * bash/bt_killer - DoS attack for Bluetooth
    * bash/macchanger_tools MAC address changer helper script
    * bash/arch-setuptools - a bunch of scripts and configs to help with installing Arch Linux
    * python3/pycracker - a password cracker written in python

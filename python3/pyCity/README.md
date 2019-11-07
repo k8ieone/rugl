@@ -24,6 +24,6 @@ If you have any ideas what to add to game or how to improve it, try to briefly d
 ### Managment 
 This is going to be pretty messy since this is first time when I'm trying to make multi-file app in python. If you have any advice for me how to improve imports or directories managment, try to describe it in issues
 
-[[pyLogin (RUGL/python3/pylogin)]]: https://github.com/satcom886/rugl/tree/master/python3/pylogin
+[pyLogin (RUGL/python3/pylogin)]: https://github.com/satcom886/rugl/tree/master/python3/pylogin
 [ISY (RUGL/python3/isy)]: https://github.com/satcom886/rugl/tree/master/python3/isy
 

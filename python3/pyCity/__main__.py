@@ -15,7 +15,7 @@ class City:
         self.__current_citizens = current_citizens
 
     def __str__(self):
-        return "Name of city: %s \n Current citizens: %s \n Size of city: %s \n Current finances: %s" % (self.getName, self.getCurrent_Citizens, self.getSize, self.getFinances)
+        return "Name of city: %s \n Current citizens: %s \n Size of city: %s \n Current finances: %s" % (self.__name, self.__current_citizens, self.__size, self.__finances)
 
     def getName(self):
         return self.__name
@@ -32,39 +32,38 @@ class City:
 def CreatingCity():
     answer = ""
     multiplier = 1
-    while answer != "Noobie" or answer != "Standard" or answer != "Proffesional":
-        answer = str(input("What difficulty do you wanna take? (Noobie/Standard/Professional)"))
-        if answer != "Noobie" or answer != "Standard answer" or answer != "Proffesional":
-            print("Please choose one of the options.")
-
-    if answer == "Noobie": multiplier = 1
-    elif answer == "Standard": multiplier = 2
-    elif answer == "Proffesional": multiplier = 3
+    while True:
+        answer = str(input("What difficulty do you wanna take? (Noobie/Standard/Proffeional) "))
+        if answer == "Noobie": multiplier = 3; break
+        elif answer == "Standard": multiplier = 2; break 
+        elif answer == "Proffesional": multiplier = 1; break
+        else: print("Please select one of the options!")        
 
     name = str(input("Enter a name for your city: "))
     
     size = "" 
-    while size != "Small" or size != "City" or size != "Metropolis":
-     size = str(input(f"Enter the size of {name} (Small/City/Metropolis): "))
-
-     if size != "Small" or size != "City" or size != "Metropolis":
-         print("Please choose one of the options.")
-
-    if size == "Small":
-        size = random.randint(500, 500)
-        citizens = random.randint(100, 1000) * multiplier
-        buildings = citizens / 3
-        finances = citizens * multiplier
-    if size == "City":
-        size = random.randint(1000, 1000)
-        citizens = random.randint(3000, 100000) * multiplier
-        building = citizens / 10
-        finances = citizens * multiplier
-    if size == "Metropolis":
-        size = random.randint(10000, 10000)
-        citizens = random.randint(1000000, 100000000000) * multiplier
-        buildings = citizens / 100
-        finances = citizens * multiplier
+    while True:
+        size = str(input(f"Enter the size of {name} (Small/City/Metropolis): "))
+        if size == "Small":
+            size = random.randint(500, 3000)
+            citizens = random.randint(100, 1000) * multiplier
+            buildings = citizens / 3
+            finances = citizens * multiplier
+            break
+        elif size == "City":
+            size = random.randint(1000, 8000)
+            citizens = random.randint(3000, 100000) * multiplier
+            building = citizens / 10
+            finances = citizens * multiplier
+            break
+        elif size == "Metropolis":
+            size = random.randint(10000, 60000)
+            citizens = random.randint(1000000, 100000000000) * multiplier
+            buildings = citizens / 100
+            finances = citizens * multiplier
+            break
+        else:
+            print("Please select one of the options!")
 
     name = City(size, citizens, finances, name)
     return name

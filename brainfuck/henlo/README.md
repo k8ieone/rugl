@@ -14,6 +14,7 @@
     * This is the more readable one
 
 ## How to run it 
-Best option is to use something like [this] 
+- Best option is to use something like [this] 
+- Or write your own! 
 
 [this]: https://github.com/davekch/b

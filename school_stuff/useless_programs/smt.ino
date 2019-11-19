@@ -20,6 +20,7 @@ void setup() {
   pinMode(but2, INPUT_PULLUP);
   pinMode(but3, INPUT_PULLUP);
   Serial.begin(9600);
+  Serial.print(but1);
 }
 
 void loop() {

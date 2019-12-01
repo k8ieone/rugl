@@ -1,4 +1,4 @@
-#!/bin/bash
+btrfs device delete /dev/sdc#!/bin/bash
 
 # This will take you the rest of the way.
 # It will create a swap file, generate a ssh key, install and configure ZSH, 
@@ -26,7 +26,7 @@ else
 fi
 
 # Install some packages
-sudo pacman -S boinc-nox zsh crda nano make gcc gc patch automake autoconf pkgconf fakeroot binutils netdata hddtemp smartmontools lm_sensors neofetch rng-tools opensc systemd-swap
+sudo pacman -Sbtrfs device delete /dev/sdc zsh crda nano make gcc gc patch automake autoconf pkgconf fakeroot binutils netdata hddtemp smartmontools lm_sensors neofetch rng-tools opensc systemd-swap
 
 echo "Your new SSH private and public key will be generated now..."
 ssh-keygen
@@ -36,15 +36,13 @@ sudo gpasswd -a $USER dbus
 sudo gpasswd -a $USER audio
 sudo gpasswd -a $USER video
 sudo gpasswd -a $USER wheel
-sudo gpasswd -a $USER boinc
 sudo gpasswd -a $USER optical
 sudo gpasswd -a $USER lp
 
-sudo systemctl enable netdata boinc-client hddtemp smartd rngd
+sudo systemctl enable netdata hddtemp smartd rngd
 
 # Additional netdata charts
 sudo gpasswd -a netdata boinc
-# TODO: get BOINC's gui-rpc value and write it to netdata config
 echo "SMARTD_ARGS=\"-A /var/log/smartd/ -i 600\"" | sudo tee /etc/default/smartmontools
 sudo mkdir -p /var/log/smartd
 

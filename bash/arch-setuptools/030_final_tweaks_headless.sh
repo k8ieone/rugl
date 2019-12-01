@@ -1,4 +1,4 @@
-btrfs device delete /dev/sdc#!/bin/bash
+#!/bin/bash
 
 # This will take you the rest of the way.
 # It will create a swap file, generate a ssh key, install and configure ZSH, 

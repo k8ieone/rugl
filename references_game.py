@@ -21,11 +21,13 @@ class Location:
         return self.western_slot
     
     def __str__(self):
-        print("You can move to there locations: ", sep="")
-        print(get_northern, sep=", ")
-        print(get_southern, sep=", ")
-        print(get_eastern, sep=", ")
-        print(get_western, sep=".")
+        print(self.description)
+        print("You can move to these locations: ", end="")
+        print(self.get_northern(), end=", ")
+        print(self.get_southern(), end=", ")
+        print(self.get_eastern(), end=", ")
+        print(self.get_western(), end=".")
+        return "{}\nYou can move to these locations: {} (north) {} (south) {} (east) {} (west)".format(self.description, self.get_northern(), self.get_southern(), self.get_eastern(), self.get_western())
         
 class Castle(Location):
     def explore(self):
@@ -38,6 +40,14 @@ class Castle(Location):
             print("You got lost in the castle...")
             print("You loose!")
             game = False
+
+castle = Castle("Castle", "The walls are covered in moss. It looks deserted. There is a big doorway.", None, None, "forest1")
+forest1 = Location("Forest", "You entered the forest. It seems like you are on the outskirt of it. You also see an old road.", None, None, "forest_split", "castle")
+forest_split = Location("Forest split", "You arrive at a split. One road heads to the west. The other one heads east. There are no markings or signs. You only see that the eastern road looks newer." , None, "forest2", "forest3", "castle")
+forest3 = Location("Forest", "You venture deeper into the forest. You follow the road which seems to be well maintained and still used.", None, None, "lake", "forest_split")
+lake = Location("Lake", "You come out of the forest and see a big lake.", None, None, None, "forest3")
+forest2 = Location("Forest", "You enter a forest. You used to go here with your father when he was still alive. You have tons of memories about this place.", "forest_split", None, "house")
+house = Location("House", "This is the house where you grew up. You have many memories of this place.", None, None, None, "forest2")
 
 class Player:
     def __init__(self):
@@ -56,10 +66,10 @@ class Player:
         else:
             print("You can't move here!")
             print("Please choose a different location")
+    def print_current_location(self):
+        return self.current_location
 
-castle = Castle("Castle", "The walls are covered in moss. It looks deserted. There is a big doorway.", None, None, "forest1")
-forest1 = Location("Forest", "You entered the forest. It seems like you are on the outskirt of it. You also see an old road.", None, None, "forest_split", "castle")
-forest_split = Location("Forest split", "You arrive at a split. One road heads to the west. The other one heads east. There are no markings or signs. You only see that the eastern road looks newer." , None, "forest2", "forest3", "castle")
+player1 = Player()
 
 while game is True:
     print(player1.current_location)

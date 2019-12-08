@@ -14,13 +14,13 @@ Please open an issue in the "issues" tab. Please try to **describe** the problem
 
 # What is worth checking out?
  * satcom886's projects:
-   * bash/bt_killer - DoS attack for Bluetooth
-   * bash/macchanger_tools MAC address changer helper script
+   * bash/bt_killer - Bluetooth DoS attack
+   * bash/macchanger_tools - MAC address changer helper script
    * bash/arch-setuptools - a bunch of scripts and configs to help with installing Arch Linux
    * python3/pycracker - a password cracker written in python
  * yogy's projects:
    * python3/pysnake - a snake game in python
-   * python3/pyparosci - a rock paper scissors "action game" (work in progress, currently on hold)  
+   * python3/pyparosci - a rock paper scissors "action game" (not finished, currently on hold)  
    * pyhton3/pyCity - a small city simulator
 
 *Please add any projects of yours (or other people) that you think are worth checking out.*

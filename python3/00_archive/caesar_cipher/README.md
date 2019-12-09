@@ -1,0 +1,3 @@
+# What is this?
+This was an assignment from our programming teacher. The result is supposed to be a working [Caesar cipher](https://en.wikipedia.org/wiki/Caesar_cipher) encryptor/decryptor.  
+I added this to the repo, because it was a little more interesting than the stuff that we normally do in programming...

@@ -22,6 +22,13 @@ read -r _USERNAME
 # Create the user
 useradd -m $_USERNAME
 passwd $_USERNAME
+if [ $? -eq 0 ]
+then
+    :
+else
+    echo "Please try again: "
+    passwd $_USERNAME
+fi
 
 # Add you to sudoers
 echo "$_USERNAME ALL=(ALL) ALL" >> /etc/sudoers

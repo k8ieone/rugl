@@ -63,6 +63,13 @@ loadkeys cz-qwertz
 echo "You will now be prompted to enter your new root password"
 echo "Keyboard layout: cz-qwertz"
 passwd
+if [ $? -eq 0 ]
+then
+    :
+else
+    echo "Please try again: "
+    passwd
+fi
 
 # Install GRUB
 # TODO: Figure out SWAP in order to allow for suspend to disk

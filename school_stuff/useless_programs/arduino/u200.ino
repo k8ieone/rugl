@@ -1,3 +1,5 @@
+//Task number 200 (very similar to the final assignment (pajka))
+
 #include <EEPROM.h>
 
 #define pinLatch 4
@@ -21,7 +23,6 @@ const int but3=A3; // toggle
 byte temperature_target;
 
 void setup() {
-  pinMode(3, OUTPUT);
   pinMode(pinLatch, OUTPUT);
   pinMode(pinClk, OUTPUT);
   pinMode(pinData, OUTPUT);
@@ -42,33 +43,22 @@ void setup() {
   else {
     temperature_target = EEPROM.read(100);
   }
-  tone(3, 750, 100);
-  delay(100);
-  tone(3, 1000, 50);
-  delay(75);
-  tone(3, 1000, 50);
-  delay(80);
-  tone(3, 800, 50);
 }
 
 void loop() {
   byte temperature_current = 255 - analogRead(A4)/4;
-  
   // Printing the temperatures to the serial console
   Serial.print("Current temperature is: ");
-  Serial.print(temperature_current);
-  Serial.print("  ");
+  Serial.println(temperature_current);
   Serial.print("Target temperature is: ");
   Serial.println(temperature_target);
-  
   // Display current temperature on the display
   display_something(temperature_current);
-  
   // Check if the heating should be on (compare target and current temperature)
+  // Add another condition which checks if the heating is enabled
   if (digitalRead(led2) == 0){
     if (temperature_current < temperature_target){
       digitalWrite(led1, LOW);
-      digitalWrite(led3, LOW);
     }
     else if (temperature_current > temperature_target){
       digitalWrite(led1, HIGH);
@@ -79,32 +69,21 @@ void loop() {
   }
 
   // Buttons and their logic
-  //-Button
   if (digitalRead(but1) == 0){
-    temperature_target -= 5;
+    temperature_target -= 1;
     EEPROM.write(100, temperature_target);
   }
-  //+Button
   else if (digitalRead(but2) == 0){
-    temperature_target += 10;
+    temperature_target += 1;
     EEPROM.write(100, temperature_target);
   }
-  //ON/OFF button
   else if (digitalRead(but3) == 0 and digitalRead(led2) == 0){
     digitalWrite(led2, HIGH);
-    digitalWrite(led3, HIGH);
     delay(150);
-    tone(3, 2000, 100);
-    delay(100);
-    tone(3, 1750, 50);
   }
   else if (digitalRead(but3) == 0 and digitalRead(led2) == 1){
     digitalWrite(led2, LOW);
     delay(150);
-    tone(3, 1750, 100);
-    delay(100);
-    tone(3, 2000, 50);
-
   }
 }
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script shoould be run as the new user. It will just setup some basic configs + zsh
+# This script should be run as the new user. It will just setup some basic configs + zsh
 
 # Colors
 red=$(tput setaf 1)

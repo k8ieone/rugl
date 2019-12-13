@@ -49,6 +49,19 @@ lake = Location("Lake", "You come out of the forest and see a big lake.", None, 
 forest2 = Location("Forest", "You enter a forest. You used to go here with your father when he was still alive. You have tons of memories about this place.", "forest_split", None, "house")
 house = Location("House", "This is the house where you grew up. You have many memories of this place.", None, None, None, "forest2")
 
+castle.eastern_slot = forest1
+forest1.eastern_slot = forest_split
+forest1.western_slot = castle
+forest_split.southern_slot = forest2
+forest_split.eastern_slot = forest3
+forest_split.western_slot = castle
+forest3.eastern_slot = lake
+forest3.western_slot = forest_split
+lake.western_slot = forest3
+forest2.northern_slot = forest_split
+forest2.eastern_slot = house
+house.western_slot = forest2
+
 class Player:
     def __init__(self):
         self.current_location = house

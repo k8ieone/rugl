@@ -68,13 +68,13 @@ class Player:
     def __str__(self):
         return "I am currently at the {} location".format(self.current_location)
     def move(self, where_to):
-        if where_to == "north" and self.current_location.get_northern_slot != None:
+        if where_to == "north" and self.current_location.get_northern_slot is not None:
             self.current_location = self.current_location.get_northern_slot
-        elif where_to == "south" and self.current_location.get_southern_slot != None:
+        elif where_to == "south" and self.current_location.get_southern_slot is not None:
             self.current_location = self.current_location.get_southern_slot
-        elif where_to == "east" and self.current_location.ger_eastern_slot != None:
+        elif where_to == "east" and self.current_location.ger_eastern_slot is not None:
             self.current_location = self.current_location.get_eastern_slot
-        elif where_to == "west" and self.current_location.get_western_slot != None:
+        elif where_to == "west" and self.current_location.get_western_slot is not None:
             self.current_location = self.current_location.get_western_slot
         else:
             print("You can't move here!")

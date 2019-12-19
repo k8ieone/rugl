@@ -1,0 +1,5 @@
+package org.learning.model;
+
+public enum NonResidentialTypes {
+    FACTORY, POWERLINE, FIREHOUSE, CLINIC, PHARMACY, HOSPITAL, POLICESTATION, POWERPLANT, GOVERNMENTBUILDING
+}

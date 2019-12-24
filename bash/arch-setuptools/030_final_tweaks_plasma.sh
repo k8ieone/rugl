@@ -73,14 +73,14 @@ else
     echo "ZSH setup will be skipped!"
 fi
 
-# Install yay and powerpill
+# Install more stuff
 cd ~
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 cd ~
 sudo rm -r yay
-yay -S powerpill toilet
+yay -S powerpill toilet plasma5-applets-thermal-monitor-git
 
 echo
 echo "${green}Done!${reset}"

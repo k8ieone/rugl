@@ -81,6 +81,9 @@ makepkg -si
 cd ~
 sudo rm -r yay
 yay -S powerpill toilet plasma5-applets-thermal-monitor-git
+# Redshift config
+mkdir -p ~/.config
+cp ~/rugl/bash/arch-setuptools/configs/user/redshift.conf ~/.config/
 
 echo
 echo "${green}Done!${reset}"

@@ -27,7 +27,7 @@ echo -n "Do you wish to install all Plasma applications? (Yes/no): "
 read -r _ALL_APPS
 if [[ $_ALL_APPS == y* ]]
 then
-    sudo pacman -S kde-applications-meta
+    sudo pacman -S plasma-meta ark dolphin gwenview spectacle konsole code kdenlive firefox ffmpegthumbs kdegraphics-thumbnailers
 else
     :
 fi

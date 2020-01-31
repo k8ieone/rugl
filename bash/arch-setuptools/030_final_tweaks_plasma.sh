@@ -21,7 +21,7 @@ else
 fi
 
 # Install some packages
-sudo pacman -S zsh crda nano make gcc gc patch automake autoconf pkgconf fakeroot binutils hddtemp lm_sensors neofetch rng-tools opensc systemd-swap plasma-meta
+sudo pacman -S zsh crda nano make gcc gc patch automake autoconf pkgconf fakeroot binutils hddtemp lm_sensors neofetch rng-tools opensc systemd-swap
 
 echo -n "Do you wish to install all Plasma applications? (Yes/no): "
 read -r _ALL_APPS

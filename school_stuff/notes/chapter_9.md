@@ -38,7 +38,7 @@ Cloudové služby se dělí do **tří** hlavních služeb:
  * IT as a service (ITaaS)
    * "Může rozšířit schopnosti IT bez investice do nové infrastruktury, trénování nového personálu nebo licencování nového softwaru."
    * "Služby jsou dostupné na vyžádání a mohou být doručeny na jakékoli zařízení na světě bez narušení funkce a bezpečnosti."
-   * ~WHAT THE HELL DOES THAT MEAN???~
+   * [Další vysvětlení](https://en.wikipedia.org/wiki/IT_as_a_service)
 ### Pojmy cloudu
  * *On-demand* - Individuál je schopný ovládat službu bez potřeby lidské interakce
  * *Rapid elasticity* - Dynamická změna alokace prostředků dle potřeby.

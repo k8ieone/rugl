@@ -11,11 +11,11 @@
     * Přiřazování systémových prostředků záleží na operačnm systému
     * Používá se v datacentrech a v cloud computingu.
   * Typ 2 (hostovaný)
-    * Většinou se používá u místně spouštěných virtuálních počítačích.
+    * Většinou se používá u místně spouštěných virtuálních počítačů.
   
  ### Pojmy virtualizace
   * Hostitel
-    * Fyzický počítač jehož prostředky se používají pro spuštění virtualného počítače.
+    * Fyzický počítač jehož prostředky se používají pro spuštění virtualního počítače.
   * Host
     * Virtualizovaný počítač běžící na hostitelovi.
     

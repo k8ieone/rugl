@@ -3,6 +3,8 @@ package org.learning.model;
 import org.learning.api.NonResidential;
 
 import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NonResidentialBuilding implements NonResidential {
 
@@ -49,8 +51,8 @@ public class NonResidentialBuilding implements NonResidential {
         return this;
     }
 
-    public NonResidentialBuilding setCoordinates(Array coordinates) {
-        this.coordinates = coordinates;
+    public NonResidentialBuilding setCoordinates(ArrayList coordinates) {
+        this.coordinates = (Array) coordinates;
         return this;
     }
 

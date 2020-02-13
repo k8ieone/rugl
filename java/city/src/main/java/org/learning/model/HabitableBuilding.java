@@ -1,6 +1,8 @@
 package org.learning.model;
 
 import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class HabitableBuilding implements org.learning.api.Habitable {
@@ -107,8 +109,8 @@ public class HabitableBuilding implements org.learning.api.Habitable {
         return this;
     }
 
-    public HabitableBuilding setCoordinates(Array coordinates) {
-        this.coordinates = coordinates;
+    public HabitableBuilding setCoordinates(ArrayList coordinates) {
+        this.coordinates = (Array) coordinates;
         return this;
     }
 

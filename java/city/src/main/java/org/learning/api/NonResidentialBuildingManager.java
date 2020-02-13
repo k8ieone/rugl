@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public interface NonResidentialBuildingManager {
 
-    public void createNonResidentialBuilding(NonResidential building) throws NonResidentialBuildingException;
+    public void addToDB(NonResidential building) throws NonResidentialBuildingException;
     public void deleteFromDB(Habitable building) throws NonResidentialBuildingException;
     public NonResidentialBuilding SetToNonResidentialBuilding(ResultSet resultset) throws SQLException;
     public NonResidentialBuilding selectFromDBbyLocation(Array location) throws NonResidentialBuildingException;

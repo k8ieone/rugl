@@ -4,6 +4,7 @@ import org.learning.model.HabitableBuilding;
 import org.learning.model.HabitableBuildingException;
 import org.learning.model.HabitableBuildingTypes;
 
+import javax.sql.DataSource;
 import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;

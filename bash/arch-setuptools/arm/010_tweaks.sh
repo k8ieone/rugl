@@ -35,7 +35,7 @@ sudo gpasswd -a $USER boinc
 sudo gpasswd -a $USER optical
 sudo gpasswd -a $USER lp
 
-sudo systemctl enable netdata boinc-client rngd fake-hwclock fake-hwclock-save.timer
+sudo systemctl enable netdata rngd fake-hwclock fake-hwclock-save.timer
 sudo systemctl start fake-hwclock
 
 # Additional netdata charts

@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# This will take you the rest of the way.
-# It will create a swap file, generate a ssh key, install and configure ZSH, 
-# add you to some groups, instal toilet, neofetch, netdata, boinc, yay and powerpill, more netdata stats (boinc, hddtemp, smartd, sensors)
-# When this script finishes running, the machine will be configured to my standards. 
-
 # Colors
 red=$(tput setaf 1)
 green=$(tput setaf 2)
@@ -26,7 +21,16 @@ else
 fi
 
 # Install some packages
-sudo pacman -S libglvnd libxi libxrender zsh crda nano make gcc gc patch automake autoconf pkgconf fakeroot binutils netdata hddtemp smartmontools lm_sensors neofetch rng-tools opensc systemd-swap
+sudo pacman -S zsh crda nano make gcc gc patch automake autoconf pkgconf fakeroot binutils hddtemp lm_sensors neofetch rng-tools opensc systemd-swap
+
+echo -n "Do you wish to install all Plasma applications? (Yes/no): "
+read -r _ALL_APPS
+if [[ $_ALL_APPS == y* ]]
+then
+    sudo pacman -S plasma-applications-meta code firefox mpv vlc riot-desktop
+else
+    sudo pacman -S plasma-meta ark p7zip unrar unarchiver lzop lrzip dolphin gwenview spectacle konsole korganizer code riot-desktop kdenlive firefox ffmpegthumbs kdegraphics-thumbnailers vlc mpv
+fi
 
 echo "Your new SSH private and public key will be generated now..."
 ssh-keygen
@@ -39,12 +43,7 @@ sudo gpasswd -a $USER wheel
 sudo gpasswd -a $USER optical
 sudo gpasswd -a $USER lp
 
-sudo systemctl enable netdata hddtemp rngd
-
-# Additional netdata charts
-sudo gpasswd -a netdata boinc
-echo "SMARTD_ARGS=\"-A /var/log/smartd/ -i 600\"" | sudo tee /etc/default/smartmontools
-sudo mkdir -p /var/log/smartd
+sudo systemctl enable hddtemp sddm rngd
 
 echo "Do you wish to run sensors-detect?"
 read -r _SENSORS_TRUE
@@ -74,14 +73,17 @@ else
     echo "ZSH setup will be skipped!"
 fi
 
-# Install yay and powerpill
+# Install more stuff
 cd ~
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 cd ~
 sudo rm -r yay
-yay -S powerpill toilet
+yay -S powerpill toilet plasma5-applets-thermal-monitor-git
+# Redshift config
+mkdir -p ~/.config
+cp ~/rugl/bash/arch-setuptools/configs/user/redshift.conf ~/.config/
 
 echo
 echo "${green}Done!${reset}"

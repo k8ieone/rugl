@@ -9,9 +9,13 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class HabitableBuildingsManager implements org.learning.api.HabitableBuildingsManager {
+public class HabitableBuildingsManagerImplementation implements org.learning.api.HabitableBuildingsManager {
 
     private DataSource dataSource;
+
+    public HabitableBuildingsManagerImplementation(DataSource dataSource){
+        this.dataSource = dataSource;
+    }
 
     @Override
     public void addToDB(Habitable building) throws HabitableBuildingException {
@@ -21,7 +25,7 @@ public class HabitableBuildingsManager implements org.learning.api.HabitableBuil
                 statement.    setInt(1, building.getMaxInhabitants());
                 statement.    setInt(2, building.getCurrentInhabitants());
                 statement.    setInt(3, building.getSize());
-                statement.  setArray(4, building.getCoordinates());
+                statement. setString(4, building.getCoordinates());
                 statement. setObject(5, building.getType());
                 statement.setBoolean(6, building.getBuildingsState());
 
@@ -41,7 +45,7 @@ public class HabitableBuildingsManager implements org.learning.api.HabitableBuil
 
         try (Connection connection = dataSource.getConnection()){
             try (PreparedStatement statement = connection.prepareStatement("DELETE FROM HabitableBuildings WHERE Coordinates = ?")) {
-                statement.setArray(1, building.getCoordinates());
+                statement.setString(1, building.getCoordinates());
                 statement.executeUpdate();
 
             } catch (SQLException e) {
@@ -60,7 +64,7 @@ public class HabitableBuildingsManager implements org.learning.api.HabitableBuil
         building.setCurrentInhabitants(resultSet.getInt("CurrentInhabitants"));
         building.setMaxInhabitants(resultSet.getInt("MaxInhabitants"));
         building.setBuildingsState(resultSet.getBoolean("Active"));
-        building.setCoordinates(resultSet.getArray("Location"));
+        building.setCoordinates(resultSet.getString("Location"));
         building.setSize(resultSet.getInt("Size"));
         building.setType((HabitableBuildingTypes) resultSet.getObject("Type"));
         return building;

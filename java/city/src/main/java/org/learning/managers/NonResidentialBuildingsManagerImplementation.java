@@ -3,17 +3,23 @@ package org.learning.managers;
 import org.learning.api.Habitable;
 import org.learning.api.NonResidential;
 import org.learning.api.NonResidentialBuildingManager;
+import org.learning.model.HabitableBuildingException;
 import org.learning.model.NonResidentialBuilding;
 import org.learning.model.NonResidentialBuildingException;
 import org.learning.model.NonResidentialTypes;
+import org.springframework.context.annotation.Bean;
 
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class NonResidentialBuildingsManager implements NonResidentialBuildingManager {
+public class NonResidentialBuildingsManagerImplementation implements NonResidentialBuildingManager {
 
     private DataSource dataSource;
+
+    public NonResidentialBuildingsManagerImplementation(DataSource dataSource){
+        this.dataSource = dataSource;
+    }
 
     @Override
     public void createNonResidentialBuilding(NonResidential building) throws NonResidentialBuildingException {
@@ -23,7 +29,30 @@ public class NonResidentialBuildingsManager implements NonResidentialBuildingMan
                 statement.    setInt(1, building.getMaxEmployees());
                 statement.    setInt(2, building.getCurrentEmployees());
                 statement.    setInt(3, building.getSize());
-                statement.  setArray(4, building.getCoordinates());
+                statement.  setString(4, building.getCoordinates());
+                statement. setObject(5, building.getType());
+                statement.setBoolean(6, building.getBuildingsState());
+
+                statement.executeUpdate();
+
+            } catch (SQLException e) {
+                throw new NonResidentialBuildingException("Problem with connection", e);
+            }
+
+        } catch (SQLException e) {
+            throw new NonResidentialBuildingException("Problem with connection", e);
+        }
+    }
+
+    @Override
+    public void addToDB(NonResidential building) throws NonResidentialBuildingException {
+
+        try (Connection connection = dataSource.getConnection()){
+            try (PreparedStatement statement = connection.prepareStatement("INSERT INTO NonResidentialBuildings (MaxEmployees, CurrentEmployees, Size, Coordinates, Type, Active) VALUES (?, ?, ?, ?, ?, ?)")){
+                statement.    setInt(1, building.getMaxEmployees());
+                statement.    setInt(2, building.getCurrentEmployees());
+                statement.    setInt(3, building.getSize());
+                statement.  setString(4, building.getCoordinates());
                 statement. setObject(5, building.getType());
                 statement.setBoolean(6, building.getBuildingsState());
 
@@ -43,7 +72,7 @@ public class NonResidentialBuildingsManager implements NonResidentialBuildingMan
 
         try (Connection connection = dataSource.getConnection()){
             try (PreparedStatement statement = connection.prepareStatement("DELETE FROM NonResidentialBuildings WHERE Coordinates = ?")){
-                statement.setArray(1, building.getCoordinates());
+                statement.setString(1, building.getCoordinates());
                 statement.executeUpdate();
 
             } catch (SQLException e) {
@@ -59,7 +88,7 @@ public class NonResidentialBuildingsManager implements NonResidentialBuildingMan
     public NonResidentialBuilding SetToNonResidentialBuilding(ResultSet resultSet) throws SQLException {
         NonResidentialBuilding building = new NonResidentialBuilding();
         building.setActive(resultSet.getBoolean("Active"));
-        building.setCoordinates(resultSet.getArray("Coordinates"));
+        building.setCoordinates(resultSet.getString("Coordinates"));
         building.setCurrentEmployees(resultSet.getInt("CurrentEmployees"));
         building.setMaxEmployees(resultSet.getInt("MaxEmployees"));
         building.setSize(resultSet.getInt("Size"));

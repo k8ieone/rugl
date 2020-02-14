@@ -1,20 +1,17 @@
 package org.learning.model;
 
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class HabitableBuilding implements org.learning.api.Habitable {
 
     private int max_inhabitants;
     private int current_inhabitants;
-    private Array coordinates;
+    private String coordinates;
     private HabitableBuildingTypes type;
     private boolean active;
     private int size;
 
-    public HabitableBuilding BasicHabitableBuilding(int max_inhabitants, Array coordinates, HabitableBuildingTypes type) {
+    public HabitableBuilding BasicHabitableBuilding(int max_inhabitants, String coordinates, HabitableBuildingTypes type) {
         this.max_inhabitants = max_inhabitants;
         this.current_inhabitants = 0;
         this.coordinates = coordinates;
@@ -44,7 +41,7 @@ public class HabitableBuilding implements org.learning.api.Habitable {
     }
 
     @Override
-    public Array getCoordinates() {
+    public String getCoordinates() {
         return this.coordinates;
     }
 
@@ -109,8 +106,8 @@ public class HabitableBuilding implements org.learning.api.Habitable {
         return this;
     }
 
-    public HabitableBuilding setCoordinates(ArrayList coordinates) {
-        this.coordinates = (Array) coordinates;
+    public HabitableBuilding setCoordinates(String coordinates) {
+        this.coordinates = coordinates;
         return this;
     }
 

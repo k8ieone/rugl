@@ -2,17 +2,13 @@ package org.learning.model;
 
 import org.learning.api.NonResidential;
 
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.List;
-
 public class NonResidentialBuilding implements NonResidential {
 
     private int max_employees;
     private int current_employees;
     private NonResidentialTypes type;
     private int size;
-    private Array coordinates;
+    private String coordinates;
     private boolean active;
 
     @Override
@@ -51,8 +47,8 @@ public class NonResidentialBuilding implements NonResidential {
         return this;
     }
 
-    public NonResidentialBuilding setCoordinates(ArrayList coordinates) {
-        this.coordinates = (Array) coordinates;
+    public NonResidentialBuilding setCoordinates(String coordinates) {
+        this.coordinates = coordinates;
         return this;
     }
 
@@ -62,7 +58,7 @@ public class NonResidentialBuilding implements NonResidential {
     }
 
     @Override
-    public Array getCoordinates() {
+    public String getCoordinates() {
         return this.coordinates;
     }
 

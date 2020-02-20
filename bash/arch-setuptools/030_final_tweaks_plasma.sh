@@ -21,7 +21,7 @@ else
 fi
 
 # Install some packages
-sudo pacman -S zsh crda nano-syntax-highlighting man-pages nano make gcc gc patch automake autoconf pkgconf fakeroot binutils hddtemp lm_sensors neofetch rng-tools opensc systemd-swap
+sudo pacman -S zsh crda nano-syntax-highlighting man-pages man-db nano make gcc gc patch automake autoconf pkgconf fakeroot binutils hddtemp lm_sensors neofetch rng-tools opensc systemd-swap
 
 echo -n "Do you wish to install all Plasma applications? (Yes/no): "
 read -r _ALL_APPS
@@ -43,7 +43,7 @@ sudo gpasswd -a $USER wheel
 sudo gpasswd -a $USER optical
 sudo gpasswd -a $USER lp
 
-sudo systemctl enable hddtemp sddm rngd
+sudo systemctl enable hddtemp sddm rngd man-db.timer
 
 echo "Do you wish to run sensors-detect?"
 read -r _SENSORS_TRUE

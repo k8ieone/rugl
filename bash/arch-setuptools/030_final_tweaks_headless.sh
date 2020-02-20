@@ -26,7 +26,7 @@ else
 fi
 
 # Install some packages
-sudo pacman -S libglvnd nano-syntax-highlighting libxi man-pages libxrender zsh crda nano make gcc gc patch automake autoconf pkgconf fakeroot binutils netdata hddtemp smartmontools lm_sensors neofetch rng-tools opensc systemd-swap
+sudo pacman -S libglvnd nano-syntax-highlighting libxi man-pages man-db libxrender zsh crda nano make gcc gc patch automake autoconf pkgconf fakeroot binutils netdata hddtemp smartmontools lm_sensors neofetch rng-tools opensc systemd-swap
 
 echo "Your new SSH private and public key will be generated now..."
 ssh-keygen
@@ -39,7 +39,7 @@ sudo gpasswd -a $USER wheel
 sudo gpasswd -a $USER optical
 sudo gpasswd -a $USER lp
 
-sudo systemctl enable netdata hddtemp rngd
+sudo systemctl enable netdata hddtemp rngd man-db.timer
 
 # Additional netdata charts
 sudo gpasswd -a netdata boinc

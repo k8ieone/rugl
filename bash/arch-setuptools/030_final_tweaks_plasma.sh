@@ -21,7 +21,7 @@ else
 fi
 
 # Install some packages
-sudo pacman -S zsh crda nano make gcc gc patch automake autoconf pkgconf fakeroot binutils hddtemp lm_sensors neofetch rng-tools opensc systemd-swap
+sudo pacman -S zsh crda nano-syntax-highlighting man-pages nano make gcc gc patch automake autoconf pkgconf fakeroot binutils hddtemp lm_sensors neofetch rng-tools opensc systemd-swap
 
 echo -n "Do you wish to install all Plasma applications? (Yes/no): "
 read -r _ALL_APPS
@@ -69,6 +69,9 @@ then
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
     echo "export ZSH=\"/home/$USER/.oh-my-zsh\"" > ~/.zshrc
     cat ~/rugl/bash/arch-setuptools/configs/user/zshrc | tee -a ~/.zshrc
+    echo "include \"/usr/share/nano/*.nanorc\"" | sudo tee -a /etc/nanorc
+    echo "include \"/usr/share/nano-syntax-highlighting/*.nanorc\"" | sudo tee -a /etc/nanorc
+
 else
     echo "ZSH setup will be skipped!"
 fi

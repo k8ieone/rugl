@@ -26,7 +26,7 @@ else
 fi
 
 # Install some packages
-sudo pacman -S libglvnd libxi libxrender zsh crda nano make gcc gc patch automake autoconf pkgconf fakeroot binutils netdata hddtemp smartmontools lm_sensors neofetch rng-tools opensc systemd-swap
+sudo pacman -S libglvnd nano-syntax-highlighting libxi man-pages libxrender zsh crda nano make gcc gc patch automake autoconf pkgconf fakeroot binutils netdata hddtemp smartmontools lm_sensors neofetch rng-tools opensc systemd-swap
 
 echo "Your new SSH private and public key will be generated now..."
 ssh-keygen
@@ -70,6 +70,8 @@ then
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
     echo "export ZSH=\"/home/$USER/.oh-my-zsh\"" > ~/.zshrc
     cat ~/rugl/bash/arch-setuptools/configs/user/zshrc | tee -a ~/.zshrc
+    echo "include \"/usr/share/nano/*.nanorc\"" | sudo tee -a /etc/nanorc
+    echo "include \"/usr/share/nano-syntax-highlighting/*.nanorc\"" | sudo tee -a /etc/nanorc
 else
     echo "ZSH setup will be skipped!"
 fi

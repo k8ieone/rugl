@@ -11,6 +11,15 @@ public class NonResidentialBuilding implements NonResidential {
     private String coordinates;
     private boolean active;
 
+    public NonResidentialBuilding(int max_employees, int current_employees, NonResidentialTypes type, int size, String coordinates, boolean active) {
+        this.max_employees = max_employees;
+        this.current_employees = current_employees;
+        this.type = type;
+        this.size = size;
+        this.coordinates = coordinates;
+        this.active = active;
+    }
+
     @Override
     public int getMaxEmployees() {
         return this.max_employees;

@@ -15,6 +15,6 @@ public interface NonResidentialBuildingManager {
     public void addToDB(NonResidential building) throws NonResidentialBuildingException;
     public void deleteFromDB(Habitable building) throws NonResidentialBuildingException;
     public NonResidentialBuilding SetToNonResidentialBuilding(ResultSet resultset) throws SQLException;
-    public NonResidentialBuilding selectFromDBbyLocation(Array location) throws NonResidentialBuildingException;
+    public NonResidentialBuilding selectFromDBbyLocation(String location) throws NonResidentialBuildingException;
     public ArrayList<NonResidentialBuilding> selectFromDBbyType(NonResidentialTypes type) throws NonResidentialBuildingException;
 }

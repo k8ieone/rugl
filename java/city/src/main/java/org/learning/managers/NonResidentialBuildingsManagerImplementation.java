@@ -1,5 +1,6 @@
 package org.learning.managers;
 
+import com.fasterxml.jackson.databind.JsonSerializer;
 import org.learning.api.Habitable;
 import org.learning.api.NonResidential;
 import org.learning.api.NonResidentialBuildingManager;
@@ -30,7 +31,7 @@ public class NonResidentialBuildingsManagerImplementation implements NonResident
                 statement.    setInt(2, building.getCurrentEmployees());
                 statement.    setInt(3, building.getSize());
                 statement.  setString(4, building.getCoordinates());
-                statement. setObject(5, building.getType());
+                statement. setString(5, building.getType().toString());
                 statement.setBoolean(6, building.getBuildingsState());
 
                 statement.executeUpdate();
@@ -53,7 +54,7 @@ public class NonResidentialBuildingsManagerImplementation implements NonResident
                 statement.    setInt(2, building.getCurrentEmployees());
                 statement.    setInt(3, building.getSize());
                 statement.  setString(4, building.getCoordinates());
-                statement. setObject(5, building.getType());
+                statement. setString(5, building.getType().toString());
                 statement.setBoolean(6, building.getBuildingsState());
 
                 statement.executeUpdate();
@@ -86,22 +87,63 @@ public class NonResidentialBuildingsManagerImplementation implements NonResident
 
     @Override
     public NonResidentialBuilding SetToNonResidentialBuilding(ResultSet resultSet) throws SQLException {
-        NonResidentialBuilding building = new NonResidentialBuilding();
-        building.setActive(resultSet.getBoolean("Active"));
-        building.setCoordinates(resultSet.getString("Coordinates"));
-        building.setCurrentEmployees(resultSet.getInt("CurrentEmployees"));
-        building.setMaxEmployees(resultSet.getInt("MaxEmployees"));
-        building.setSize(resultSet.getInt("Size"));
-        building.setType((NonResidentialTypes) resultSet.getObject("Type"));
 
-        return building;
+        String type = resultSet.getString("Type");
+        NonResidentialTypes TypeOfBuilding;
+
+        switch(type){
+            case "FACTORY":
+                TypeOfBuilding = NonResidentialTypes.FACTORY;
+                break;
+
+            case "POWERLINE":
+                TypeOfBuilding = NonResidentialTypes.POWERLINE;
+                break;
+
+            case "FIREHOUSE":
+                TypeOfBuilding = NonResidentialTypes.FIREHOUSE;
+                break;
+
+            case "CLINIC":
+                TypeOfBuilding = NonResidentialTypes.CLINIC;
+                break;
+
+            case "PHARMACY":
+                TypeOfBuilding = NonResidentialTypes.PHARMACY;
+                break;
+
+            case "HOSPITAL":
+                TypeOfBuilding = NonResidentialTypes.HOSPITAL;
+                break;
+
+            case "POLICESTATION":
+                TypeOfBuilding = NonResidentialTypes.POLICESTATION;
+                break;
+
+            case "POWERPLANT":
+                TypeOfBuilding = NonResidentialTypes.POWERPLANT;
+                break;
+
+            case "GOVERNMENTBUILDING":
+                TypeOfBuilding = NonResidentialTypes.GOVERNMENTBUILDING;
+                break;
+
+            default:
+                TypeOfBuilding = null;
+        }
+
+        return new NonResidentialBuilding(resultSet.getInt("MaxEmployees"),
+                resultSet.getInt("CurrentEmployees"),
+                TypeOfBuilding,
+                resultSet.getInt("Size"), resultSet.getString("Coordinates"),
+                resultSet.getBoolean("Active"));
     }
 
     @Override
-    public NonResidentialBuilding selectFromDBbyLocation(Array location) throws NonResidentialBuildingException {
+    public NonResidentialBuilding selectFromDBbyLocation(String location) throws NonResidentialBuildingException {
         try (Connection connection = dataSource.getConnection()){
-            try (PreparedStatement statement = connection.prepareStatement("SELECT FROM * NonResidentialBuildings WHERE Coordinates = ?")){
-                statement.setArray(1, location);
+            try (PreparedStatement statement = connection.prepareStatement("SELECT MaxEmployees, CurrentEmployees, Size, Coordinates, Type, Active FROM NonResidentialBuildings WHERE Coordinates = ?")){
+                statement.setString(1, location);
 
                 ResultSet resultSet = statement.executeQuery();
 
@@ -124,7 +166,7 @@ public class NonResidentialBuildingsManagerImplementation implements NonResident
 
         try  (Connection connection = dataSource.getConnection()){
             try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM NonResidentialBuildings WHERE Type = ?")){
-                statement.setObject(1, type);
+                statement.setString(1, type.toString());
 
                 ResultSet resultSet = statement.executeQuery();
 

@@ -11,7 +11,7 @@ marp: true
    * Third unordered thingy that is under this one ^^^
  * To enable the preview, press `Ctrl + Shift + V`
  
- ---
+---
 # The second slide
 ### Let's insert an image!
 ![image](../../python3/pyparosci/Resources/rock2.png)

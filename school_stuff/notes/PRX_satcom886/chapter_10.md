@@ -1,4 +1,4 @@
-# Instalace Windows?
+# Windows
 ## Pojmy OS
  * *Multi-user* - Dva nebo více uživatelů je schopno pracovat s programy a periferiemi.
  * *Multitasking* - Může běžět více než jedna aktualizace

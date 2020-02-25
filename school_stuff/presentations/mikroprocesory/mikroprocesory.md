@@ -1,5 +1,7 @@
 ---
 marp: true
+paginate: true
+_paginate: false
 ---
 
 <!-- class: invert -->

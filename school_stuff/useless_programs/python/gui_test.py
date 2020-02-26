@@ -1,31 +1,23 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 import tkinter
 import sys
 
-def exit():
-    sys.exit(0)
-
 main_window = tkinter.Tk()
 
-label = tkinter.Label(main_window, text="Hello friend.")
-button = tkinter.Button(main_window, text="Exit", command=exit)
+pressed1 = tkinter.StringVar()
+pressed2 = tkinter.StringVar()
 
-button1 = tkinter.Button(main_window, text="První")
-button2 = tkinter.Button(main_window, text="Druhé")
-button3 = tkinter.Button(main_window, text="Třetí")
-button4 = tkinter.Button(main_window, text="Čtvrté")
+textbox1 = tkinter.Label(main_window, textvariable=pressed1)
+button1 = tkinter.Button(main_window, text="Tlačítko 1", borderwidth=4, command=lambda: pressed1.set("stisknuto"), relief="groove")
+textbox2 = tkinter.Label(main_window, textvariable=pressed2)
+button2 = tkinter.Button(main_window, text="Tlačítko 2", borderwidth=4, command=lambda: pressed2.set("stisknuto"), relief="groove")
+exitbutton = tkinter.Button(main_window, borderwidth=4, text="exit", height=6, background="green", foreground="yellow", command=lambda: sys.exit(0), relief="groove")
 
-label.grid(column=1, row=1)
-button.grid(column=1, row=2)
-
-button1.grid(column=1, row=3)
-button2.grid(column=2, row=3)
-button3.grid(column=1, row=4)
-button4.grid(column=2, row=4)
-
-# label.pack()
-# button.pack()
+textbox1.grid(column=1, row=1, padx=6, pady=6)
+button1.grid(column=1, row=2, padx=6, pady=6)
+textbox2.grid(column=2, row=1, padx=6, pady=6)
+button2.grid(column=2, row=2, padx=6, pady=6)
+exitbutton.grid(column=3, row=1, padx=6, pady=6)
 
 main_window.mainloop()

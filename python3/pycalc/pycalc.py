@@ -15,7 +15,6 @@ def calculate(equation):
 root = tkinter.Tk()
 
 equation = tkinter.StringVar()
-numbuttons = []
 
 field = tkinter.Entry(root, textvariable=equation)
 field.grid(row = 0, column = 0, columnspan = 4)

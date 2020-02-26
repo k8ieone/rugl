@@ -6,6 +6,8 @@ def calculate(equation):
     expression = str(equation.get())
     try:
         expression = str(eval(expression))
+    except ZeroDivisionError:
+        expression = "Division by zero!"
     except:
         expression = "ERROR"
     return expression
@@ -37,7 +39,7 @@ times = tkinter.Button(root, text = "×", pady=6, padx=6, width=2, relief="solid
 divide = tkinter.Button(root, text = "/", pady=6, padx=6, width=2, relief="solid", activebackground="#00ccff", command = lambda: equation.set(equation.get() + "/"))
 
 equal = tkinter.Button(root, text = "=", pady=46, padx=6, width=2, relief="solid", activebackground="#00ccff", command = lambda: equation.set(calculate(equation)))
-root.bind('<Return>', (lambda event: equation.set(calculate(equation)))) # TODO
+root.bind('<Return>', (lambda event: equation.set(calculate(equation))))
 clear = tkinter.Button(root, text = "CLR", pady=12, padx=12, relief="solid", activebackground="red", command = lambda: equation.set(""))
 
 button1.grid(row = 1, column = 0)

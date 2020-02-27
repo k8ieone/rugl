@@ -3,6 +3,7 @@
 import tkinter
 
 root = tkinter.Tk()
+root.title("Obvod/obsah čtverce")
 obsah = tkinter.StringVar()
 obvod = tkinter.StringVar()
 entryvar = tkinter.StringVar()

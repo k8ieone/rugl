@@ -12,6 +12,6 @@ def setup_node(ipaddr, mountpoint):
     os.system(command)
 
 def start_node(ipaddr, blendfile, blenderpath, framename):
-    command = "ssh " + ipaddr + " screen -d -m " + blenderpath + " -b " + blendfile + " -o " + framename + " -a"
+    command = "ssh " + ipaddr + " screen -d -m nice -n 18 " + blenderpath + " -noaudio -b " + blendfile + " -o " + framename + " -a"
     print(command)
     os.system(command)

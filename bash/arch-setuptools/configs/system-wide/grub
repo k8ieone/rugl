@@ -7,7 +7,6 @@ GRUB_TIMEOUT_STYLE=hidden
 GRUB_TIMEOUT=1
 GRUB_DISTRIBUTOR="Arch"
 GRUB_CMDLINE_LINUX_DEFAULT=""
-# GRUB_CMDLINE_LINUX_DEFAULT="resume=UUID=0e4c8d4f-be75-45e8-bc58-144b8da079ed resume_offset=90112.."
 GRUB_CMDLINE_LINUX=""
 
 # Preload both GPT and MBR modules so that they are not missed

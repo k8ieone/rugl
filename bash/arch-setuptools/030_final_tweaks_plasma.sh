@@ -71,7 +71,10 @@ then
     cat ~/rugl/bash/arch-setuptools/configs/user/zshrc | tee -a ~/.zshrc
     echo "include \"/usr/share/nano/*.nanorc\"" | sudo tee -a /etc/nanorc
     echo "include \"/usr/share/nano-syntax-highlighting/*.nanorc\"" | sudo tee -a /etc/nanorc
-
+    # git config --global user.name satcom886
+    # git config --global user.email EMAIL
+    # git config --global user.signingkey KEYID
+    # git config --global commit.gpgsign true
 else
     echo "ZSH setup will be skipped!"
 fi

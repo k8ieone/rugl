@@ -117,6 +117,10 @@ then
     cp ~/rugl/bash/arch-setuptools/configs/user/zprofile ~/.zprofile
     echo "include \"/usr/share/nano/*.nanorc\"" | sudo tee -a /etc/nanorc
     echo "include \"/usr/share/nano-syntax-highlighting/*.nanorc\"" | sudo tee -a /etc/nanorc
+    # git config --global user.name satcom886
+    # git config --global user.email EMAIL
+    # git config --global user.signingkey KEYID
+    # git config --global commit.gpgsign true
 else
     echo "ZSH setup will be skipped!"
     echo "${red}Warning! ${reset}i3 will not start because of ZSH missing!"

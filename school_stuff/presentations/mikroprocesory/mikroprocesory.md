@@ -14,7 +14,7 @@ _paginate: false
  * Elektronický obvod
  * Vykonává operace s daty v paměti
 ---
-## Typycká operace
+## Typická operace
 1. Fetch and Decode - nahrání z paměti
 1. Find data
 1. Execute

@@ -86,7 +86,7 @@ cd yay
 makepkg -si
 cd ~
 sudo rm -r yay
-yay -S powerpill toilet plasma5-applets-thermal-monitor-git
+yay -S powerpill toilet plasma5-applets-thermal-monitor-git plasma5-applets-caffeine-plus caffeine-ng
 # Redshift config
 mkdir -p ~/.config
 cp ~/rugl/bash/arch-setuptools/configs/user/redshift.conf ~/.config/

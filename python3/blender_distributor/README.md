@@ -7,7 +7,7 @@ This is a simple script made to dispatch rendering work to multiple computers.
 1. Syntax for the IP file is just one line, all the IPs separated by one space.
 1. It is **required** to have a central location for both the input blend file and the ouput frames. For example I use a SMB share mounted on `/mnt/projects` on all nodes.
 1. A working SSH server on the nodes and a working client on the master computer.
-1. Requirements for Arch Linux: `blender (wget https://ftp.nluug.nl/pub/graphics/blender/release/Blender2.82/blender-2.82-linux64.tar.xz && tar xf blender-2.82-linux64.tar.xz && mv blender-2.82-linux64 blender-2.82 && rm blender-2.82-linux64.tar.xz) screen `
+1. Requirements for Arch Linux: `blender (wget https://ftp.nluug.nl/pub/graphics/blender/release/Blender2.82/blender-2.82a-linux64.tar.xz && tar xf blender-2.82a-linux64.tar.xz && mv blender-2.82a-linux64 blender-2.82a && rm blender-2.82a-linux64.tar.xz) screen `
 1. I also highly recommend setting up public key authentication between the computer you will be running the script on and the render nodes
 1. Save the blend file with these options!  
 ![Output tab screenshot](screenshot1.png)  

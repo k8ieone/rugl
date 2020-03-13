@@ -110,6 +110,5 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR=nano
 neofetch
-toilet --metal --termwidth Welcome satcom886
-echo "Don't forget to run pacman -Rns instead of -Rs!"
+toilet --metal --termwidth Welcome $USER
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true

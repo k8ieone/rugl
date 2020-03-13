@@ -65,6 +65,8 @@ then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
     echo "export ZSH=\"/home/$USER/.oh-my-zsh\"" > ~/.zshrc
+    echo "include \"/usr/share/nano/*.nanorc\"" | sudo tee -a /etc/nanorc
+    echo "include \"/usr/share/nano-syntax-highlighting/*.nanorc\"" | sudo tee -a /etc/nanorc
     cat ~/rugl/bash/arch-setuptools/configs/user/zshrc | tee -a ~/.zshrc
 else
     echo "ZSH setup will be skipped!"

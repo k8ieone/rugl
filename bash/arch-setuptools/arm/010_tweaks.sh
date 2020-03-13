@@ -21,7 +21,7 @@ else
 fi
 
 # Install some packages
-sudo pacman -S boinc-nox zsh make gcc gc automake autoconf pkgconf fakeroot binutils netdata lm_sensors neofetch rng-tools fake-hwclock opensc
+sudo pacman -S boinc-nox zsh make gcc gc automake autoconf pkgconf fakeroot binutils netdata lm_sensors neofetch rng-tools fake-hwclock opensc nano-syntax-highlighting
 
 echo "Your new SSH private and public key will be generated now..."
 ssh-keygen

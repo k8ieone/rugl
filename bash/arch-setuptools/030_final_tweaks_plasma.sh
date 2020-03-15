@@ -29,7 +29,7 @@ if [[ $_ALL_APPS == y* ]]
 then
     sudo pacman -S plasma-applications-meta code firefox mpv vlc riot-desktop
 else
-    sudo pacman -S plasma-meta ark p7zip unrar unarchiver lzop lrzip dolphin gwenview spectacle konsole korganizer code riot-desktop kdenlive firefox ffmpegthumbs kdegraphics-thumbnailers vlc mpv
+    sudo pacman -S plasma-meta ark p7zip unrar unarchiver filelight lzop lrzip dolphin gwenview spectacle konsole korganizer code riot-desktop kdenlive firefox ffmpegthumbs kdegraphics-thumbnailers vlc mpv
 fi
 
 echo "Your new SSH private and public key will be generated now..."

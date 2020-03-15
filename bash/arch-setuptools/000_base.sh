@@ -84,6 +84,7 @@ then
     elif [[ $_OK == n* ]]
     then
         echo "Skipping formating /dev/$_EFIPART"
+        mkdir /mnt/boot
         mount /dev/$_EFIPART /mnt/boot
     else
         echo "Aborting..."

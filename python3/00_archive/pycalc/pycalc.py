@@ -19,6 +19,26 @@ equation = tkinter.StringVar()
 field = tkinter.Entry(root, textvariable=equation)
 field.grid(row = 0, column = 0, columnspan = 4)
 
+menubar = tkinter.Menu(root)
+
+filemenu = tkinter.Menu(menubar, tearoff=0)
+constantsmenu = tkinter.Menu(menubar, tearoff=0)
+mathsmenu = tkinter.Menu(constantsmenu, tearoff=0)
+elemenu = tkinter.Menu(constantsmenu, tearoff=0)
+
+menubar.add_cascade(label="File", menu=filemenu)
+menubar.add_cascade(label="Constants", menu=constantsmenu)
+
+filemenu.add_command(label="Exit", command=exit, activebackground="red")
+
+constantsmenu.add_cascade(label="Mathematics", menu=mathsmenu, activebackground="#00ccff")
+mathsmenu.add_command(label="Pi", activebackground="#00ccff", command = lambda: equation.set(equation.get() + "3.14159265359"))
+mathsmenu.add_command(label="Euler number", activebackground="#00ccff", command = lambda: equation.set(equation.get() + "2.71828182846"))
+mathsmenu.add_command(label="Golden ratio", activebackground="#00ccff", command = lambda: equation.set(equation.get() + "1.61803398875"))
+constantsmenu.add_cascade(label="Electromagnetism", menu=elemenu, activebackground="#00ccff")
+elemenu.add_command(label="Light speed", activebackground="#00ccff", command = lambda: equation.set(equation.get() + "299792458"))
+elemenu.add_command(label="Impedance of vaccum", activebackground="#00ccff", command = lambda: equation.set(equation.get() + "376.730313461"))
+
 button1 = tkinter.Button(root, text = "1", pady=6, padx=16, relief="solid", activebackground="#00ccff", command = lambda: equation.set(equation.get() + "1"))
 button2 = tkinter.Button(root, text = "2", pady=6, padx=16, relief="solid", activebackground="#00ccff", command = lambda: equation.set(equation.get() + "2"))
 button3 = tkinter.Button(root, text = "3", pady=6, padx=16, relief="solid", activebackground="#00ccff", command = lambda: equation.set(equation.get() + "3"))
@@ -60,4 +80,5 @@ divide.grid(row = 2, column = 5)
 equal.grid(row = 3, column = 4, sticky = "we", columnspan = 2, rowspan = 3)
 clear.grid(row = 5, column = 0, sticky = "we", columnspan = 3, rowspan = 1)
 
+root.config(menu=menubar)
 root.mainloop()

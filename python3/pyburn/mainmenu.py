@@ -1,5 +1,6 @@
 import erase_stuff
 import clone_stuff
+
 import sys
 
 def main_menu():
@@ -18,7 +19,9 @@ def main_menu():
         erase_menu()
 
 def clone_menu():
+    # Each inserted disc will be cloned to a new ISO in the specified directory
     print("1: Continuous clone")
+    # One job for one disc will be added
     print("2: Single clone job")
     choice = str(input("> "))
     if choice == "..":
@@ -46,3 +49,10 @@ def erase_menu():
         erase_stuff.cont_erase_menu()
     elif choice == "2":
         erase_stuff.add_erase_job_menu()
+
+def burn_menu():
+    # TODO: Burn menu (ISO > CD/DVD/BD)
+    # 2 options:
+    # One file to all discs
+    # One file to one disc (just one job, multiple jobs can run at the same time)
+    pass

@@ -15,16 +15,15 @@ Please open an issue in the "issues" tab. Please try to **describe** the problem
 # What is worth checking out?
  * satcom886's projects:
    * bash/arch-setuptools - a bunch of scripts and configs to help with installing Arch Linux
-   * python3/pycracker - a password cracker written in python
+   * python3/pyMultiBurn - a script for burning/erasing/copying multiple discs at the same time
    * python3/blender_distributor - a script for distributed Blender rendering
-   * bash/bt_killer - Bluetooth DoS attack
-   * bash/macchanger_tools - MAC address changer helper script
  * yogy's projects:
    * python3/pysnake - a snake game in python
    * python3/pyparosci - a rock paper scissors "action game" (not finished, currently on hold)  
    * pyhton3/pyCity - a small city simulator
 
-*Please add any projects of yours (or other people) that you think are worth checking out.*
+*Please add any projects of yours that you think are worth checking out.*
+*Keep it down to about 3 projects per person.*
 
 # What is this repo?
 This is our collection of all sorts of programs. From super useful ones to programs that barely even work.  

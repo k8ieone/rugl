@@ -12,10 +12,7 @@ drives = infoparser.list_drives()
 active = True
 
 def cont_erase_menu():
-    print("All drives will be used for erasing!")
-    print("Drive will be ejected after it's done erasing.")
-    print("Insert a new disc to erase it.")
-    print("------------------------------------")
+    print("\n===== Continuous erase =====")
     print("1: Full")
     print("2: As needed")
     print("3: Fast")
@@ -39,34 +36,40 @@ def erase_mainthread_cont(mode):
     counter = 0
     threadlist = []
     for drive in drives:
-        threadlist.append(threading.Thread(target=erase_drive_cont, args=(drive, mode)))
+        threadlist.append(threading.Thread(target=erase_drive_thread, args=(drive, mode)))
         threadlist[counter].start()
         counter += 1
-    print("Starting " + str(len(drives)) + " continuous erase jobs!")
+    print("pymultiburn : Starting", str(len(drives)), "continuous erase jobs!")
     print("Enter \"c\" to stop.")
     choice = str(input("> "))
     if choice == "c":
         active = False
-        print("Stopping!")
-        print("Waiting for all threads to finish...")
+        print("pymultiburn : Stopping!")
+        print("pymultiburn : Waiting for all threads to finish...")
         counter = 0
         for drive in drives:
             threadlist[counter].join()
             counter += 1
-        print("All finished!")
+        print("pymultiburn : All finished!")
         threadlist = []
         cont_erase_menu()
 
-def erase_drive_cont(drive, mode):
+def erase_drive_thread(drive, mode):
     global active
-    print("Process started!")
+    print("pymultiburn : Process started!")
     while active is True:
         #subprocess.run(["cdrecord", "-eject", "-force", "dev=/dev/" + drive, "blank=" + mode], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         #subprocess.run(["xorriso", "-outdev /dev/" + drive, "-blank force:" + mode, "-eject out"])
-        erase(drive, mode)
-        time.sleep(10)
+        if infoparser.get_status(drive) == 1 or infoparser.get_status(drive) == 2 or infoparser.get_status(drive) == 3:
+            print("pymultiburn : Waiting 15 seconds for a disc to be inserted into", drive)
+            time.sleep(15)
+            pass
+        elif infoparser.get_status(drive) == 4:
+            erase(drive, mode)
+            pass
 
 def add_erase_job_menu():
+    print("\n===== Add erase job =====")
     print("Select the drive to be used:")
     global drives
     counter = 0
@@ -111,4 +114,6 @@ def erase(drive, mode):
     # TODO: Redirect the output to a log if run as a single job
     os.system(command)
     # TODO: Make sure the disc was actually erased (xorriso didn't encounter an error)
-    print("Disc in " + drive + " erased!")
+    # TODO: Warn on error
+    # TODO: Eject on error
+    print("pymultiburn : Disc in " + drive + " erased!")

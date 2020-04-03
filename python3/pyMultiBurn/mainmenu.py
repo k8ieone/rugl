@@ -2,8 +2,9 @@ import erase_stuff
 import clone_stuff
 
 import sys
-
+# TODO: Make the separation between menus and output a little better (use =====)
 def main_menu():
+    print("\n===== Main menu =====")
     print("1: Clone as ISO")
     print("2: Erase rewriteable (only CD-RW and DVD-RW is supported now!)")
     choice = str(input("> "))
@@ -19,6 +20,7 @@ def main_menu():
         erase_menu()
 
 def clone_menu():
+    print("\n===== Cloning menu =====")
     # Each inserted disc will be cloned to a new ISO in the specified directory
     print("1: Continuous clone")
     # One job for one disc will be added
@@ -36,6 +38,7 @@ def clone_menu():
         clone_stuff.add_clone_job_menu()
 
 def erase_menu():
+    print("\n===== Erase menu =====")
     print("1: Continuous erase")
     print("2: Single erase")
     choice = str(input("> "))

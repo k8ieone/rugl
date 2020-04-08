@@ -4,7 +4,6 @@ import infoparser
 import os
 import time
 import threading
-# TODO: the entire thing
 
 drives = infoparser.list_drives()
 active = True
@@ -64,11 +63,13 @@ def clone_drive_thread(drive, outpath):
             clone(drive, outpath)
             pass
 
+# TODO: Add clone job function
 def add_clone_job_menu():
     pass
 
 # This determines the filename and starts the cloning job
 # TODO: Somewhere in this function is a bug. Each time a disc is copied, a new filename is appended to the previous one. (filename = filename + new)
+# TODO: Replace os.system with subprocess.run (this might fix the filename bug)
 def clone(drive, outpath):
     outfile = outpath + "/" + infoparser.get_volname(drive)
     outfile = ''.join(outfile.split())

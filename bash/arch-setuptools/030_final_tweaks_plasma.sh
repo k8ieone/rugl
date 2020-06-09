@@ -27,9 +27,9 @@ echo -n "Do you wish to install all Plasma applications? (Yes/no): "
 read -r _ALL_APPS
 if [[ $_ALL_APPS == y* ]]
 then
-    sudo pacman -S plasma-applications-meta code firefox mpv vlc riot-desktop
+    sudo pacman -S plasma-applications-meta firefox mpv
 else
-    sudo pacman -S plasma-meta ark p7zip unrar unarchiver filelight lzop lrzip dolphin gwenview spectacle konsole korganizer code riot-desktop kdenlive firefox ffmpegthumbs kdegraphics-thumbnailers vlc mpv
+    sudo pacman -S plasma-meta ark p7zip unrar unarchiver filelight lzop lrzip dolphin gwenview spectacle konsole korganizer kdenlive firefox ffmpegthumbs kdegraphics-thumbnailers mpv
 fi
 
 echo "Your new SSH private and public key will be generated now..."
@@ -42,6 +42,8 @@ sudo gpasswd -a $USER video
 sudo gpasswd -a $USER wheel
 sudo gpasswd -a $USER optical
 sudo gpasswd -a $USER lp
+sudo gpasswd -a $USER storage
+sudo gpasswd -a $USER uucp
 
 sudo systemctl enable hddtemp sddm rngd man-db.timer
 
@@ -83,10 +85,10 @@ fi
 cd ~
 git clone https://aur.archlinux.org/yay.git
 cd yay
-makepkg -si
+makepkg -Asi
 cd ~
 sudo rm -r yay
-yay -S powerpill toilet plasma5-applets-thermal-monitor-git plasma5-applets-caffeine-plus caffeine-ng
+yay -S toilet plasma5-applets-thermal-monitor-git
 # Redshift config
 mkdir -p ~/.config
 cp ~/rugl/bash/arch-setuptools/configs/user/redshift.conf ~/.config/

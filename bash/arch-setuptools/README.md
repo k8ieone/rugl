@@ -31,6 +31,7 @@ These are the commands you have to run:
 1. exit
 1. [LOGIN AS USER]
 1. bash rugl/bash/arch-setuptools/030_final_tweaks_headless.sh (or 030_final_tweaks_i3.sh)
+1. exit
 1. reboot
 ### Why?
 If you are installing Arch on over 5 computers (like me) it can get pretty anoying and repettitive pretty quickly. This set of scripts is not for completely automating the install process but to make it easier and much quicker.

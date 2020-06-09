@@ -38,6 +38,8 @@ sudo gpasswd -a $USER video
 sudo gpasswd -a $USER wheel
 sudo gpasswd -a $USER optical
 sudo gpasswd -a $USER lp
+sudo gpasswd -a $USER storage
+sudo gpasswd -a $USER uucp
 
 sudo systemctl enable netdata hddtemp rngd man-db.timer
 
@@ -80,7 +82,7 @@ fi
 cd ~
 git clone https://aur.archlinux.org/yay.git
 cd yay
-makepkg -si
+makepkg -Asi
 cd ~
 sudo rm -r yay
 yay -S powerpill toilet

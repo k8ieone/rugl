@@ -29,7 +29,7 @@ sudo pacman -S zsh make gcc gc automake patch autoconf pkgconf fakeroot binutils
 cd ~
 git clone https://aur.archlinux.org/yay.git
 cd yay
-makepkg -si
+makepkg -Asi
 cd ~
 sudo rm -r yay
 
@@ -84,6 +84,8 @@ sudo gpasswd -a $USER video
 sudo gpasswd -a $USER wheel
 sudo gpasswd -a $USER optical
 sudo gpasswd -a $USER lp
+sudo gpasswd -a $USER storage
+sudo gpasswd -a $USER uucp
 
 sudo systemctl enable hddtemp smartd rngd bluetooth man-db.timer
 

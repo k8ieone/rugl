@@ -27,9 +27,9 @@ echo -n "Do you wish to install all Plasma applications? (Yes/no): "
 read -r _ALL_APPS
 if [[ $_ALL_APPS == y* ]]
 then
-    sudo pacman -S plasma-applications-meta firefox mpv
+    sudo pacman -S plasma-applications-meta firefox mpv earlyoom systembus-notify mlocate
 else
-    sudo pacman -S plasma-meta ark p7zip unrar unarchiver filelight lzop lrzip dolphin gwenview spectacle konsole korganizer kdenlive firefox ffmpegthumbs kdegraphics-thumbnailers mpv
+    sudo pacman -S plasma-meta ark p7zip unrar unarchiver filelight lzop lrzip dolphin gwenview spectacle konsole korganizer kdenlive firefox ffmpegthumbs kdegraphics-thumbnailers mpv earlyoom systembus-notify mlocate
 fi
 
 echo "Your new SSH private and public key will be generated now..."
@@ -45,7 +45,7 @@ sudo gpasswd -a $USER lp
 sudo gpasswd -a $USER storage
 sudo gpasswd -a $USER uucp
 
-sudo systemctl enable hddtemp sddm rngd man-db.timer
+sudo systemctl enable hddtemp sddm rngd man-db.timer earlyoom updatedb.timer
 
 echo "Do you wish to run sensors-detect?"
 read -r _SENSORS_TRUE
@@ -73,6 +73,7 @@ then
     cat ~/rugl/bash/arch-setuptools/configs/user/zshrc | tee -a ~/.zshrc
     echo "include \"/usr/share/nano/*.nanorc\"" | sudo tee -a /etc/nanorc
     echo "include \"/usr/share/nano-syntax-highlighting/*.nanorc\"" | sudo tee -a /etc/nanorc
+    sudo cp ~/rugl/bash/arch-setuptools/configs/system-wide/earlyoom /etc/default
     # git config --global user.name satcom886
     # git config --global user.email EMAIL
     # git config --global user.signingkey KEYID

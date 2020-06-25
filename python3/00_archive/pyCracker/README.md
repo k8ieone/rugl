@@ -1,5 +1,6 @@
-# Badges
+# pycracker
 ![GitHub issues by-label](https://img.shields.io/github/issues-raw/satcom886/rugl/pycracker.svg)
+## pycracker is now only maintained [here](https://github.com/satcom886/pycracker)
 # What can I do with this?
 This program can crack MD5 hashes (more hashes comming).
 # Usage:

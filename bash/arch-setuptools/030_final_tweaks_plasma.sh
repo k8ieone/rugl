@@ -45,7 +45,8 @@ sudo gpasswd -a $USER lp
 sudo gpasswd -a $USER storage
 sudo gpasswd -a $USER uucp
 
-sudo systemctl enable hddtemp sddm rngd man-db.timer earlyoom updatedb.timer
+sudo systemctl enable hddtemp sddm rngd man-db.timer earlyoom updatedb.timer systemd-resolved
+sudo systemctl disable systemd-networkd
 
 echo "Do you wish to run sensors-detect?"
 read -r _SENSORS_TRUE

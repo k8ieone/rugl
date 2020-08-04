@@ -20,16 +20,28 @@ else
     :
 fi
 
+echo "Do you wish to setup EarlyOOM?"
+echo "(killing processes when running out of memory)"
+echo -n "y/N: "
+read -r _OOM
+if [[ $_OOM == y* ]]
+then
+    sudo pacman -S --noconfirm earlyoom
+    sudo cp ~/rugl/bash/arch-setuptools/configs/system-wide/earlyoom /etc/default
+else
+    :
+fi
+
 # Install some packages
-sudo pacman -S zsh crda nano-syntax-highlighting man-pages man-db nano make gcc gc patch automake autoconf pkgconf fakeroot binutils hddtemp lm_sensors neofetch rng-tools opensc systemd-swap
+sudo pacman -S zsh crda nano-syntax-highlighting man-pages man-db nano make gcc gc patch automake autoconf pkgconf fakeroot binutils hddtemp lm_sensors neofetch rng-tools opensc systemd-swap mlocate nss-mdns
 
 echo -n "Do you wish to install all Plasma applications? (Yes/no): "
 read -r _ALL_APPS
 if [[ $_ALL_APPS == y* ]]
 then
-    sudo pacman -S plasma-applications-meta firefox mpv earlyoom systembus-notify mlocate
+    sudo pacman -S plasma-applications-meta firefox mpv systembus-notify
 else
-    sudo pacman -S plasma-meta ark p7zip unrar unarchiver filelight lzop lrzip dolphin gwenview spectacle konsole korganizer kdenlive firefox ffmpegthumbs kdegraphics-thumbnailers mpv earlyoom systembus-notify mlocate
+    sudo pacman -S plasma-meta ark p7zip unrar unarchiver filelight lzop lrzip dolphin gwenview spectacle konsole korganizer kdenlive firefox ffmpegthumbs kdegraphics-thumbnailers mpv systembus-notify 
 fi
 
 echo "Your new SSH private and public key will be generated now..."
@@ -45,7 +57,7 @@ sudo gpasswd -a $USER lp
 sudo gpasswd -a $USER storage
 sudo gpasswd -a $USER uucp
 
-sudo systemctl enable hddtemp sddm rngd man-db.timer earlyoom updatedb.timer systemd-resolved
+sudo systemctl enable hddtemp sddm rngd man-db.timer updatedb.timer systemd-resolved earlyoom
 sudo systemctl disable systemd-networkd
 
 echo "Do you wish to run sensors-detect?"
@@ -74,7 +86,7 @@ then
     cat ~/rugl/bash/arch-setuptools/configs/user/zshrc | tee -a ~/.zshrc
     echo "include \"/usr/share/nano/*.nanorc\"" | sudo tee -a /etc/nanorc
     echo "include \"/usr/share/nano-syntax-highlighting/*.nanorc\"" | sudo tee -a /etc/nanorc
-    sudo cp ~/rugl/bash/arch-setuptools/configs/system-wide/earlyoom /etc/default
+    sudo cp ~/rugl/bash/arch-setuptools/configs/system-wide/nsswitch.conf /etc
     # git config --global user.name satcom886
     # git config --global user.email EMAIL
     # git config --global user.signingkey KEYID

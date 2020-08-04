@@ -25,8 +25,20 @@ else
     :
 fi
 
+echo "Do you wish to setup EarlyOOM?"
+echo "(killing processes when running out of memory)"
+echo -n "y/N: "
+read -r _OOM
+if [[ $_OOM == y* ]]
+then
+    sudo pacman -S --noconfirm earlyoom
+    sudo cp ~/rugl/bash/arch-setuptools/configs/system-wide/earlyoom /etc/default
+else
+    :
+fi
+
 # Install some packages
-sudo pacman -S libglvnd nano-syntax-highlighting libxi man-pages man-db libxrender zsh crda nano make gcc gc patch automake autoconf pkgconf fakeroot binutils netdata hddtemp smartmontools lm_sensors neofetch rng-tools opensc systemd-swap
+sudo pacman -S libglvnd nano-syntax-highlighting libxi man-pages man-db libxrender zsh crda nano make gcc gc patch automake autoconf pkgconf fakeroot binutils hddtemp lm_sensors neofetch rng-tools opensc systemd-swap mlocate nss-mdns
 
 echo "Your new SSH private and public key will be generated now..."
 ssh-keygen
@@ -41,7 +53,7 @@ sudo gpasswd -a $USER lp
 sudo gpasswd -a $USER storage
 sudo gpasswd -a $USER uucp
 
-sudo systemctl enable netdata hddtemp rngd man-db.timer
+sudo systemctl enable hddtemp rngd man-db.timer updatedb.timer
 
 # Additional netdata charts
 sudo gpasswd -a netdata boinc
@@ -74,6 +86,7 @@ then
     cat ~/rugl/bash/arch-setuptools/configs/user/zshrc | tee -a ~/.zshrc
     echo "include \"/usr/share/nano/*.nanorc\"" | sudo tee -a /etc/nanorc
     echo "include \"/usr/share/nano-syntax-highlighting/*.nanorc\"" | sudo tee -a /etc/nanorc
+    sudo cp ~/rugl/bash/arch-setuptools/configs/system-wide/nsswitch.conf /etc
 else
     echo "ZSH setup will be skipped!"
 fi

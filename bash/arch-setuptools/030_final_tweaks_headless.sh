@@ -98,7 +98,7 @@ cd yay
 makepkg -Asi
 cd ~
 sudo rm -r yay
-yay -S powerpill toilet
+yay -S toilet
 
 echo
 echo "${green}Done!${reset}"

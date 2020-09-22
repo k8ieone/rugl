@@ -5,6 +5,10 @@
 # Prerequisites
 *.d
 
+# MSBuild output
+*.exe
+Bin
+
 # Object files
 *.o
 *.ko

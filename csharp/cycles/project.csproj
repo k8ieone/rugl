@@ -1,0 +1,33 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <OutputPath>Bin\</OutputPath>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile1 Include="1_divider.cs"/>
+        <Compile2 Include="2_summarizer.cs"/>
+        <Compile3 Include="3_numsum.cs" />
+    </ItemGroup>
+<!-- Targets -->
+    <!-- This target just creates the "Bin" directory -->
+    <Target Name="PrepDirs">
+        <MakeDir Directories="$(OutputPath)" Condition="!Exists('$(OutputPath)')" />
+    </Target>
+    <!-- These three targets only compile their binary, that's it -->
+    <Target Name="Divider" DependsOnTargets="PrepDirs">
+        <Csc Sources="@(Compile1)" OutputAssembly="$(OutputPath)Divider.exe" />
+    </Target>
+    <Target Name="Sumarizer" DependsOnTargets="PrepDirs">
+        <Csc Sources="@(Compile2)" OutputAssembly="$(OutputPath)Sumarizer.exe" />
+    </Target>
+    <Target Name="NumSum" DependsOnTargets="PrepDirs">
+        <Csc Sources="@(Compile3)" OutputAssembly="$(OutputPath)NumSum.exe" />
+    </Target>
+    <!-- This target depends on the directory being created and both the programs compiled -->
+    <Target Name="Build" DependsOnTargets="PrepDirs;Divider;Sumarizer;NumSum" />
+    <!-- This target simply deletes the "Bin" directory -->
+    <Target Name="Clean" >
+        <RemoveDir Directories="$(OutputPath)" />
+    </Target>
+    <!-- This target removes the "Bin" directory and then starts the Build target -->
+    <Target Name="Rebuild" DependsOnTargets="Clean;Build" />
+</Project>

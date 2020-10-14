@@ -5,14 +5,14 @@ namespace ClassesTest{
             Cat cat1 = new Cat("Victoria");
             Cat cat2 = new Cat("Ellie");
             Cat cat3 = new Cat();
-            cat1.sayMeow();
-            cat2.sayMeow();
-            cat3.sayMeow();
+            cat1.sayMeow(cat1.catName);
+            cat2.sayMeow(cat2.catName);
+            cat3.sayMeow(cat3.catName);
             }
         }
     public class Cat{
-        public void sayMeow(){
-            Console.WriteLine(self.catName + ": Meow");
+        public void sayMeow(string name){
+            Console.WriteLine(name + ": Meow");
         }
         public Cat(){
             catName = "unnamed";
@@ -20,6 +20,6 @@ namespace ClassesTest{
         public Cat(string name){
             catName = name;
         }
-        public string Name { get; }
+        public string catName { get; }
     }
 }

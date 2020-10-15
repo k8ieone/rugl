@@ -1,3 +1,5 @@
+# EOL Info!
+This project is now maintained [here](https://github.com/satcom886/arch-install)!
 ### Badges
 ![GitHub issues by-label](https://img.shields.io/github/issues-raw/satcom886/rugl/arch-setuptools.svg)
 ### What can I do with this?

@@ -2,24 +2,26 @@ using System;
 namespace ClassesTest{
     class MainClass{
         static void Main(){
-            Cat cat1 = new Cat("Victoria");
-            Cat cat2 = new Cat("Ellie");
-            Cat cat3 = new Cat();
-            cat1.sayMeow(cat1.catName);
-            cat2.sayMeow(cat2.catName);
-            cat3.sayMeow(cat3.catName);
+            Truck car1 = new Truck();
+            car1.Load(3000);
+            car1.unLoad(500);
+            Console.WriteLine(car1.currentLoad);
+        }
+    }
+    public class Truck{
+        public int currentLoad;
+        public Truck(){
+            currentLoad = 0;
+        }
+        public void Load(int kilograms){
+            if (kilograms > 0){
+                currentLoad += kilograms;
             }
         }
-    public class Cat{
-        public void sayMeow(string name){
-            Console.WriteLine(name + ": Meow");
+        public void unLoad(int kilograms){
+            if (currentLoad - kilograms >= 0){
+                currentLoad -= kilograms;
+            }
         }
-        public Cat(){
-            catName = "unnamed";
-        }
-        public Cat(string name){
-            catName = name;
-        }
-        public string catName { get; }
     }
 }
